@@ -1,0 +1,444 @@
+{
+  "run_id": "3751fd74-1d65-4cf6-b9b2-32a1cb886ae6",
+  "status": "complete",
+  "started_at": "2026-10-22T18:57:48.965992+00:00",
+  "is_smoke_run": true,
+  "command": [
+    "/workspace/propro/.venv/bin/python",
+    "scripts/run_experiments.py",
+    "--quick",
+    "--output",
+    "results/smoke",
+    "--overwrite"
+  ],
+  "working_directory": "/workspace/propro",
+  "config": {
+    "protocol_version": "1.0",
+    "datasets": [
+      "nyc_taxi"
+    ],
+    "data_directory": "data/processed",
+    "split_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "context": 6,
+    "neighbors": 12,
+    "max_candidates": 4000,
+    "seasonal_weight": 0.15,
+    "alpha": 0.1,
+    "gap_lengths": [
+      6,
+      12,
+      24
+    ],
+    "seeds": [
+      17
+    ],
+    "calibration_cases_per_length": 12,
+    "test_cases_per_length": 3,
+    "extra_trees": {
+      "n_estimators": 16,
+      "training_gaps": 90
+    },
+    "methods": [
+      "linear",
+      "extra_trees",
+      "analog_bridge",
+      "analog_no_bridge",
+      "analog_constant_scale",
+      "analog_pooled_calibration"
+    ],
+    "hypothesis": {
+      "minimum_relative_mae_reduction_vs_linear": 0.1,
+      "maximum_relative_mae_increase_vs_extra_trees": 0.1,
+      "minimum_gap_coverage": 0.85,
+      "nominal_gap_coverage": 0.9,
+      "width_reference": "analog_constant_scale"
+    }
+  },
+  "config_sha256": "c79a51cdcba21e6d0c330b30c9cf3c034eb58dd9eabc238a10262f7d61919ddd",
+  "effective_config_sha256": "2ad71e5d553f67f6c575cee2bcbc3efaccd454a38ad9e669b05a78fd1994aef5",
+  "protocol_sha256": "5e3775a56a0cf9c935afb45e20b603654dbaea0764d99070845368345b33ff86",
+  "code_sha256": {
+    "src/gaplens/core.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+    "src/gaplens/calibration.py": "b4e21a77ab0e00f039518feb6ffd865fffca86c41dffe623465ec5dc256595e0",
+    "scripts/run_experiments.py": "07d7ecf558c03da109aabbbe2dc3b0824e5d56acd86dbc1a58d51a6aec6232af"
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "matplotlib": "3.10.3"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "processor": "",
+  "cpu_count": 5,
+  "measurement_notes": {
+    "rss": "Cumulative peak resident memory for this process, not isolated per-method memory",
+    "seed_ranges": "Mask sensitivity only; seeds and lengths can share observations",
+    "pooled_timing": "Reuses AnalogBridge predictions; recorded prediction time is copied from that method",
+    "prediction_timing": "Test calls have warm reference-window caches; cache construction is included in calibration measurements, not fit_seconds",
+    "data": "Real observations with artificial isolated contiguous missing blocks; not naturally missing ground truth"
+  },
+  "datasets": {
+    "nyc_taxi": {
+      "path": "data/processed/nyc_taxi.csv",
+      "sha256": "8800a4148a75c75e32fe8f8d87a0b3f4a1d08a7b7aca67c94762af0b30d020c2",
+      "rows": 10320,
+      "missing_values": 0,
+      "train_iqr": 8856.25,
+      "normalization_scale": 8856.25,
+      "cadence_seconds": 1800.0,
+      "splits": {
+        "train": {
+          "start_index": 0,
+          "end_index_exclusive": 6192,
+          "first_timestamp": "2014-07-01 00:00:00+00:00",
+          "last_timestamp": "2014-11-06 23:30:00+00:00"
+        },
+        "calibration": {
+          "start_index": 6192,
+          "end_index_exclusive": 8256,
+          "first_timestamp": "2014-11-07 00:00:00+00:00",
+          "last_timestamp": "2014-12-19 23:30:00+00:00"
+        },
+        "test": {
+          "start_index": 8256,
+          "end_index_exclusive": 10320,
+          "first_timestamp": "2014-12-20 00:00:00+00:00",
+          "last_timestamp": "2015-01-31 23:30:00+00:00"
+        }
+      }
+    }
+  },
+  "fit_measurements": [
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "linear",
+      "fit_seconds": 0.0008035129999370838,
+      "training_examples": null,
+      "process_peak_rss_mb": 71.875
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "extra_trees",
+      "fit_seconds": 0.9060878049999701,
+      "training_examples": 90,
+      "process_peak_rss_mb": 156.890625
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_bridge",
+      "fit_seconds": 0.0012826760000734794,
+      "training_examples": null,
+      "process_peak_rss_mb": 156.890625
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_no_bridge",
+      "fit_seconds": 0.0005806879998999648,
+      "training_examples": null,
+      "process_peak_rss_mb": 156.890625
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_constant_scale",
+      "fit_seconds": 0.0005839749999267951,
+      "training_examples": null,
+      "process_peak_rss_mb": 156.890625
+    }
+  ],
+  "calibration_measurements": [
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "linear",
+      "calibration_prediction_and_score_seconds": 0.005261772999574532,
+      "first_calibration_prediction_and_score_seconds": 0.00015043700000205718,
+      "n_cases": 36,
+      "note": "Includes lazy candidate-window construction for every gap length; excludes common mask creation"
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "extra_trees",
+      "calibration_prediction_and_score_seconds": 0.09070401600001787,
+      "first_calibration_prediction_and_score_seconds": 0.0027119419999053207,
+      "n_cases": 36,
+      "note": "Includes lazy candidate-window construction for every gap length; excludes common mask creation"
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_bridge",
+      "calibration_prediction_and_score_seconds": 0.06424681499970575,
+      "first_calibration_prediction_and_score_seconds": 0.004584087000012005,
+      "n_cases": 36,
+      "note": "Includes lazy candidate-window construction for every gap length; excludes common mask creation"
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_no_bridge",
+      "calibration_prediction_and_score_seconds": 0.060550741999350066,
+      "first_calibration_prediction_and_score_seconds": 0.005610480000086682,
+      "n_cases": 36,
+      "note": "Includes lazy candidate-window construction for every gap length; excludes common mask creation"
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "method": "analog_constant_scale",
+      "calibration_prediction_and_score_seconds": 0.05765783999981977,
+      "first_calibration_prediction_and_score_seconds": 0.00496880500008956,
+      "n_cases": 36,
+      "note": "Includes lazy candidate-window construction for every gap length; excludes common mask creation"
+    }
+  ],
+  "selected_cases": [
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "gap_length": 6,
+      "calibration_mask_seed": 6071,
+      "test_mask_seed": 1006074,
+      "calibration_local_indices": [
+        [
+          18,
+          24
+        ],
+        [
+          485,
+          491
+        ],
+        [
+          535,
+          541
+        ],
+        [
+          648,
+          654
+        ],
+        [
+          788,
+          794
+        ],
+        [
+          1059,
+          1065
+        ],
+        [
+          1127,
+          1133
+        ],
+        [
+          1162,
+          1168
+        ],
+        [
+          1483,
+          1489
+        ],
+        [
+          1769,
+          1775
+        ],
+        [
+          1797,
+          1803
+        ],
+        [
+          2046,
+          2052
+        ]
+      ],
+      "test_local_indices": [
+        [
+          297,
+          303
+        ],
+        [
+          881,
+          887
+        ],
+        [
+          1977,
+          1983
+        ]
+      ],
+      "calibration_count": 12,
+      "test_count": 3
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "gap_length": 12,
+      "calibration_mask_seed": 12125,
+      "test_mask_seed": 1012128,
+      "calibration_local_indices": [
+        [
+          44,
+          56
+        ],
+        [
+          189,
+          201
+        ],
+        [
+          243,
+          255
+        ],
+        [
+          442,
+          454
+        ],
+        [
+          608,
+          620
+        ],
+        [
+          740,
+          752
+        ],
+        [
+          780,
+          792
+        ],
+        [
+          844,
+          856
+        ],
+        [
+          975,
+          987
+        ],
+        [
+          1197,
+          1209
+        ],
+        [
+          1508,
+          1520
+        ],
+        [
+          1679,
+          1691
+        ]
+      ],
+      "test_local_indices": [
+        [
+          927,
+          939
+        ],
+        [
+          1440,
+          1452
+        ],
+        [
+          1608,
+          1620
+        ]
+      ],
+      "calibration_count": 12,
+      "test_count": 3
+    },
+    {
+      "dataset": "nyc_taxi",
+      "seed": 17,
+      "gap_length": 24,
+      "calibration_mask_seed": 24233,
+      "test_mask_seed": 1024236,
+      "calibration_local_indices": [
+        [
+          122,
+          146
+        ],
+        [
+          270,
+          294
+        ],
+        [
+          432,
+          456
+        ],
+        [
+          482,
+          506
+        ],
+        [
+          638,
+          662
+        ],
+        [
+          737,
+          761
+        ],
+        [
+          833,
+          857
+        ],
+        [
+          883,
+          907
+        ],
+        [
+          1038,
+          1062
+        ],
+        [
+          1272,
+          1296
+        ],
+        [
+          1521,
+          1545
+        ],
+        [
+          1772,
+          1796
+        ]
+      ],
+      "test_local_indices": [
+        [
+          1099,
+          1123
+        ],
+        [
+          1333,
+          1357
+        ],
+        [
+          1878,
+          1902
+        ]
+      ],
+      "calibration_count": 12,
+      "test_count": 3
+    }
+  ],
+  "completed_at": "2026-10-22T18:57:50.322699+00:00",
+  "elapsed_seconds": 1.35674426699984,
+  "process_peak_rss_mb": 171.265625,
+  "case_method_rows": 54,
+  "unique_test_gaps": 9,
+  "prediction_rows": 756,
+  "artifact_sha256": {
+    "series_summary.csv": "d1281e7ddcf8aea2a2a5e8f6bb68d32a3fefdec86c316b956fcf66d519b8586e",
+    "predictions.csv": "74ffcd3449488ca7f7c9161932f550b23c999e67ade33adb73f37211bb5fa2b5",
+    "aggregate_summary.csv": "00b80224dc57c6b333619d7fcb40e062f54484c0a27d88de0a03ff3eec23c65b",
+    "summary.csv": "8f73c8ff67a2af229b1c8f5d696f3440f706b490513181cb380cf7d086421e81",
+    "worst_cases.csv": "da3327fabfd5b540f2f58499504fa8412a2261ff0526e367b60206a62eb5460c",
+    "case_metrics.csv": "0214a5585961aff3397f67764738f1227d626ce53979ca3ec418cd31e6083a36"
+  },
+  "hypothesis_all_criteria_supported": null
+}

@@ -1,0 +1,46 @@
+2026-10-22T18:58:00.681173+00:00 dataset=nyc_taxi seed=17: fitting reference-only models
+2026-10-22T18:58:06.282223+00:00 dataset=nyc_taxi seed=17 length=6: calibration=24 test=24
+2026-10-22T18:58:07.224526+00:00 dataset=nyc_taxi seed=17 length=12: calibration=24 test=24
+2026-10-22T18:58:07.880146+00:00 dataset=nyc_taxi seed=17 length=24: calibration=24 test=24
+2026-10-22T18:58:10.683031+00:00 dataset=nyc_taxi seed=17: completed all six methods
+2026-10-22T18:58:10.684204+00:00 dataset=nyc_taxi seed=29: fitting reference-only models
+2026-10-22T18:58:15.828008+00:00 dataset=nyc_taxi seed=29 length=6: calibration=24 test=24
+2026-10-22T18:58:17.031097+00:00 dataset=nyc_taxi seed=29 length=12: calibration=24 test=24
+2026-10-22T18:58:18.137955+00:00 dataset=nyc_taxi seed=29 length=24: calibration=24 test=24
+2026-10-22T18:58:20.615507+00:00 dataset=nyc_taxi seed=29: completed all six methods
+2026-10-22T18:58:20.615634+00:00 dataset=nyc_taxi seed=43: fitting reference-only models
+2026-10-22T18:58:25.073137+00:00 dataset=nyc_taxi seed=43 length=6: calibration=24 test=24
+2026-10-22T18:58:25.692861+00:00 dataset=nyc_taxi seed=43 length=12: calibration=24 test=24
+2026-10-22T18:58:26.209909+00:00 dataset=nyc_taxi seed=43 length=24: calibration=24 test=24
+2026-10-22T18:58:27.991377+00:00 dataset=nyc_taxi seed=43: completed all six methods
+2026-10-22T18:58:28.063315+00:00 dataset=cpu_utilization seed=17: fitting reference-only models
+2026-10-22T18:58:32.690753+00:00 dataset=cpu_utilization seed=17 length=6: calibration=24 test=24
+2026-10-22T18:58:33.092758+00:00 dataset=cpu_utilization seed=17 length=12: calibration=24 test=24
+2026-10-22T18:58:33.545636+00:00 dataset=cpu_utilization seed=17 length=24: calibration=24 test=24
+2026-10-22T18:58:34.933356+00:00 dataset=cpu_utilization seed=17: completed all six methods
+2026-10-22T18:58:34.933527+00:00 dataset=cpu_utilization seed=29: fitting reference-only models
+2026-10-22T18:59:19.939536+00:00 dataset=cpu_utilization seed=29 length=6: calibration=24 test=24
+2026-10-22T18:59:21.298687+00:00 dataset=cpu_utilization seed=29 length=12: calibration=24 test=24
+2026-10-22T18:59:22.187373+00:00 dataset=cpu_utilization seed=29 length=24: calibration=24 test=24
+2026-10-22T18:59:23.702686+00:00 dataset=cpu_utilization seed=29: completed all six methods
+2026-10-22T18:59:23.702842+00:00 dataset=cpu_utilization seed=43: fitting reference-only models
+2026-10-22T18:59:26.828004+00:00 dataset=cpu_utilization seed=43 length=6: calibration=24 test=24
+2026-10-22T18:59:27.141017+00:00 dataset=cpu_utilization seed=43 length=12: calibration=24 test=24
+2026-10-22T18:59:27.436005+00:00 dataset=cpu_utilization seed=43 length=24: calibration=24 test=24
+2026-10-22T18:59:28.411475+00:00 dataset=cpu_utilization seed=43: completed all six methods
+2026-10-22T18:59:28.430679+00:00 dataset=ambient_temperature seed=17: fitting reference-only models
+2026-10-22T18:59:30.485911+00:00 dataset=ambient_temperature seed=17 length=6: calibration=24 test=24
+2026-10-22T18:59:30.783394+00:00 dataset=ambient_temperature seed=17 length=12: calibration=24 test=24
+2026-10-22T18:59:31.090822+00:00 dataset=ambient_temperature seed=17 length=24: calibration=24 test=24
+2026-10-22T18:59:32.041428+00:00 dataset=ambient_temperature seed=17: completed all six methods
+2026-10-22T18:59:32.041611+00:00 dataset=ambient_temperature seed=29: fitting reference-only models
+2026-10-22T18:59:34.170491+00:00 dataset=ambient_temperature seed=29 length=6: calibration=24 test=24
+2026-10-22T18:59:34.492150+00:00 dataset=ambient_temperature seed=29 length=12: calibration=24 test=24
+2026-10-22T18:59:34.804930+00:00 dataset=ambient_temperature seed=29 length=24: calibration=24 test=24
+2026-10-22T18:59:35.780640+00:00 dataset=ambient_temperature seed=29: completed all six methods
+2026-10-22T18:59:35.780978+00:00 dataset=ambient_temperature seed=43: fitting reference-only models
+2026-10-22T18:59:38.090475+00:00 dataset=ambient_temperature seed=43 length=6: calibration=24 test=24
+2026-10-22T18:59:38.371111+00:00 dataset=ambient_temperature seed=43 length=12: calibration=24 test=24
+2026-10-22T18:59:38.676679+00:00 dataset=ambient_temperature seed=43 length=24: calibration=24 test=24
+2026-10-22T18:59:39.582989+00:00 dataset=ambient_temperature seed=43: completed all six methods
+2026-10-22T18:59:40.505863+00:00 COMPLETE gaps=648 method_cases=3888 elapsed=99.86s peak_rss=259.17578125MiB

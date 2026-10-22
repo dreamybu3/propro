@@ -1,0 +1,8 @@
+{
+  "run_id": "26ff839c-11c3-4576-b64c-3e104315b402",
+  "source_sha256": {
+    "run.json": "a069d95638e3e6c04f4e0d4fc6d7cbdb8aab6bd9bed2495bda3af3712569d38f",
+    "aggregate_summary.csv": "daadeb53358f1af5337048e0bc2ac0d048f42e81b697099caca85caf31a46abd",
+    "series_summary.csv": "86cfec30bf48586e36ec94d7a63ec554d64d1f6a0001c39ae95873d404b132a3"
+  }
+}
