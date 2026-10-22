@@ -2,7 +2,7 @@
 
 **Auditable offline reconstruction of missing monitoring data.**
 
-[Source branch](https://github.com/dreamybu3/propro/tree/gaplens-delivery) · [Download source ZIP](https://github.com/dreamybu3/propro/archive/refs/heads/gaplens-delivery.zip)
+[Source branch](https://github.com/dreamybu3/propro/tree/gaplens-v2) · [Download source ZIP](https://github.com/dreamybu3/propro/archive/refs/heads/gaplens-v2.zip) · [Draft PR](https://github.com/dreamybu3/propro/pull/2)
 
 Give GapLens an earlier history CSV and a later CSV containing gaps. It retrieves similar historical trajectories, aligns them to the observed gap boundaries, and exports estimated values, empirical uncertainty bands and an explanation of their provenance. Original measurements remain unchanged; unsupported gaps remain explicitly unresolved.
 
@@ -12,7 +12,7 @@ This is a complete CPU-only Python product and an executed, reproducible researc
 
 ## Run the included demo
 
-Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; actual execution was verified on Linux x86-64 with Python 3.12.14. The owner independently verified the v1 GitHub Actions jobs on **Ubuntu and Windows**. This does not establish performance on the owner's laptop. The commands below use portable dependencies and require no CUDA.
+Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; actual local execution was verified on Linux x86-64 with Python 3.12.14. The v2 [GitHub Actions checks](https://github.com/dreamybu3/propro/actions/runs/39852421927) passed on **Ubuntu and Windows** with Python 3.12, including tests, saved-result verification and both product demos. The owner also independently verified the v1 CI jobs. This does not establish performance on the owner's laptop. The commands below use portable dependencies and require no CUDA.
 
 With [uv](https://docs.astral.sh/uv/), from the repository root:
 
@@ -162,6 +162,6 @@ Meaningful tests cover hidden-value leakage invariants, endpoint corrections, fi
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): equations and component responsibilities.
 - [`docs/LEARNING_GUIDE.md`](docs/LEARNING_GUIDE.md): explanations, interview questions and demo script.
 - [`docs/PORTFOLIO.md`](docs/PORTFOLIO.md): evidence-based CV wording and paper roadmap.
-- [`docs/STATUS.md`](docs/STATUS.md): completed work and continuation notes.
+- [`docs/v2/STATUS.md`](docs/v2/STATUS.md): completed v2 work and continuation notes; [`docs/STATUS.md`](docs/STATUS.md) preserves the v1 record.
 
-Code is MIT-licensed; preserve the separate [NAB notice](data/LICENSE-NAB.txt) and [third-party attributions](docs/THIRD_PARTY.md). This project was built with AI assistance. The repository owner should reproduce the study and understand the implementation before presenting it as their own work. The owner authorized source-code delivery through the separate `gaplens-delivery` branch; this does not constitute deployment, publication of a research paper, or activation of the cloud environment snapshot.
+Code is MIT-licensed; preserve the separate [NAB notice](data/LICENSE-NAB.txt) and [third-party attributions](docs/THIRD_PARTY.md). This project was built with AI assistance. The repository owner should reproduce the study and understand the implementation before presenting it as their own work. V2 is delivered through `gaplens-v2` and [draft PR #2](https://github.com/dreamybu3/propro/pull/2), while `gaplens-delivery` preserves v1. This does not constitute a merge, deployment, publication of a research paper, or activation of the cloud environment snapshot.

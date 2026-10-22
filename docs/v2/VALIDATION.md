@@ -112,7 +112,10 @@ shared-cloud measurements, not hardware-independent performance guarantees.
 The [workflow](../../.github/workflows/ci.yml) runs on Ubuntu and Windows with
 Python 3.12. It installs hash-pinned dependencies, runs tests, checks bundled
 data, independently reconciles the saved v2 experiment, and executes both
-product demos. Current hosted outcomes are visible in the
+product demos. Both jobs at the completed code/results checkpoint
+`ef5e2c17ec502cd1f3e2b01038f8780949348d03` [passed on GitHub](https://github.com/dreamybu3/propro/actions/runs/39852421927);
+[saved API evidence](../../results/v2/validation/v2_ci.json) records every step's
+successful status. Current hosted outcomes are visible in the
 [branch checks](https://github.com/dreamybu3/propro/actions?query=branch%3Agaplens-v2)
 and the delivery PR; the final delivery response links the verified run.
 
