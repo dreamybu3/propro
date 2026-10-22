@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "platform": "Linux x86_64",
+  "python": "3.12.14",
+  "tests": {
+    "tests": 58,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "benchmark_run_id": "26ff839c-11c3-4576-b64c-3e104315b402",
+  "benchmark_numeric_code_protocol_data_hashes_verified": true,
+  "browser_report_hash_verified": true,
+  "fresh_installations": {
+    "uv_frozen": true,
+    "pip_require_hashes_editable": true,
+    "standalone_wheel_from_outside_checkout": true
+  },
+  "wheel_sha256": "bc9b3ceb970ce9541f33de835e47e55e97f8d7f5bf34d881aae767db1f4341fc",
+  "requirements_sha256": "eec27beef24ade1e453adcee628ffd8634e4332c9f5b5cc0a9e7fabbdd03690c",
+  "product_demo": {
+    "gaps": 3,
+    "reconstructed_gaps": 3,
+    "unresolved_gaps": 0,
+    "missing_samples": 42,
+    "reconstructed_samples": 42,
+    "unchanged_observations": 2022
+  },
+  "not_verified": [
+    "native Windows",
+    "macOS",
+    "Python 3.11/3.13",
+    "remote CI",
+    "real outage ground truth",
+    "publication-level novelty"
+  ]
+}

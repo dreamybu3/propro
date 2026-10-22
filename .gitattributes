@@ -1,0 +1,5 @@
+# Keep checked-in data and measured artifact hashes stable across platforms.
+* text=auto eol=lf
+*.png -text
+# Matplotlib emits trailing spaces inside SVG path data; retain its output.
+results/**/figures/*.svg -whitespace

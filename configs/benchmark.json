@@ -1,0 +1,27 @@
+{
+  "protocol_version": "1.0",
+  "datasets": ["nyc_taxi", "cpu_utilization", "ambient_temperature"],
+  "data_directory": "data/processed",
+  "split_fractions": [0.6, 0.2, 0.2],
+  "context": 6,
+  "neighbors": 12,
+  "max_candidates": 4000,
+  "seasonal_weight": 0.15,
+  "alpha": 0.1,
+  "gap_lengths": [6, 12, 24],
+  "seeds": [17, 29, 43],
+  "calibration_cases_per_length": 24,
+  "test_cases_per_length": 24,
+  "extra_trees": {"n_estimators": 64, "training_gaps": 600},
+  "methods": [
+    "linear", "extra_trees", "analog_bridge", "analog_no_bridge",
+    "analog_constant_scale", "analog_pooled_calibration"
+  ],
+  "hypothesis": {
+    "minimum_relative_mae_reduction_vs_linear": 0.10,
+    "maximum_relative_mae_increase_vs_extra_trees": 0.10,
+    "minimum_gap_coverage": 0.85,
+    "nominal_gap_coverage": 0.90,
+    "width_reference": "analog_constant_scale"
+  }
+}

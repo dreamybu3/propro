@@ -1,0 +1,13 @@
+{
+  "run_id": "26ff839c-11c3-4576-b64c-3e104315b402",
+  "source_run_sha256": "a069d95638e3e6c04f4e0d4fc6d7cbdb8aab6bd9bed2495bda3af3712569d38f",
+  "figures": {
+    "coverage_width.png": "1b109a9e0b962a6f93a0ce546a47af1ee9509c1e5c9eef7514e693b8a1a7605b",
+    "coverage_width.svg": "df9bcf768a0109473c2214406c6fdd39e2512fd749c140ca848911520568d3df",
+    "quality.png": "177c4c12dba0c3ddda33bc9e0680caef0719d1d5c939d6439e2d6c1bfa525f4c",
+    "quality.svg": "371a9e233983bc235fad14ae6813d3550c87a9ba11e860364cae179ea7501ba0",
+    "worst_gap.png": "53d96bc0aab607b24fd80bd32beec39f193a6bfb512e6cffdc080ac95fced76f",
+    "worst_gap.svg": "c30445e11c26f62b7439b591704fa968bb4f52126572b1e16d5953ab210a1130"
+  },
+  "note": "All figures are derived from checksummed measurement artifacts; no values are hand-entered."
+}

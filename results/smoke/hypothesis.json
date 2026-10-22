@@ -1,0 +1,27 @@
+{
+  "is_smoke_run": true,
+  "interpretation": "Smoke only; no hypothesis conclusion",
+  "all_criteria_supported": null,
+  "criteria": {
+    "mae_reduction_vs_linear": {
+      "observed": 0.6748755337598693,
+      "required_at_least": 0.1,
+      "supported": true
+    },
+    "mae_excess_vs_extra_trees": {
+      "observed": -0.18834009996744705,
+      "required_at_most": 0.1,
+      "supported": true
+    },
+    "gap_coverage": {
+      "observed": 0.8888888888888888,
+      "required_at_least": 0.85,
+      "supported": true
+    },
+    "adaptive_width": {
+      "observed": 0.9171155827025217,
+      "constant_scale_width": 0.9861442703485429,
+      "supported": true
+    }
+  }
+}

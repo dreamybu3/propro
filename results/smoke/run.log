@@ -1,0 +1,6 @@
+2026-10-22T18:57:49.016781+00:00 dataset=nyc_taxi seed=17: fitting reference-only models
+2026-10-22T18:57:50.016197+00:00 dataset=nyc_taxi seed=17 length=6: calibration=12 test=3
+2026-10-22T18:57:50.117504+00:00 dataset=nyc_taxi seed=17 length=12: calibration=12 test=3
+2026-10-22T18:57:50.207535+00:00 dataset=nyc_taxi seed=17 length=24: calibration=12 test=3
+2026-10-22T18:57:50.277782+00:00 dataset=nyc_taxi seed=17: completed all six methods
+2026-10-22T18:57:50.324294+00:00 COMPLETE gaps=9 method_cases=54 elapsed=1.36s peak_rss=171.265625MiB
