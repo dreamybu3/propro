@@ -1,0 +1,148 @@
+{
+  "status": "passed",
+  "method": "Fresh frozen-script execution in clean clone; pandas.assert_frame_equal(check_exact=True), byte comparison for Markdown and figures, exact JSON scientific-field comparison.",
+  "input_reproduction_verification": "reproduction.json",
+  "frozen_commit": "ed799ef058432615d6c2bae4c0b3118729b77b06",
+  "source_script_sha256": "d42f824edcf383a8c1fee4dca5d855dc2a720b6754859ea9987b26cbe2930526",
+  "checks": {
+    "calibration_support.csv": {
+      "rows": 616,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "context_diagnostics.csv": {
+      "rows": 6347,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "curves_common_service.csv": {
+      "rows": 429,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "curves_own_service.csv": {
+      "rows": 462,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "leave_one_series_out.csv": {
+      "rows": 224,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "lengths.csv": {
+      "rows": 462,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "origins.csv": {
+      "rows": 462,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "paired_series.csv": {
+      "rows": 224,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "performance_summary.csv": {
+      "rows": 72,
+      "exact_parsed_match": true,
+      "excluded_columns": [
+        "total_seconds",
+        "mean_seconds",
+        "median_seconds",
+        "min_seconds",
+        "max_seconds"
+      ],
+      "byte_identical": false
+    },
+    "ranks.csv": {
+      "rows": 126,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "refusals.csv": {
+      "rows": 586,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "regimes.csv": {
+      "rows": 1540,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "series_all_regimes.csv": {
+      "rows": 154,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "series_primary.csv": {
+      "rows": 154,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "uncertainty_pairs.csv": {
+      "rows": 28,
+      "exact_parsed_match": true,
+      "excluded_columns": [],
+      "byte_identical": true
+    },
+    "tables.md": {
+      "byte_identical": true,
+      "sha256": "d5d8535d9089127891fec08c4fd6158e57b382208c1932195d418b410ba63a9f"
+    },
+    "figures/coverage_width_common.png": {
+      "byte_identical": true,
+      "sha256": "9e82bf781601c6052d973b181d89da7af05348b4febc26744d7021dbd95d5f78"
+    },
+    "figures/coverage_width_common.svg": {
+      "byte_identical": true,
+      "sha256": "984274870877608a98c25816835d62995ae438c9bc3aff9a27c6bbc82b4b51ef"
+    },
+    "figures/failure_example.png": {
+      "byte_identical": true,
+      "sha256": "69582884c44f5b45f833e76d074a77a6cb959c1b364db1a0e6004aab1a0009b1"
+    },
+    "figures/failure_example.svg": {
+      "byte_identical": true,
+      "sha256": "317501754b8d88bec4c648e372a35deb6e08df051a52818afa092db04383603a"
+    },
+    "figures/paired_series_ratios.png": {
+      "byte_identical": true,
+      "sha256": "469a239575cddc84f809149261f4a433349b669cf7ab40444d8a6d049680565e"
+    },
+    "figures/paired_series_ratios.svg": {
+      "byte_identical": true,
+      "sha256": "518bc91d4e9f4811b2550a6f462cc961536c3f263895e006ed2e6ab773ce6d11"
+    },
+    "figures/service_by_regime.png": {
+      "byte_identical": true,
+      "sha256": "efd638afad45dcd8a19dd2700a8fa50078094f34b3f1d07cde6b5744321367c1"
+    },
+    "figures/service_by_regime.svg": {
+      "byte_identical": true,
+      "sha256": "9f00235de1e0cf5f136435b03c2f0e867c4abd758c8b2cbf5e7f5e0f6ff658f6"
+    },
+    "summary.json": {
+      "exact_scientific_fields_match": true,
+      "excluded_fields": [
+        "performance (runtime, RSS and timing-dependent CSV byte counts)"
+      ]
+    }
+  },
+  "provenance_note": "Input path, run metadata, timings, process memory and their file hashes are not numerical reproducibility targets; scientific tables, bootstrap results and all figures match exactly."
+}

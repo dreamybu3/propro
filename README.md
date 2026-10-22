@@ -6,13 +6,13 @@
 
 Give GapLens an earlier history CSV and a later CSV containing gaps. It retrieves similar historical trajectories, aligns them to the observed gap boundaries, and exports estimated values, empirical uncertainty bands and an explanation of their provenance. Original measurements remain unchanged; unsupported gaps remain explicitly unresolved.
 
-![GapLens interactive repair report](docs/assets/report.png)
+![GapLens interactive repair report](docs/v2/assets/report.png)
 
-This is a complete CPU-only Python product and an executed, reproducible research study. No API key, paid service, GPU or background server is needed. Open `results/demo/report.html` for the already generated demonstration, or create your own below.
+This is a complete CPU-only Python product and an executed, reproducible research study. No API key, paid service, GPU or background server is needed. Open `results/v2/demo/report.html` for the already generated demonstration, or create your own below.
 
 ## Run the included demo
 
-Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; actual execution was verified on Linux x86-64 with Python 3.12.14. Native Windows execution is **not yet verified**. The commands below use portable dependencies and require no CUDA.
+Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; actual execution was verified on Linux x86-64 with Python 3.12.14. The owner independently verified the v1 GitHub Actions jobs on **Ubuntu and Windows**. This does not establish performance on the owner's laptop. The commands below use portable dependencies and require no CUDA.
 
 With [uv](https://docs.astral.sh/uv/), from the repository root:
 
@@ -37,9 +37,9 @@ On Linux/macOS, the equivalent environment executables are `.venv/bin/python` an
 
 The executed demo reconstructed **3 gaps / 42 hidden real values**, preserved **2,022 observations**, and wrote these actual artifacts:
 
-- [Interactive report](results/demo/report.html)
-- [Repaired CSV](results/demo/repaired.csv)
-- [Audit JSON](results/demo/report.json)
+- [Interactive report](results/v2/demo/report.html)
+- [Repaired CSV](results/v2/demo/repaired.csv)
+- [Audit JSON](results/v2/demo/report.json)
 
 ## Use your own CSV
 
@@ -59,7 +59,7 @@ uv run gaplens repair --reference history.csv --input incomplete.csv --output re
   --method analog --neighbors 12 --context 6 --max-gap 48 --alpha 0.1
 ```
 
-Use a single line in PowerShell. `--method linear` and `--method extra-trees` expose the two comparison methods. Other options include `--calibration-fraction`, `--calibration-gaps` and `--seed`; `gaplens repair --help` lists all settings.
+Use a single line in PowerShell. `--method diverse` selects temporally separated historical windows; `--method linear` and `--method extra-trees` expose comparison methods. Default `analog` was retained by the frozen development-selection rule. Other options include `--calibration-fraction`, `--calibration-gaps` and `--seed`; `gaplens repair --help` lists all settings.
 
 | Output | Purpose |
 | --- | --- |
@@ -67,11 +67,59 @@ Use a single line in PowerShell. `--method linear` and `--method extra-trees` ex
 | `report.json` | Input hashes, split dates, configuration, gap decisions, calibration counts and historical neighbors |
 | `report.html` | Self-contained interactive visualization and export links |
 
-Boundary gaps, gaps longer than the configured limit, missing surrounding context and inadequate calibration support remain missing with an explanation. Predictions are never reused as observations. Exit code 2 means invalid input/configuration; with `--require-complete`, exit code 3 means artifacts were exported but some gaps remain unresolved. Default exit 0 allows explicitly partial repair.
+Boundary gaps, gaps longer than the configured limit, missing surrounding context and inadequate calibration support remain missing with an explanation. Predictions are never reused as observations. **Repair exports cannot be reimported** as either query or reference: use the original `timestamp,value` measurements with missing cells retained. Do not strip the export's provenance columns to bypass this check. Exit code 2 means invalid input/configuration; with `--require-complete`, exit code 3 means artifacts were exported but some gaps remain unresolved. Default exit 0 allows explicitly partial repair.
 
 Hard limits are 200,000 rows per file, 32 MiB per file, 200 gaps and 32 supported distinct gap lengths per run. The default maximum gap is 48 samples. Very large non-default settings can cost much more than the included experiment. See [architecture and limits](docs/ARCHITECTURE.md).
 
-## Own technical core and measured result
+## V2: corrected provenance and a larger, negative-result study
+
+Version 0.2 fixes repair-export reimport (including blank CSV preambles),
+duplicate headers, predictable export conflicts, unsupported-model reporting,
+failed-refit validation and seasonal timestamp resolution. The original v1
+branch, data and measurements remain preserved. Read the [change and correction
+record](docs/v2/CORRECTIONS.md): a parser-only fix followed the first holdout
+run; its original results remain available and no model tuning followed exposure.
+
+The prospective [v2 protocol](docs/v2/PROTOCOL.md) covers **14 real streams,
+six collections, eight conservative source groups**, three chronological origins
+and three mask seeds. It executed **2,139 gaps, 23,529 method cases and 162,126
+point predictions**, retaining refusals. Eleven outputs cover v1, linear,
+ExtraTrees, raw retrieval, seasonal, Kalman, conditional trajectory PCA,
+separated retrieval and calibration/selection ablations. Correlated channels
+and repeated masks are not independent new systems.
+
+On 1,008 primary-regime gaps, paired equal-series geometric MAE ratios were:
+
+| Comparison | MAE ratio (below 1 favors numerator) | Series wins / losses |
+| --- | ---: | ---: |
+| Selected separated retrieval / v1 | **1.0453** | 4 / 10 |
+| Fixed-k=12 separated retrieval / v1 | 1.0393 | 4 / 10 |
+| V1 / linear | 1.1543 | 7 / 7 |
+| V1 / tuned ExtraTrees | 0.9440 | 10 / 4 |
+
+The proposed point-error hypothesis failed. Default `analog` remains the
+development-selected v1 predictor; `diverse` is optional. These heterogeneous
+results do **not** establish that analogs universally beat interpolation.
+Recent calibration met its frozen aggregate criterion, but the apparent width
+benefit was dominated by one extreme network calibration episode. Static/recent
+interval service was 996/984 out of 1,008 primary gaps; unsupported cases remain
+visible. No future 90% coverage guarantee is claimed.
+
+See the [English technical report](docs/v2/RESEARCH_REPORT.md), [generated tables
+and figures](results/v2/final/tables.md), [post-result sensitivity](results/v2/sensitivity),
+[independent reviews](docs/v2/RESULT_REVIEW.md) and [validation evidence](docs/v2/VALIDATION.md).
+From a Git checkout, replay the frozen study into new directories:
+
+```sh
+uv run python scripts/run_experiments_v2.py --output results/my-v2-run
+uv run python scripts/summarize_v2.py --input results/my-v2-run --output results/my-v2-summary
+uv run python scripts/verify_v2.py --input results/v2/benchmark --compare results/my-v2-run
+```
+
+The guarded experiment requires Git history to verify its freeze. ZIP downloads
+still support installation, the product CLI, saved results and their analysis.
+
+## Original v1 study — now development evidence
 
 `AnalogBridge` implements historical context/calendar retrieval, endpoint-residual correction of neighboring trajectories, distance-weighted aggregation, and a local disagreement/novelty scale. A separate calibration layer uses the maximum standardized error of each whole gap and a finite-sample corrected quantile. The repository implements these mechanisms and their ablations; NumPy/pandas provide primitives and scikit-learn supplies the ExtraTrees regressor. These are established ingredients in a specific tested design, **not a claim to have invented imputation or conformal prediction**.
 
@@ -102,7 +150,7 @@ Use a fresh results directory. The saved original run remains available for comp
 
 `uv run python scripts/fetch_data.py` downloads immutable, checksum-verified upstream CSVs and reproduces the bundled processed data. `uv run python scripts/make_demo.py --output another-demo` creates the deterministic demo in a new directory. Avoid regenerating over edited files; `--overwrite` is explicit.
 
-Meaningful tests cover hidden-value leakage invariants, endpoint corrections, finite scales, calibration ranks, data errors, missing-context abstention, output preservation, HTML escaping, both baselines and independent reconciliation of all saved experimental predictions. Browser checks and exact validation evidence are in [VALIDATION.md](docs/VALIDATION.md). CI is configured for Windows and Ubuntu, but has not been executed remotely.
+Meaningful tests cover hidden-value leakage invariants, endpoint corrections, finite scales, calibration ranks, data errors, missing-context abstention, output preservation, HTML escaping, both baselines and independent reconciliation of all saved experimental predictions. Browser checks and exact validation evidence are in [VALIDATION.md](docs/VALIDATION.md). The owner independently verified that baseline GitHub Actions passed on Windows and Ubuntu; v2 validation is recorded separately in `docs/v2/VALIDATION.md`.
 
 ## Project map
 

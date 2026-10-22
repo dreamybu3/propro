@@ -2,41 +2,71 @@
 
 ## Accurate positioning
 
-GapLens is an AI-assisted research software project with an implemented numerical method, a complete CSV-to-report workflow, a fixed evaluation protocol and executed measurements. It is not a publication, production deployment, invention of conformal prediction, or evidence that the owner personally conducted all development. Review the source, reproduce the study and make your own justified extension before claiming individual ownership in an application or interview.
+GapLens is an AI-assisted research software project with an implemented numerical method, a complete CSV-to-report workflow, fixed evaluation protocols and reproducible measurements. It is not a publication, production deployment, invention of conformal prediction, or evidence that the owner personally conducted all development. The owner reported independently reproducing v1, including its 58 tests, 54,432 saved prediction rows, and Ubuntu/Windows CI checks. Do not transfer that attribution to the agent-developed v2 implementation or evaluation. Record the commands and extensions you personally complete before describing them as independent contributions.
 
-The current artifact demonstrates competence worth learning: avoiding hidden-target leakage, preserving provenance, matching an uncertainty metric to an entire missing block, separating empirical results from guarantees, and reporting a failed hypothesis. These are stronger claims than a generic model wrapper.
+The artifact provides concrete material to learn: avoiding hidden-target leakage, preventing exported estimates from becoming measurements, matching uncertainty to an entire missing block, separating empirical results from guarantees, and preserving failed hypotheses. No algorithmic novelty is established by using a new name or by implementing known ideas independently.
 
-## Three evidence-based CV lines
+## CV wording for the v2 repository
 
 The following wording describes the repository. Use first-person achievement language only after personally reproducing and being able to defend the relevant work; disclose AI assistance when asked or required.
 
-- **GapLens — AI-assisted research software:** CPU-only Python tool for offline monitoring-gap reconstruction, with historical-analog endpoint conditioning, whole-gap uncertainty calibration, and auditable CSV/JSON/interactive HTML exports.
-- Reproducible study artifact covering **648 masked gaps and 3,888 method cases** across three real NAB streams; AnalogBridge achieved **51.8% lower macro normalized MAE than linear** and **14.4% lower than ExtraTrees**, with documented temporal-split and artificial-missingness limits.
-- Explicit uncertainty failure analysis: **85.8% whole-gap coverage at a 90% target**, only **78.7% on NYC taxi**, and wider adaptive bands than the ablation; includes automated numerical/integration tests, preserved raw predictions, and a **259 MiB** measured Linux process peak for the benchmark.
+- **GapLens — AI-assisted research software:** CPU-only Python tool for retrospective gap reconstruction, with historical-analog endpoint conditioning, whole-gap calibration, explicit provenance validation, and auditable CSV/JSON/HTML exports.
+- Expanded reproducibility package with **14 real streams in eight provider/domain groups**, several chronological evaluation origins, shared frozen masks, development-only model selection, and seasonal, Kalman/RTS, trajectory-PCA and retrieval comparisons. Correlated channels are grouped rather than presented as independent systems.
+- Preserves point errors, coverage, interval widths and refusal rates together; retains the original analog default after the diverse candidate failed its development selection rule. Held-out conclusions and failed hypotheses are reported in the [v2 technical report](v2/RESEARCH_REPORT.md), with [machine-generated tables](../results/v2/final/tables.md) and [verification evidence](v2/VALIDATION.md).
 
-These lines claim neither users nor accepted papers, and do not turn a small benchmark into general superiority. If a short CV cannot include all caveats, link the report and retain “three streams,” “masked gaps,” and “AI-assisted.”
+These lines describe the repository rather than assigning personal authorship.
+They claim neither users nor accepted papers. If a shorter CV uses a numerical
+v2 effect, copy it from the final report with its comparison, dataset scope,
+service denominator and uncertainty limits; do not replace a failed hypothesis
+with a favorable isolated metric. A negative result is compatible with a strong
+software/reproducibility project.
+
+## Preserved v1 evidence, now development data
+
+The original study covered **648 masked gaps and 3,888 method cases** across
+three real NAB streams. It reported **51.8% lower macro normalized MAE than
+linear** and **14.4% lower than ExtraTrees**. Whole-gap coverage was **85.8% at a
+90% target**, including **78.7% for NYC taxi**; adaptive bands were wider than the
+constant-scale ablation. Its measured Linux process peak was **259 MiB**.
+
+These remain valid descriptions of that fixed v1 artifact, not universal
+accuracy or v2 performance claims. The three streams are now development data.
+V2 tuning selected diverse `k=4`, but its geometric mean relative-error objective
+was **3.994% worse than v1**, failing the required 5% improvement rule; hence the
+default remains `analog`. This development decision is separate from the final
+new-series comparison. See [selection.json](../results/v2/development/tuning/selection.json).
 
 ## Existing evidence
 
 - Real, licensed and checksum-pinned data; runnable input examples and actual output artifacts.
-- Original implementation of a specific retrieval/bridge/scale mechanism with clear library attribution.
-- A preserved pre-experiment protocol, chronological split, same masks for all methods, independent calibration and ablations.
-- Complete measurements and a negative width result retained alongside positive reconstruction results.
-- Linux installation, product integration, tests and browser verification recorded in `VALIDATION.md`.
+- Inspectable implementations of retrieval/bridge/scale and known comparison mechanisms, with primary-source and library attribution.
+- Preserved v1 artifacts and a separate v2 protocol, development selections, frozen masks, calibration boundaries and ablations.
+- An explicit rejection contract for unsupported repair-export reimports, duplicate-header validation, observation-preservation tests and saved refusal reasons.
+- Case-level predictions, calibration scores, summary/figure generation and an independent reconciliation script; [v2 validation](v2/VALIDATION.md) records what actually ran.
+- V1 Ubuntu/Windows CI independently reported verified by the owner. V2 CI must be assessed from its own recorded commit/check links; neither is a measurement on the owner's laptop.
 
 ## A defensible research direction
 
-**Question:** can shift-aware analog selection plus rolling calibration improve conditional whole-gap coverage without intervals becoming operationally useless?
+The v2 question is whether full-window-separated retrieval improves masked-block
+reconstruction and whether recent calibration improves the coverage/width
+tradeoff. Both mechanisms have precedents. The fixed hypotheses, including
+their failure criteria, are in [the v2 protocol](v2/PROTOCOL.md); their outcomes
+belong in the [v2 report](v2/RESEARCH_REPORT.md), not in a presumption that a newer
+version must improve accuracy.
 
-1. **Review the closest pattern-search methods.** Read TKCM and related stream-imputation papers directly, and compare formulations; imputeTS/ImputeGAP already solve much of the surrounding product problem. Decide whether the contribution is methodological or a narrower systems/benchmark result.
-2. **Freeze an independent evaluation design.** Obtain many independent operational streams; reserve future chronological origins and at least one unseen data source. Choose gap durations in physical time and separate development-only tuning from final evaluation. Do not reuse this test split to report a newly tuned method as unbiased.
-3. **Strengthen baselines.** Add task-compatible seasonal/Kalman and TKCM baselines, and a probabilistic/learned method if making a broad uncertainty claim. Equalize observations available on both sides, calibration budgets, and compute limits.
-4. **Target the observed failure.** Compare rolling versus static quantiles, stratification by gap duration and context novelty, and bounded-support intervals. Evaluate conditional coverage, width and downstream decision loss; do not reward narrow bands that miss hidden bursts.
-5. **Expand missingness and uncertainty analysis.** Study simultaneous outages, damaged context, MNAR stress tests and a genuine outage case study. Use time/dependence-respecting interval estimates and independent series as the unit of generalization where possible. Mask-seed ranges are not confidence intervals.
-6. **Demonstrate practical usability.** Measure native Windows performance on the actual 16 GB laptop, record startup/latency/memory separately, and conduct a small analyst study with an approved protocol if human participants are involved.
+1. **Establish a narrower contribution.** Use the [primary-source review](v2/RELATED_WORK.md) to distinguish this engineering study from claims about new retrieval or conformal theory. TKCM already uses non-overlapping patterns.
+2. **Reserve genuinely new evidence for the next change.** The v2 holdout becomes inspected data after this study. Any further tuning needs a new test or an explicitly exploratory label.
+3. **Compare external reference implementations where compatible.** V2 implements seasonal/Kalman/PCA controls, but is not a reproduction of all author packages or a neural-imputation benchmark. Add such comparisons only with compatible information and compute budgets.
+4. **Investigate the measured failure mechanism.** Choose a further calibration or retrieval change from the retained diagnostics, then test it on new data. Existing rolling/static and fixed-neighbor-count ablations should not be rewritten after observing outcomes.
+5. **Study genuine outages and decision benefit.** Controlled MCAR/MAR/MNAR masks, damaged contexts and synthetic shifts do not establish accuracy on unknown outage truth. A redundant sensor or other independent reference would support that stronger claim.
+6. **Measure practical usability.** Test the actual 16 GB Windows laptop, separate cold-start latency and memory from warm inference, and evaluate an analyst workflow if appropriate. Cloud measurements and CI results are different evidence.
 
-The current evidence is sufficient for a transparent technical report and portfolio demonstration. A workshop, reproducibility or applied methods submission could become plausible after these additions, depending on what the results support. No venue fit, acceptance or publication is guaranteed.
+The appropriate current label is a transparent technical report and portfolio
+artifact. A submission decision requires a claim supported by the final results,
+verified references and personal understanding of the work. No venue fit,
+acceptance or publication is guaranteed; publishing this branch/draft PR is not
+the same action as submitting a paper.
 
 ## Demonstration and interview preparation
 
-The precise 90-second/5-minute demo script and twelve technical questions are in [LEARNING_GUIDE.md](LEARNING_GUIDE.md). Emphasize one successful repair and one retained failure. Show the original-value preservation invariant, the source of interval calibration, and the failed hypothesis before discussing future improvements.
+The 90-second/5-minute scripts and interview questions are in [LEARNING_GUIDE.md](LEARNING_GUIDE.md). Show a successful repair, the rejected reimport, and a boundary gap left unresolved. Explain the original-value invariant, source of calibration truth, default-method decision and actual hypothesis outcomes before discussing future work.

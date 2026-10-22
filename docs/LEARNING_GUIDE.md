@@ -6,10 +6,13 @@ or experiments as your own independent work if you did not perform them. A
 defensible portfolio statement explains what this version implements and then
 identifies the reproduction, modifications, or additional analysis you personally
 completed. No publication, adoption, or production deployment is implied.
+The owner reported independently reproducing v1, including its numerical results
+and CI checks. That record does not imply that the owner personally implemented
+or independently reproduced the AI-assisted v2 work.
 
 ## A practical route through the code
 
-1. Read `data/README.md` and `docs/PROTOCOL.md`. Explain the difference between
+1. Read `data/README.md`, `docs/PROTOCOL.md`, and `docs/v2/PROTOCOL.md`. Explain the difference between
    real signals with artificially hidden blocks and genuine missing ground truth.
 2. Trace one interval in `src/gaplens/data.py`: a missing run is `[start, end)`,
    and a context consists of finite samples outside that run.
@@ -23,6 +26,12 @@ completed. No publication, adoption, or production deployment is implied.
 6. Run the tests, reproduce the fixed experiment, and explain one **failure** as
    well as any favorable result. Change parameters only in a separately labeled
    exploratory run; do not rewrite the fixed study after seeing its test results.
+7. Read `models_v2.py` beside the preserved `_core_v1.py` research control.
+   Explain separated-window selection, the seasonal/Kalman/PCA comparators, and
+   why these known constructions do not establish algorithmic novelty.
+8. Inspect the development selection and frozen masks before reading the v2
+   outcome tables. Identify what data selected parameters, what data calibrated
+   intervals, and what data supplied the final comparison.
 
 ## Ninety-second demonstration
 
@@ -30,33 +39,39 @@ Use a terminal in the repository root after the documented installation. The
 commands below use `uv run`, which selects the project's pinned environment.
 
 ```console
-uv run python scripts/make_demo.py --overwrite
-uv run gaplens repair --reference examples/reference.csv --input examples/with_gaps.csv --output demo-output
+uv run gaplens repair --reference examples/reference.csv --input examples/with_gaps.csv --output demo-output --require-complete
+uv run gaplens repair --reference examples/reference.csv --input demo-output/repaired.csv --output rejected-reimport
 ```
 
-The explicit `--overwrite` regenerates the known demo files; omit it to protect
-any copies you have edited, or skip generation when the bundled examples suffice.
-The generator produces `examples/reference.csv`, `examples/with_gaps.csv`,
-`examples/ground_truth.csv`, and `examples/provenance.json` from the bundled real
-NYC taxi series. Ground truth is for demonstration verification; the repair
-command receives only earlier history and the incomplete input. A rerun into the
-same output directory needs explicit `--overwrite`, or use a different directory.
+Use a new `demo-output` path. The bundled examples already contain the fixed
+demonstration; no regeneration or overwrite is needed. The first command should
+reconstruct **3/3 gaps and 42/42 missing values**, preserve **2,022 observations**,
+and return 0. The second command intentionally returns **2**: a repair export is
+not a new measurement input. It creates no replacement report and leaves the
+first result unchanged. Display the code with `$LASTEXITCODE` in PowerShell or
+`echo $?` in Bash immediately after that command.
+
+The examples come from the real NYC taxi series. `examples/ground_truth.csv` is
+only for verification; neither repair command receives it. To regenerate an
+independent copy, use `scripts/make_demo.py --output new-examples`, preserving
+`examples/` and `results/demo/` as v1 evidence.
 
 Suggested narration:
 
 - **0–20 seconds:** “Monitoring exports can contain missing blocks. GapLens
   reconstructs eligible blocks from earlier similar patterns and the observations
   on both sides. It keeps the result distinguishable from actual measurements.”
-- **20–45 seconds:** Run the command and show its repaired/unresolved counts.
+- **20–45 seconds:** Run the first command and show its repaired/unresolved counts.
   Open `demo-output/report.html` directly in a browser. Select a gap and show the
   estimated path, band, and supporting historical neighbors.
 - **45–70 seconds:** Inspect `demo-output/repaired.csv` and `report.json`. Point
   out preserved observations, per-gap status, calibration count, and provenance.
-  If a gap is unresolved, explain the recorded reason instead of hiding it.
-- **70–90 seconds:** Show the saved benchmark comparison. Explain that narrower
-  bands are useful only with adequate empirical coverage, and that the report
-  retains unfavorable outcomes. State the strongest supported conclusion and its
-  principal limitation using the actual results.
+  Run the second command and show the explicit rejection: the 42 estimates must
+  not become measurements merely because they were exported.
+- **70–90 seconds:** State that bands are empirical estimates, not a guaranteed
+  90% accuracy claim. Point to the separate v2 report for held-out comparisons,
+  including failures. The default remains the v1 analog rule because the diverse
+  candidate failed its development selection criterion.
 
 This is a local-file workflow, without a public deployment or a localhost link.
 The report can be opened on Windows by double-clicking the HTML file; the project
@@ -70,24 +85,44 @@ historical neighbors and writing the endpoint-correction equation on paper.
 Use the next minute to explain why the calibration suffix is disjoint from the
 training prefix and why the maximum standardized residual targets a whole gap.
 
-Then show the completed benchmark artifacts in `results/benchmark/`, including
-case-level measurements, summary tables, and the fixed hypothesis evaluation.
-Compare the analog method with both linear interpolation and ExtraTrees; show the
-bridge and scale ablations. Explain one poor case or coverage failure. Use the
-last minute for the strongest limitations and one concrete follow-up experiment.
+Show one retained refusal by adding a boundary gap to a new copy of the original
+measurement input, preserving the original three gaps:
+
+```console
+uv run python -c "import pandas as pd; frame=pd.read_csv('examples/with_gaps.csv'); frame.loc[:2,'value']=float('nan'); frame.to_csv('demo-boundary.csv',index=False,mode='x')"
+uv run gaplens repair --reference examples/reference.csv --input demo-boundary.csv --output demo-boundary-output --require-complete
+```
+
+The expected return code is **3**, with a saved partial report: 42 of 45 missing
+samples reconstructed, 2,019 original observations preserved, and the boundary
+gap unresolved because six observed samples on both sides are unavailable.
+The file-creation command refuses to overwrite an existing `demo-boundary.csv`.
+Inspect the refusal reason and the empty value/band cells in that gap.
+
+Then show `results/v2/final/tables.md`, the saved case-level measurements in
+`results/v2/benchmark/`, and the [v2 report](v2/RESEARCH_REPORT.md). Compare v1 and
+diverse on the same new masks, then include the stronger development-selected
+competitor. Explain coverage together with width and service rate, and show the
+documented failure example. Distinguish the older `results/benchmark/` study,
+which is now development evidence. Use the final minute for the failed
+hypotheses that the actual report records and one justified next experiment.
 
 To reproduce the checks and experiment rather than just display an existing run:
 
 ```console
 uv run pytest
-uv run python scripts/run_experiments.py --config configs/benchmark.json --output results/my-reproduction
-uv run python scripts/plot_results.py --input results/my-reproduction
+uv run python scripts/run_experiments_v2.py --config configs/benchmark_v2.json --plan results/v2/masks.json --output results/my-v2-reproduction
+uv run python scripts/summarize_v2.py --input results/my-v2-reproduction --output results/my-v2-summary
+uv run python scripts/verify_v2.py --input results/v2/benchmark --compare results/my-v2-reproduction
 ```
 
-The separate output path preserves the recorded pilot. Expect timings to differ
-by hardware. Identical seeds specify sampling and estimator randomness, but
-library/platform arithmetic can still affect numerical details. Do not present a
-quick smoke run as the full fixed experiment.
+Use new output paths. Replay the bundled frozen masks; do not run `--prepare`
+or retune parameters as part of reproduction. The summary command reads saved
+results without training. The verifier independently reconciles truth, metrics,
+quantiles and the repeat's numerical outputs, excluding elapsed-time fields.
+Expect timings to differ by hardware; platform/library arithmetic can also
+affect exact reproducibility. Record any discrepancy rather than relaxing checks
+silently. A smoke run is not the complete fixed experiment.
 
 ## Interview questions with substantive answers
 
@@ -100,13 +135,16 @@ novelty, and calibrate whole-gap bands separately by length. The code and
 evaluation isolate these components. Nearest neighbors, interpolation, ExtraTrees,
 and conformal calibration are established ideas; novelty beyond this engineering
 combination requires additional literature comparison and evidence.
+V2 adds input-provenance protection and a broader controlled comparison of known
+mechanisms. Its primary contribution is inspectable software and evidence about
+conditions of usefulness, not a theorem or an established new retrieval idea.
 
 **2. Why is this offline reconstruction instead of forecasting?**
 
 The right endpoint and subsequent observed context are available to the method.
 That is legitimate when repairing a completed log, but unavailable while a live
 outage is still in progress. Calling the method a forecaster would conceal future
-information. Both baselines receive the same two-sided information in the
+information. The benchmark methods receive the same two-sided information in the
 benchmark so the comparison matches the intended task.
 
 **3. Why not just interpolate?**
@@ -135,6 +173,9 @@ training portion; calibration is separate; the query begins later than the full
 reference; features exclude hidden interiors; and normalization is fitted on
 training history. Tests also check that changing hidden interior values does not
 change predictions. These protections do not make dependent samples independent.
+An exported estimate is another possible leakage source. V2 rejects repair
+exports as both query and reference, rather than silently using their `value`
+column as observed context, fitting targets or calibration truth.
 
 **6. Why use the maximum standardized error for calibration?**
 
@@ -170,6 +211,11 @@ It checks whether the historical-analog design adds value beyond a reasonable
 generic CPU learner. It is neither a pretrained model nor a remote API. The
 underlying forest is scikit-learn's implementation, and this project authors the
 gap-specific training features, target construction, and evaluation wrapper.
+V2 adds seasonal profiles, local-linear Kalman/RTS smoothing and conditional
+trajectory PCA using the same context information. The latter tests whether a
+learned low-rank window model is a better explanation than nearest-window
+retrieval. These are project implementations of known ideas, not exact replicas
+of published packages or evidence against modern neural imputation.
 
 **10. Why leave some gaps unresolved instead of filling every cell?**
 
@@ -184,9 +230,12 @@ observed context for another, which would silently compound uncertainty.
 
 They show sensitivity to the selected mask locations and estimator randomness.
 The same underlying series are reused, and windows can overlap across lengths or
-seeds. Seed ranges therefore are not independent-dataset confidence intervals,
-and this pilot does not claim statistical significance from them. A stronger study
-would use more independent sources and a dependence-aware uncertainty analysis.
+seeds. Seed ranges therefore are not independent-dataset confidence intervals.
+V2 reports 14 real streams in eight provider/domain groups and uses grouped
+resampling, with a coarser six-source-group sensitivity. This respects more of
+the known dependence, but the small number of source groups still limits
+generalization. Fourteen dataset names do not establish fourteen independent
+systems.
 
 **12. What would make a negative result scientifically useful?**
 
@@ -197,25 +246,45 @@ test those explanations. The honest next step is to narrow the supported claim o
 form a new hypothesis, then evaluate it on newly held-out data—not to discard
 unfavorable series or retune against the original test set.
 
-## From this pilot toward a possible paper
+**13. Why retain analog as the default if diverse was implemented?**
+
+The frozen development rule required at least 5% improvement over v1. The tuned
+diverse candidate selected `k=4` but had a 3.994% worse geometric mean
+relative-error objective on the three development streams. It therefore failed
+that rule. The CLI retains `analog`; `--method diverse --neighbors 4` is an
+explicit alternative. Final outcomes cannot retrospectively select a different
+default while still being called an independent selection test.
+
+**14. Why are rolling calibration and the research comparators absent from the CLI?**
+
+The normal CLI has one earlier reference file and one later input. Research
+rolling calibration requires a documented history of which true observations
+would be available at each origin; previously reconstructed values cannot supply
+that truth. That scenario is implemented in the experiment harness. Restricting
+the CLI to its supported contract avoids inventing availability from a repaired
+file. Seasonal/Kalman/PCA comparators likewise are study methods, not promised
+product options.
+
+## From v2 toward a possible paper
 
 The existing code provides a concrete method, useful end-to-end scenario,
-explicit baselines, component ablations, immutable real-data provenance, a fixed
-protocol, and machine-readable measurements when the full benchmark completes.
-These are a starting point for research, not evidence that a venue will accept a
-paper. The actual report determines which empirical claims survived the pilot.
+explicit baselines, component ablations, real-data provenance, a fixed expanded
+protocol, and machine-readable measurements. The v2 report states which
+hypotheses survive its evaluation. These are evidence for a technical report,
+not a publication acceptance or a general algorithmic superiority claim.
 
-A defensible next study would address these gaps in roughly this order:
+A defensible next study should build on the executed v2 comparisons rather than
+presenting them as future work:
 
-1. **Broader independent evidence:** add more sources/domains with clear reuse
+1. **New independent evidence:** add further sources/domains with clear reuse
    rights, keep a genuinely new final test set, and evaluate several gap durations
    in comparable physical units. Distinguish within-series, cross-series, and
    cross-domain generalization.
-2. **Stronger comparisons:** include well-configured seasonal/state-space/Kalman
-   reconstruction and other relevant nearest-neighbor imputers, then resource-
-   matched learned imputation methods where their assumptions fit this univariate
-   offline task. Allocate comparable validation budgets; do not tune only the
-   proposed method.
+2. **External reference implementations:** compare relevant author-maintained
+   retrieval/state-space implementations and resource-matched learned methods
+   where their assumptions fit. V2's seasonal/Kalman/PCA implementations are
+   useful controls, but do not reproduce every published method. Allocate
+   comparable validation budgets; do not tune only the proposed method.
 3. **Realistic missingness and drift:** examine dense simultaneous gaps,
    sensor-failure-dependent missingness, abrupt new regimes, and missing right
    context. Obtain redundant reference measurements if claiming accuracy on
@@ -232,7 +301,8 @@ A defensible next study would address these gaps in roughly this order:
    better accuracy, a coverage/width/resource tradeoff, an auditable workflow, or
    a documented limitation of analog repair. Update related-work analysis before
    claiming novelty. Release a reproducibility package only after explicit
-   publication permission and review of source attribution.
+   review of source attribution. The owner already authorized publishing this
+   v2 branch and draft PR; that authorization does not cover submitting a paper.
 
 For your own progression, keep a research log of commands you reproduced,
 explanations you verified by hand, changes you designed, and new results you

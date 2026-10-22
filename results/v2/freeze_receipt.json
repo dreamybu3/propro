@@ -1,0 +1,11 @@
+{
+  "freeze_commit": "dc43d472f5a9e22bb510963eedeebdf4077e7234",
+  "recorded_at": "2026-10-22T20:30:47.425226+00:00",
+  "final_holdout_not_yet_run": true,
+  "tests": {
+    "passed": 163,
+    "failed": 0,
+    "warnings": 14,
+    "warning_kind": "Third-party Matplotlib/pyparsing deprecations"
+  }
+}

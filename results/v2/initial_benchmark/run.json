@@ -1,0 +1,159 @@
+{
+  "schema_version": 2,
+  "status": "complete",
+  "started_at": "2026-10-22T20:30:49.107226+00:00",
+  "is_smoke_run": false,
+  "config": {
+    "protocol_version": "2.0",
+    "manifest": "data/v2/manifest.json",
+    "selection": "results/v2/development/tuning/selection.json",
+    "fit_fraction": 0.4,
+    "initial_calibration_end": 0.6,
+    "origins": [
+      0.6,
+      0.75,
+      0.9
+    ],
+    "test_fraction": 0.1,
+    "rolling_fraction": 0.2,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "alpha": 0.1,
+    "curve_alphas": [
+      0.2,
+      0.1,
+      0.05
+    ],
+    "calibration_cases_per_length": 32,
+    "cases_per_random_regime": 2,
+    "small_series_threshold": 2000,
+    "small_context": 3,
+    "small_lengths": [
+      3,
+      7
+    ],
+    "small_stress_length": 21,
+    "large_context": 6,
+    "large_lengths": [
+      6,
+      24
+    ],
+    "large_stress_length": 48,
+    "scarce_fit_fraction": 0.25,
+    "shift_training_scale_multiplier": 2.0,
+    "maximum_candidates": 4000,
+    "seasonal_periods": {
+      "co2_mauna_loa": 52,
+      "brent_weekly": 52,
+      "ssa_births": 7,
+      "seattle_temp_max": 365,
+      "jhu_deaths_germany": 7,
+      "jhu_deaths_japan": 7,
+      "jhu_deaths_us": 7,
+      "nab_tweets_aapl": 288,
+      "nab_tweets_ibm": 288,
+      "nab_ec2_cpu": 288,
+      "nab_ec2_network": 288,
+      "nab_elb_requests": 288,
+      "nab_ad_cpc_exchange3": 24,
+      "nab_ad_cpc_exchange4": 24
+    },
+    "methods": [
+      "linear_static",
+      "extra_trees_static",
+      "raw_knn_static",
+      "seasonal_static",
+      "kalman_static",
+      "pca_static",
+      "v1_static",
+      "v1_rolling",
+      "diverse_static",
+      "diverse_rolling",
+      "diverse_k12_static"
+    ],
+    "hypothesis": {
+      "primary_regimes": [
+        "mcar_short",
+        "mcar_long",
+        "mar",
+        "mnar"
+      ],
+      "v2_geometric_mean_mae_ratio_to_v1_at_most": 0.95,
+      "v2_must_beat_best_tuned_competitor": true,
+      "uncertainty_target_gap_coverage": 0.9,
+      "uncertainty_interpretation": "Empirical only; compare coverage and width on common served cases and report service fractions. No unconditional guarantee."
+    }
+  },
+  "config_sha256": "3f7ea6a7d97f885f51e31f964a0ecbed40844b11b9eb4abad6c90bcdd4ad0b70",
+  "plan_file_sha256": "f794e5409f694ea8a4736c9dbecf5b597a3641755844c07cf93a412404f6b7b2",
+  "plan_sha256": "c2885cb2c303bb145967b2bb6af1db802454d45128e0858268a101dfb28aa08d",
+  "selection_sha256": "abaf8075a2bf24eecb2b17b1eab706016f1d1c9d7e7067cd0a583514090d970e",
+  "freeze": {
+    "schema_version": 2,
+    "frozen_at": "2026-10-22T20:29:58.451104+00:00",
+    "baseline_commit": "ecf22de604d14e747bf6607d50b62b4870d24fcf",
+    "no_final_series_scores_inspected": true,
+    "config_sha256": "3f7ea6a7d97f885f51e31f964a0ecbed40844b11b9eb4abad6c90bcdd4ad0b70",
+    "protocol_sha256": "dc17fbbb56a7d2bc0de5fcc2707583ba9614832ab9d5aca2ea8e39ad6ada9b6d",
+    "plan_sha256": "f794e5409f694ea8a4736c9dbecf5b597a3641755844c07cf93a412404f6b7b2",
+    "protected_sha256": {
+      "configs/benchmark_v2.json": "a135b8ab78d734670a5d62dfdb031b921bb9f364527038e4f76349597630b79c",
+      "data/v2/manifest.json": "d771d01b361b310a06bb05ca524de297b0a1c2ade26fc33bed8aa00c69d76652",
+      "results/v2/development/tuning/selection.json": "abaf8075a2bf24eecb2b17b1eab706016f1d1c9d7e7067cd0a583514090d970e",
+      "scripts/run_experiments_v2.py": "db5a50ee2f029055ed76a89839a5120670169fc0773420e87f06c0493ad8e4f0",
+      "scripts/tune_v2.py": "c25ac502e64e339dba812e68d52008c8a4286f2aefadc1b3e8b7e8c1118a2086",
+      "scripts/summarize_v2.py": "d42f824edcf383a8c1fee4dca5d855dc2a720b6754859ea9987b26cbe2930526",
+      "scripts/fetch_data_v2.py": "f795f2def25772b7ea9a6e6f4915aee38f7d9a03b665a47fa02322a712a66351",
+      "src/gaplens/_core_v1.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+      "src/gaplens/core.py": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+      "src/gaplens/models_v2.py": "77caa4b52f70c461eaf7eca6b789f92459f2283dc1f16b2a27e6a26b66222e76",
+      "src/gaplens/calibration.py": "b4e21a77ab0e00f039518feb6ffd865fffca86c41dffe623465ec5dc256595e0",
+      "src/gaplens/data.py": "c7a391232e67b5ef79e138155a9d2ad5cdb3af2aa5d2b233d4c2c22f32515992",
+      "pyproject.toml": "5eb666c72426861317d77d59942ea4276255e226ccfdd100fb38a69ab231c466",
+      "uv.lock": "ec8975e4ad80ebe630251eb97bfd4fe0f0cf3cebe571c55ae160cb721aa3b584",
+      "requirements.lock": "eec27beef24ade1e453adcee628ffd8634e4332c9f5b5cc0a9e7fabbdd03690c"
+    }
+  },
+  "code_sha256": {
+    "scripts/run_experiments_v2.py": "db5a50ee2f029055ed76a89839a5120670169fc0773420e87f06c0493ad8e4f0",
+    "src/gaplens/core.py": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+    "src/gaplens/_core_v1.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+    "src/gaplens/models_v2.py": "77caa4b52f70c461eaf7eca6b789f92459f2283dc1f16b2a27e6a26b66222e76",
+    "src/gaplens/calibration.py": "b4e21a77ab0e00f039518feb6ffd865fffca86c41dffe623465ec5dc256595e0",
+    "src/gaplens/data.py": "c7a391232e67b5ef79e138155a9d2ad5cdb3af2aa5d2b233d4c2c22f32515992"
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "measurement_notes": {
+    "rss": "Cumulative process peak, not isolated per-method RSS; Windows may be unavailable.",
+    "cold": "First prediction per fitted model/length includes lazy window/cache construction.",
+    "warm": "Case prediction after calibration; timing is hardware-dependent.",
+    "point_only": "Point estimates remain scored when calibration is insufficient; these cases are not serviced product reconstructions.",
+    "denominators": "All generated eligible target gaps retained, including refusals; unavailable_regimes in masks additionally records requested targets lacking finite truth. Nuisance damaged-context samples are not extra target cases.",
+    "timing_reuse": "Static and rolling variants of the same predictor reuse point predictions and copy their timing; do not sum these rows as separate model work."
+  },
+  "completed_at": "2026-10-22T20:33:24.905696+00:00",
+  "elapsed_seconds": 155.7984945119997,
+  "process_peak_rss_mb": 505.28515625,
+  "unique_test_gaps": 2139,
+  "case_method_rows": 23529,
+  "prediction_rows": 162126,
+  "point_available_rows": 18006,
+  "serviced_rows": 17081,
+  "artifact_sha256": {
+    "calibration_scores.csv": "e57d83b8bf04ec6364eb4eeffb1c2e96e9918a1cbdcc035b2a82d3db76d11e19",
+    "coverage_width.csv": "a8c9b2a6ec56f0f76d97a94ea1c194d9c1c34f2a0f9e83ec9b2dc89442e86102",
+    "performance.csv": "82d30828d7142be655a337121550f6be62d0573a78226688d5a6a4fef0a65396",
+    "predictions.csv.gz": "a00742c9f9c0fd0e577f503ba2357915c7debb4a0e2066b6adaa16a8ceb038a3",
+    "case_metrics.csv": "502e1caaf8b3c224fa0ffd5fd7056eb40bb3d1a0fd6a79ea4c47aecbbc7f47d0"
+  }
+}

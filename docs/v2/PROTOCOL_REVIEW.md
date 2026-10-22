@@ -257,7 +257,25 @@ if any series lacks a valid comparison. Its calibration comparison reports both
 absolute error of macro coverage and average per-series absolute coverage error,
 because the former can conceal opposite errors across series.
 
-Final-artifact review remains pending. The checklist is:
+The first final-artifact review passed. The independently written
+`scripts/review_v2_methodology.py` verifies all 13,369 calibration windows,
+previous-outage exclusion, query-context refusals, per-series paired effects,
+both group-bootstrap definitions, common-case ranks, and coverage/service
+denominators. Its receipt is `results/v2/initial_methodology_review.json`; the
+interpretation and limitations are in `RESULT_REVIEW.md`.
+
+A CSV provenance-validation bypass was discovered after first result exposure:
+a leading blank line could let the header guard and pandas disagree. The lead
+agent corrected that product validation path and preserved first outputs. This
+is a disclosed correctness correction after exposure, not an unseen holdout or
+a performance-tuning opportunity. `CORRECTIONS.md` records it. The independent
+methodology audit also passed on the corrected canonical outputs, with its
+receipt in `results/v2/methodology_review.json`. The scientific tables and all
+eight figure files match the first outputs byte for byte; see
+`results/v2/validation/summary_replay.json`. No model, mask, primary metric or
+hypothesis was changed by this review.
+
+The final review covered:
 
 1. Trace every model input, calibration mask and prior-outage mask to the permitted
    history; check simultaneous batches and context corruption against saved cases.

@@ -1,0 +1,141 @@
+2026-10-22T20:42:42.566178+00:00 dataset=co2_mauna_loa rows=2284 context=6 lengths=[6, 24, 48]
+2026-10-22T20:42:54.505562+00:00 dataset=co2_mauna_loa seed=17 origin=0.6: cases=17
+2026-10-22T20:42:55.141878+00:00 dataset=co2_mauna_loa seed=17 origin=0.75: cases=17
+2026-10-22T20:42:55.648438+00:00 dataset=co2_mauna_loa seed=17 origin=0.9: cases=17
+2026-10-22T20:42:59.508211+00:00 dataset=co2_mauna_loa seed=29 origin=0.6: cases=17
+2026-10-22T20:43:00.010903+00:00 dataset=co2_mauna_loa seed=29 origin=0.75: cases=17
+2026-10-22T20:43:00.518956+00:00 dataset=co2_mauna_loa seed=29 origin=0.9: cases=17
+2026-10-22T20:43:04.271525+00:00 dataset=co2_mauna_loa seed=43 origin=0.6: cases=17
+2026-10-22T20:43:04.738727+00:00 dataset=co2_mauna_loa seed=43 origin=0.75: cases=17
+2026-10-22T20:43:05.256435+00:00 dataset=co2_mauna_loa seed=43 origin=0.9: cases=17
+2026-10-22T20:43:05.257770+00:00 dataset=brent_weekly rows=2058 context=6 lengths=[6, 24, 48]
+2026-10-22T20:43:09.071570+00:00 dataset=brent_weekly seed=17 origin=0.6: cases=17
+2026-10-22T20:43:09.553786+00:00 dataset=brent_weekly seed=17 origin=0.75: cases=17
+2026-10-22T20:43:10.040076+00:00 dataset=brent_weekly seed=17 origin=0.9: cases=17
+2026-10-22T20:43:13.946725+00:00 dataset=brent_weekly seed=29 origin=0.6: cases=17
+2026-10-22T20:43:14.407797+00:00 dataset=brent_weekly seed=29 origin=0.75: cases=17
+2026-10-22T20:43:14.870608+00:00 dataset=brent_weekly seed=29 origin=0.9: cases=17
+2026-10-22T20:43:18.652243+00:00 dataset=brent_weekly seed=43 origin=0.6: cases=17
+2026-10-22T20:43:19.119865+00:00 dataset=brent_weekly seed=43 origin=0.75: cases=17
+2026-10-22T20:43:19.563116+00:00 dataset=brent_weekly seed=43 origin=0.9: cases=17
+2026-10-22T20:43:19.563687+00:00 dataset=ssa_births rows=5479 context=6 lengths=[6, 24, 48]
+2026-10-22T20:43:25.262161+00:00 dataset=ssa_births seed=17 origin=0.6: cases=17
+2026-10-22T20:43:26.002150+00:00 dataset=ssa_births seed=17 origin=0.75: cases=17
+2026-10-22T20:43:26.934251+00:00 dataset=ssa_births seed=17 origin=0.9: cases=17
+2026-10-22T20:43:31.596495+00:00 dataset=ssa_births seed=29 origin=0.6: cases=17
+2026-10-22T20:43:32.023840+00:00 dataset=ssa_births seed=29 origin=0.75: cases=17
+2026-10-22T20:43:32.447704+00:00 dataset=ssa_births seed=29 origin=0.9: cases=17
+2026-10-22T20:43:35.598963+00:00 dataset=ssa_births seed=43 origin=0.6: cases=17
+2026-10-22T20:43:36.086956+00:00 dataset=ssa_births seed=43 origin=0.75: cases=17
+2026-10-22T20:43:36.595577+00:00 dataset=ssa_births seed=43 origin=0.9: cases=17
+2026-10-22T20:43:36.596128+00:00 dataset=seattle_temp_max rows=1461 context=3 lengths=[3, 7, 21]
+2026-10-22T20:43:38.237073+00:00 dataset=seattle_temp_max seed=17 origin=0.6: cases=17
+2026-10-22T20:43:38.511874+00:00 dataset=seattle_temp_max seed=17 origin=0.75: cases=17
+2026-10-22T20:43:38.758503+00:00 dataset=seattle_temp_max seed=17 origin=0.9: cases=17
+2026-10-22T20:43:40.301727+00:00 dataset=seattle_temp_max seed=29 origin=0.6: cases=17
+2026-10-22T20:43:40.573987+00:00 dataset=seattle_temp_max seed=29 origin=0.75: cases=17
+2026-10-22T20:43:40.847225+00:00 dataset=seattle_temp_max seed=29 origin=0.9: cases=17
+2026-10-22T20:43:42.534449+00:00 dataset=seattle_temp_max seed=43 origin=0.6: cases=17
+2026-10-22T20:43:42.884838+00:00 dataset=seattle_temp_max seed=43 origin=0.75: cases=17
+2026-10-22T20:43:43.304704+00:00 dataset=seattle_temp_max seed=43 origin=0.9: cases=17
+2026-10-22T20:43:43.305546+00:00 dataset=jhu_deaths_germany rows=1142 context=3 lengths=[3, 7, 21]
+2026-10-22T20:43:44.646214+00:00 dataset=jhu_deaths_germany seed=17 origin=0.6: cases=17
+2026-10-22T20:43:44.908073+00:00 dataset=jhu_deaths_germany seed=17 origin=0.75: cases=17
+2026-10-22T20:43:45.182994+00:00 dataset=jhu_deaths_germany seed=17 origin=0.9: cases=17
+2026-10-22T20:43:46.429913+00:00 dataset=jhu_deaths_germany seed=29 origin=0.6: cases=17
+2026-10-22T20:43:46.674226+00:00 dataset=jhu_deaths_germany seed=29 origin=0.75: cases=17
+2026-10-22T20:43:46.916754+00:00 dataset=jhu_deaths_germany seed=29 origin=0.9: cases=17
+2026-10-22T20:43:48.627156+00:00 dataset=jhu_deaths_germany seed=43 origin=0.6: cases=17
+2026-10-22T20:43:48.880229+00:00 dataset=jhu_deaths_germany seed=43 origin=0.75: cases=17
+2026-10-22T20:43:49.142919+00:00 dataset=jhu_deaths_germany seed=43 origin=0.9: cases=17
+2026-10-22T20:43:49.143272+00:00 dataset=jhu_deaths_japan rows=1142 context=3 lengths=[3, 7, 21]
+2026-10-22T20:43:50.757267+00:00 dataset=jhu_deaths_japan seed=17 origin=0.6: cases=17
+2026-10-22T20:43:51.097408+00:00 dataset=jhu_deaths_japan seed=17 origin=0.75: cases=17
+2026-10-22T20:43:51.334486+00:00 dataset=jhu_deaths_japan seed=17 origin=0.9: cases=17
+2026-10-22T20:43:52.628557+00:00 dataset=jhu_deaths_japan seed=29 origin=0.6: cases=17
+2026-10-22T20:43:52.864820+00:00 dataset=jhu_deaths_japan seed=29 origin=0.75: cases=17
+2026-10-22T20:43:53.130408+00:00 dataset=jhu_deaths_japan seed=29 origin=0.9: cases=17
+2026-10-22T20:43:54.453427+00:00 dataset=jhu_deaths_japan seed=43 origin=0.6: cases=17
+2026-10-22T20:43:54.688413+00:00 dataset=jhu_deaths_japan seed=43 origin=0.75: cases=17
+2026-10-22T20:43:54.956529+00:00 dataset=jhu_deaths_japan seed=43 origin=0.9: cases=17
+2026-10-22T20:43:54.957055+00:00 dataset=jhu_deaths_us rows=1142 context=3 lengths=[3, 7, 21]
+2026-10-22T20:43:56.444765+00:00 dataset=jhu_deaths_us seed=17 origin=0.6: cases=17
+2026-10-22T20:43:56.675452+00:00 dataset=jhu_deaths_us seed=17 origin=0.75: cases=17
+2026-10-22T20:43:56.953968+00:00 dataset=jhu_deaths_us seed=17 origin=0.9: cases=17
+2026-10-22T20:43:58.371756+00:00 dataset=jhu_deaths_us seed=29 origin=0.6: cases=17
+2026-10-22T20:43:58.615230+00:00 dataset=jhu_deaths_us seed=29 origin=0.75: cases=17
+2026-10-22T20:43:58.879264+00:00 dataset=jhu_deaths_us seed=29 origin=0.9: cases=17
+2026-10-22T20:44:00.184083+00:00 dataset=jhu_deaths_us seed=43 origin=0.6: cases=17
+2026-10-22T20:44:00.415612+00:00 dataset=jhu_deaths_us seed=43 origin=0.75: cases=17
+2026-10-22T20:44:00.633651+00:00 dataset=jhu_deaths_us seed=43 origin=0.9: cases=17
+2026-10-22T20:44:00.634261+00:00 dataset=nab_tweets_aapl rows=15902 context=6 lengths=[6, 24, 48]
+2026-10-22T20:44:05.219158+00:00 dataset=nab_tweets_aapl seed=17 origin=0.6: cases=17
+2026-10-22T20:44:05.927614+00:00 dataset=nab_tweets_aapl seed=17 origin=0.75: cases=17
+2026-10-22T20:44:06.638865+00:00 dataset=nab_tweets_aapl seed=17 origin=0.9: cases=17
+2026-10-22T20:44:11.273353+00:00 dataset=nab_tweets_aapl seed=29 origin=0.6: cases=17
+2026-10-22T20:44:12.396750+00:00 dataset=nab_tweets_aapl seed=29 origin=0.75: cases=17
+2026-10-22T20:44:13.092642+00:00 dataset=nab_tweets_aapl seed=29 origin=0.9: cases=17
+2026-10-22T20:44:17.606547+00:00 dataset=nab_tweets_aapl seed=43 origin=0.6: cases=17
+2026-10-22T20:44:18.260627+00:00 dataset=nab_tweets_aapl seed=43 origin=0.75: cases=17
+2026-10-22T20:44:18.921276+00:00 dataset=nab_tweets_aapl seed=43 origin=0.9: cases=17
+2026-10-22T20:44:18.921857+00:00 dataset=nab_tweets_ibm rows=15893 context=6 lengths=[6, 24, 48]
+2026-10-22T20:44:24.148958+00:00 dataset=nab_tweets_ibm seed=17 origin=0.6: cases=17
+2026-10-22T20:44:24.773248+00:00 dataset=nab_tweets_ibm seed=17 origin=0.75: cases=17
+2026-10-22T20:44:25.560271+00:00 dataset=nab_tweets_ibm seed=17 origin=0.9: cases=17
+2026-10-22T20:44:30.249403+00:00 dataset=nab_tweets_ibm seed=29 origin=0.6: cases=17
+2026-10-22T20:44:31.032658+00:00 dataset=nab_tweets_ibm seed=29 origin=0.75: cases=17
+2026-10-22T20:44:32.041515+00:00 dataset=nab_tweets_ibm seed=29 origin=0.9: cases=17
+2026-10-22T20:44:36.473714+00:00 dataset=nab_tweets_ibm seed=43 origin=0.6: cases=17
+2026-10-22T20:44:37.121776+00:00 dataset=nab_tweets_ibm seed=43 origin=0.75: cases=17
+2026-10-22T20:44:37.748207+00:00 dataset=nab_tweets_ibm seed=43 origin=0.9: cases=17
+2026-10-22T20:44:37.748628+00:00 dataset=nab_ec2_cpu rows=4032 context=6 lengths=[6, 24, 48]
+2026-10-22T20:44:41.510738+00:00 dataset=nab_ec2_cpu seed=17 origin=0.6: cases=17
+2026-10-22T20:44:41.899531+00:00 dataset=nab_ec2_cpu seed=17 origin=0.75: cases=17
+2026-10-22T20:44:42.324654+00:00 dataset=nab_ec2_cpu seed=17 origin=0.9: cases=17
+2026-10-22T20:44:46.354445+00:00 dataset=nab_ec2_cpu seed=29 origin=0.6: cases=17
+2026-10-22T20:44:46.844496+00:00 dataset=nab_ec2_cpu seed=29 origin=0.75: cases=17
+2026-10-22T20:44:47.254186+00:00 dataset=nab_ec2_cpu seed=29 origin=0.9: cases=17
+2026-10-22T20:44:51.704383+00:00 dataset=nab_ec2_cpu seed=43 origin=0.6: cases=17
+2026-10-22T20:44:52.062623+00:00 dataset=nab_ec2_cpu seed=43 origin=0.75: cases=17
+2026-10-22T20:44:52.787149+00:00 dataset=nab_ec2_cpu seed=43 origin=0.9: cases=17
+2026-10-22T20:44:52.788801+00:00 dataset=nab_ec2_network rows=4034 context=6 lengths=[6, 24, 48]
+2026-10-22T20:44:56.672759+00:00 dataset=nab_ec2_network seed=17 origin=0.6: cases=17
+2026-10-22T20:44:57.095617+00:00 dataset=nab_ec2_network seed=17 origin=0.75: cases=17
+2026-10-22T20:44:57.524652+00:00 dataset=nab_ec2_network seed=17 origin=0.9: cases=17
+2026-10-22T20:45:01.019078+00:00 dataset=nab_ec2_network seed=29 origin=0.6: cases=17
+2026-10-22T20:45:01.402800+00:00 dataset=nab_ec2_network seed=29 origin=0.75: cases=17
+2026-10-22T20:45:02.141262+00:00 dataset=nab_ec2_network seed=29 origin=0.9: cases=17
+2026-10-22T20:45:05.607610+00:00 dataset=nab_ec2_network seed=43 origin=0.6: cases=17
+2026-10-22T20:45:06.025052+00:00 dataset=nab_ec2_network seed=43 origin=0.75: cases=17
+2026-10-22T20:45:06.373874+00:00 dataset=nab_ec2_network seed=43 origin=0.9: cases=17
+2026-10-22T20:45:06.374499+00:00 dataset=nab_elb_requests rows=4040 context=6 lengths=[6, 24, 48]
+2026-10-22T20:45:09.421511+00:00 dataset=nab_elb_requests seed=17 origin=0.6: cases=17
+2026-10-22T20:45:09.850356+00:00 dataset=nab_elb_requests seed=17 origin=0.75: cases=17
+2026-10-22T20:45:10.212278+00:00 dataset=nab_elb_requests seed=17 origin=0.9: cases=17
+2026-10-22T20:45:13.307215+00:00 dataset=nab_elb_requests seed=29 origin=0.6: cases=17
+2026-10-22T20:45:13.713218+00:00 dataset=nab_elb_requests seed=29 origin=0.75: cases=17
+2026-10-22T20:45:14.181163+00:00 dataset=nab_elb_requests seed=29 origin=0.9: cases=17
+2026-10-22T20:45:17.368149+00:00 dataset=nab_elb_requests seed=43 origin=0.6: cases=17
+2026-10-22T20:45:17.718169+00:00 dataset=nab_elb_requests seed=43 origin=0.75: cases=17
+2026-10-22T20:45:18.056232+00:00 dataset=nab_elb_requests seed=43 origin=0.9: cases=17
+2026-10-22T20:45:18.056645+00:00 dataset=nab_ad_cpc_exchange3 rows=1647 context=3 lengths=[3, 7, 21]
+2026-10-22T20:45:19.416564+00:00 dataset=nab_ad_cpc_exchange3 seed=17 origin=0.6: cases=17
+2026-10-22T20:45:19.666302+00:00 dataset=nab_ad_cpc_exchange3 seed=17 origin=0.75: cases=17
+2026-10-22T20:45:19.911678+00:00 dataset=nab_ad_cpc_exchange3 seed=17 origin=0.9: cases=16
+2026-10-22T20:45:21.463590+00:00 dataset=nab_ad_cpc_exchange3 seed=29 origin=0.6: cases=17
+2026-10-22T20:45:21.713964+00:00 dataset=nab_ad_cpc_exchange3 seed=29 origin=0.75: cases=17
+2026-10-22T20:45:21.986402+00:00 dataset=nab_ad_cpc_exchange3 seed=29 origin=0.9: cases=16
+2026-10-22T20:45:23.342705+00:00 dataset=nab_ad_cpc_exchange3 seed=43 origin=0.6: cases=17
+2026-10-22T20:45:23.639633+00:00 dataset=nab_ad_cpc_exchange3 seed=43 origin=0.75: cases=17
+2026-10-22T20:45:23.909892+00:00 dataset=nab_ad_cpc_exchange3 seed=43 origin=0.9: cases=16
+2026-10-22T20:45:23.910549+00:00 dataset=nab_ad_cpc_exchange4 rows=1647 context=3 lengths=[3, 7, 21]
+2026-10-22T20:45:25.525253+00:00 dataset=nab_ad_cpc_exchange4 seed=17 origin=0.6: cases=17
+2026-10-22T20:45:25.802477+00:00 dataset=nab_ad_cpc_exchange4 seed=17 origin=0.75: cases=17
+2026-10-22T20:45:26.162118+00:00 dataset=nab_ad_cpc_exchange4 seed=17 origin=0.9: cases=17
+2026-10-22T20:45:27.925436+00:00 dataset=nab_ad_cpc_exchange4 seed=29 origin=0.6: cases=17
+2026-10-22T20:45:28.214765+00:00 dataset=nab_ad_cpc_exchange4 seed=29 origin=0.75: cases=17
+2026-10-22T20:45:28.501297+00:00 dataset=nab_ad_cpc_exchange4 seed=29 origin=0.9: cases=17
+2026-10-22T20:45:30.145039+00:00 dataset=nab_ad_cpc_exchange4 seed=43 origin=0.6: cases=17
+2026-10-22T20:45:30.419651+00:00 dataset=nab_ad_cpc_exchange4 seed=43 origin=0.75: cases=17
+2026-10-22T20:45:30.715221+00:00 dataset=nab_ad_cpc_exchange4 seed=43 origin=0.9: cases=17
+2026-10-22T20:45:36.746271+00:00 COMPLETE gaps=2139 methodcases=23529 elapsed=174.28s

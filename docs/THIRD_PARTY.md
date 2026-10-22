@@ -8,6 +8,17 @@ Three processed files and derived examples/results come from the official Nument
 
 The [manifest](../data/manifest.json) identifies immutable source URLs, SHA-256 hashes, source/processed counts and exact transformations. NAB attributes the real sources to office temperature, AWS utilization, and NYC Taxi and Limousine Commission passenger records. Those providers' separate original terms were not independently audited; this project records the corpus distributor's supplied license and provenance. Ambient missing timestamps were inserted as missing rows, without inventing measurements. Evaluation masks are artificial; source values are real.
 
+The v2 corpus adds 14 streams; its complete [rights and transformation ledger](../data/v2/README.md)
+and [immutable-source manifest](../data/v2/manifest.json) accompany the files.
+SSA births and JHU reporting increments are attributed under CC BY 4.0;
+CO2 and NOAA-derived numeric weather are declared public domain; EIA oil data
+are public domain with PDDL packaging; NAB-distributed streams retain the MIT
+notice and documented original-provider audit limitation. Corresponding source
+terms also apply to redistributed evaluation truth and source-derived v2
+artifacts, including prediction tables and examples. Preserve the source
+attribution, links, license notices and descriptions of changes. The root MIT
+license governs GapLens code and does not replace these data terms.
+
 ## Runtime components
 
 | Component | Used for | Upstream license |
@@ -26,3 +37,9 @@ Exact direct/transitive versions, platform markers and distribution hashes are i
 ## Related research
 
 imputeTS, ImputeGAP, BRITS, SAITS, CSDI, EnbPI and MAPIE were consulted as related work. Their implementation code or model weights are not included in this repository, and their benchmark claims were not reproduced here. Citations and actual access records appear in [SOURCES.md](SOURCES.md).
+
+The deeper v2 review adds AnDA, DynaMMo, Rssa/SSA, TKCM, STUMPY and SPCI.
+Our PCA, Kalman and separated-retrieval implementations use established
+mathematical ideas; they are not copies or claimed exact reproductions of those
+packages. See [v2 sources](v2/SOURCES.md) for primary-source access, bibliographic
+details and limitations, including the attributed third-party TKCM code inspected.

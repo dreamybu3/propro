@@ -1,0 +1,124 @@
+{
+  "initial": "results/v2/initial_final",
+  "corrected": "results/v2/final",
+  "scientific_tables": [
+    {
+      "file": "calibration_support.csv",
+      "exact_bytes": true,
+      "sha256": "d866ea741344e23c021a0a47c8a35a483905055723be805b2e0b1db7d56b027a"
+    },
+    {
+      "file": "context_diagnostics.csv",
+      "exact_bytes": true,
+      "sha256": "83af0e8d8ca53778f37d97f15423ea7aa9d1a011e8d3dd1bef75ed34e7d91958"
+    },
+    {
+      "file": "curves_common_service.csv",
+      "exact_bytes": true,
+      "sha256": "0cf1afd432b05405ec63095e8b9fbd4d2a063889c9d18a8528d40bc3f09b0e7c"
+    },
+    {
+      "file": "curves_own_service.csv",
+      "exact_bytes": true,
+      "sha256": "0b3fa22e889a537e67c845728a9f925391b99d5470f4ae9a11a6a30640d3b7c7"
+    },
+    {
+      "file": "leave_one_series_out.csv",
+      "exact_bytes": true,
+      "sha256": "82ead85500e2cbc5808eca25091f0b7d576659462f499d1f9675bcc9db50acb4"
+    },
+    {
+      "file": "lengths.csv",
+      "exact_bytes": true,
+      "sha256": "f5dc4049754f8bc4a6c52689f3dadd46c13b57464cc709e1a24e51614a4d1c27"
+    },
+    {
+      "file": "origins.csv",
+      "exact_bytes": true,
+      "sha256": "46b2c1e074379d34521b85c55a8d345ab4230052460f83a2f84d2c30acd13756"
+    },
+    {
+      "file": "paired_series.csv",
+      "exact_bytes": true,
+      "sha256": "47f2b8f44b31498f8f39a4f63c0fa730c69bedf68f2644bd3a5dd51363d0b7e8"
+    },
+    {
+      "file": "ranks.csv",
+      "exact_bytes": true,
+      "sha256": "8a44b8a8a6471ae5a7ebc213fe3393a448bd023724dc86c7170630c4d4527749"
+    },
+    {
+      "file": "refusals.csv",
+      "exact_bytes": true,
+      "sha256": "5b737a0ea068f2eefe71db0e1bdb18275f3742975804a59be91facbc1bc0d1a4"
+    },
+    {
+      "file": "regimes.csv",
+      "exact_bytes": true,
+      "sha256": "c857bc2f14e2c4a69c7ad1d0c75e5fe60873e269938954b8ce83f1a91cc14ddc"
+    },
+    {
+      "file": "series_all_regimes.csv",
+      "exact_bytes": true,
+      "sha256": "c6dc007c0e3f40194ba17669b3dac8ef166061ae37a70b1c68ed939bcb4eb8cf"
+    },
+    {
+      "file": "series_primary.csv",
+      "exact_bytes": true,
+      "sha256": "64554df29b0c428bf38c612632345595f6a2354a7e762f9a1f8fb3751584e91c"
+    },
+    {
+      "file": "uncertainty_pairs.csv",
+      "exact_bytes": true,
+      "sha256": "b52b486c7cb9be2ad3ecb847e71bef9db1227a2a6e5a9e7a5c6946d8e6282f26"
+    },
+    {
+      "file": "tables.md",
+      "exact_bytes": true,
+      "sha256": "d5d8535d9089127891fec08c4fd6158e57b382208c1932195d418b410ba63a9f"
+    }
+  ],
+  "summary_equal_excluding_performance": true,
+  "figures": [
+    {
+      "file": "figures/coverage_width_common.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/coverage_width_common.svg",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/failure_example.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/failure_example.svg",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/paired_series_ratios.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/paired_series_ratios.svg",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/service_by_regime.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "figures/service_by_regime.svg",
+      "exact_bytes": true
+    }
+  ],
+  "all_scientific_tables_exact": true,
+  "all_figures_exact": true,
+  "exclusions": [
+    "performance_summary.csv",
+    "summary.performance",
+    "summary_provenance.json"
+  ],
+  "note": "Unchanged frozen summarizer; corrected parser run uses identical final data/masks/parameters. First holdout exposure remains initial run."
+}

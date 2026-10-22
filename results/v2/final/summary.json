@@ -1,0 +1,672 @@
+{
+  "calibration_ablation_check": {
+    "diverse": {
+      "identical_point_predictions_and_scales": true,
+      "planned_cases": 2139,
+      "point_rows": 14742
+    },
+    "v1": {
+      "identical_point_predictions_and_scales": true,
+      "planned_cases": 2139,
+      "point_rows": 14742
+    }
+  },
+  "context_diagnostic_rules": {
+    "context_endpoint_change": "abs(context_endpoint_change) > 1",
+    "context_shift": "abs(context_shift) > 2",
+    "context_spread_ratio": "context_spread_ratio > 2",
+    "interpretation": "Fixed observed-context proxies, not proven structural breaks. Descriptive only, no routing; regime column keeps synthetic level shift distinct."
+  },
+  "curve_support": {
+    "alphas": [
+      0.2,
+      0.1,
+      0.05
+    ],
+    "common_cases_across_all_methods_and_alphas": 616,
+    "common_series": 13,
+    "methods": 11,
+    "note": "Common curve set excludes every case unsupported by any plotted method/alpha; own-service table retains full denominators.",
+    "planned_cases": 1008
+  },
+  "estimands": {
+    "bootstrap": "Whole source groups resampled with replacement; all series in each draw retained. Few groups; exploratory intervals.",
+    "gap_coverage_width": "Case means within series; uncertainty comparisons weight series equally on jointly interval-serviced gaps.",
+    "mae": "Mean case MAE within series; per-series ratios use jointly finite predictions.",
+    "point_coverage": "Target-point weighted within a series; macro comparisons weight series equally.",
+    "point_only": "A finite point prediction with insufficient calibration is not a serviced product reconstruction.",
+    "zero_errors": "Both paired errors zero gives ratio1; positive candidate error against zero reference is undefined and explicitly excluded, making H1 unsupported."
+  },
+  "failure_example": {
+    "case_id": "nab_ec2_cpu__s43__o2__mnar__1",
+    "dataset": "nab_ec2_cpu",
+    "interval_serviced": true,
+    "mae": 0.3519721601784995,
+    "method": "v1_static",
+    "normalized_mae": 175.9860800892496,
+    "rule": "Highest normalized MAE among frozen product candidate primary-regime point predictions; ties by case_id. Diagnostic, not an aggregate result."
+  },
+  "frozen_product_method": "v1_static",
+  "h1": {
+    "all_series_supported": true,
+    "at_least_5_percent_better_than_v1": false,
+    "best_competitor_selected_on_development": "extra_trees_static",
+    "better_than_development_selected_competitor": true,
+    "candidate": "diverse_static",
+    "geometric_mean_mae_ratio_to_competitor": 0.9868217365676839,
+    "geometric_mean_mae_ratio_to_v1": 1.0453165962359818,
+    "met": false
+  },
+  "h2": [
+    {
+      "all_series_supported": true,
+      "common_interval_cases": 982,
+      "coverage_closer": true,
+      "h2_met_on_common_cases": true,
+      "model": "v1",
+      "normalized_width_ratio": 0.3412450051056837,
+      "planned_cases": 1008,
+      "rolling_absolute_coverage_error": 0.00948275862068959,
+      "rolling_gap_coverage": 0.9094827586206896,
+      "rolling_interval_cases": 984,
+      "rolling_mean_series_absolute_coverage_error": 0.04480021893814997,
+      "rolling_normalized_width": 3241.238727497639,
+      "series": 14,
+      "static_absolute_coverage_error": 0.026347837985768896,
+      "static_gap_coverage": 0.9263478379857689,
+      "static_interval_cases": 996,
+      "static_mean_series_absolute_coverage_error": 0.04579228243021346,
+      "static_normalized_width": 9498.27449194114,
+      "supported_series": 14,
+      "target": 0.9,
+      "width_within_10_percent": true
+    },
+    {
+      "all_series_supported": true,
+      "common_interval_cases": 982,
+      "coverage_closer": true,
+      "h2_met_on_common_cases": true,
+      "model": "diverse",
+      "normalized_width_ratio": 0.40704251295127636,
+      "planned_cases": 1008,
+      "rolling_absolute_coverage_error": 0.00257936507936507,
+      "rolling_gap_coverage": 0.9025793650793651,
+      "rolling_interval_cases": 984,
+      "rolling_mean_series_absolute_coverage_error": 0.046626984126984135,
+      "rolling_normalized_width": 3094.48507308213,
+      "series": 14,
+      "static_absolute_coverage_error": 0.009482758620689702,
+      "static_gap_coverage": 0.9094827586206897,
+      "static_interval_cases": 996,
+      "static_mean_series_absolute_coverage_error": 0.04480021893814996,
+      "static_normalized_width": 7602.363327224605,
+      "supported_series": 14,
+      "target": 0.9,
+      "width_within_10_percent": true
+    }
+  ],
+  "paired_effects": [
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 1.0462920803152689,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 1.0198648297147634,
+        "seed": 2026,
+        "upper": 1.0744488530789544
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 1.0113245783395657,
+        "seed": 2026,
+        "upper": 1.0703078167778033
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.0453165962359818,
+      "median_mae_ratio": 1.0476422045538838,
+      "reference": "v1_static",
+      "series": 14,
+      "series_lost": 10,
+      "series_tied": 0,
+      "series_won": 4,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 1.0412375411910575,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 1.0048306936826301,
+        "seed": 2026,
+        "upper": 1.0816948018823633
+      },
+      "candidate": "diverse_k12_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 1.0154330581009645,
+        "seed": 2026,
+        "upper": 1.0515912496338047
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.039258291752737,
+      "median_mae_ratio": 1.0343382054004446,
+      "reference": "v1_static",
+      "series": 14,
+      "series_lost": 10,
+      "series_tied": 0,
+      "series_won": 4,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 5.140517316800621,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.6484488994358789,
+        "seed": 2026,
+        "upper": 2.117794819864585
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.5164173589452987,
+        "seed": 2026,
+        "upper": 1.6754807342534705
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.2066183714254903,
+      "median_mae_ratio": 1.0575581445840596,
+      "reference": "linear_static",
+      "series": 14,
+      "series_lost": 10,
+      "series_tied": 0,
+      "series_won": 4,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.9991367464738747,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.8880168704684273,
+        "seed": 2026,
+        "upper": 1.0700983204045516
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.8375566057271998,
+        "seed": 2026,
+        "upper": 1.0420839647388178
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.9868217365676839,
+      "median_mae_ratio": 0.9983537920430754,
+      "reference": "extra_trees_static",
+      "series": 14,
+      "series_lost": 7,
+      "series_tied": 0,
+      "series_won": 7,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.8436576281216777,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.25491243830708527,
+        "seed": 2026,
+        "upper": 0.995680067759042
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.12806192899714325,
+        "seed": 2026,
+        "upper": 0.9831593615579008
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.6131777455047692,
+      "median_mae_ratio": 0.992390057557234,
+      "reference": "raw_knn_static",
+      "series": 14,
+      "series_lost": 6,
+      "series_tied": 0,
+      "series_won": 8,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.983979188415417,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.9170840959385637,
+        "seed": 2026,
+        "upper": 1.0336589268857612
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.877263424793037,
+        "seed": 2026,
+        "upper": 1.0277595078529904
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.9796946829603931,
+      "median_mae_ratio": 0.9798749466752283,
+      "reference": "seasonal_static",
+      "series": 14,
+      "series_lost": 6,
+      "series_tied": 0,
+      "series_won": 8,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 4.797884317096775,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.6179787219689357,
+        "seed": 2026,
+        "upper": 2.072241968543029
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.48875578501269706,
+        "seed": 2026,
+        "upper": 1.6085323486804768
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.1433370753397591,
+      "median_mae_ratio": 1.0193021728502814,
+      "reference": "kalman_static",
+      "series": 14,
+      "series_lost": 8,
+      "series_tied": 0,
+      "series_won": 6,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.7324690664786259,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.2878807827041529,
+        "seed": 2026,
+        "upper": 0.8626861891091209
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.17431737850169646,
+        "seed": 2026,
+        "upper": 0.8538906973416822
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.5918009103781194,
+      "median_mae_ratio": 0.8213392284948628,
+      "reference": "pca_static",
+      "series": 14,
+      "series_lost": 3,
+      "series_tied": 0,
+      "series_won": 11,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 1.0079495090556185,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.9711311043115854,
+        "seed": 2026,
+        "upper": 1.0448724384015862
+      },
+      "candidate": "diverse_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.9656389674971851,
+        "seed": 2026,
+        "upper": 1.049644299619511
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.0058294502255327,
+      "median_mae_ratio": 1.0056948275521629,
+      "reference": "diverse_k12_static",
+      "series": 14,
+      "series_lost": 8,
+      "series_tied": 0,
+      "series_won": 6,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 4.815235471842107,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.6309728029547965,
+        "seed": 2026,
+        "upper": 1.999210699885838
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.5090110182039014,
+        "seed": 2026,
+        "upper": 1.5847594975840094
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.1543090158238474,
+      "median_mae_ratio": 0.9865537910117954,
+      "reference": "linear_static",
+      "series": 14,
+      "series_lost": 7,
+      "series_tied": 0,
+      "series_won": 7,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.9556317715865411,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.843164406056468,
+        "seed": 2026,
+        "upper": 1.0197415632628435
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.7970892433620868,
+        "seed": 2026,
+        "upper": 0.9909401573346814
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.944041011231498,
+      "median_mae_ratio": 0.93881740693095,
+      "reference": "extra_trees_static",
+      "series": 14,
+      "series_lost": 4,
+      "series_tied": 0,
+      "series_won": 10,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.8083241382936913,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.24506825151276793,
+        "seed": 2026,
+        "upper": 0.9475950606934356
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.12244352061065036,
+        "seed": 2026,
+        "upper": 0.9388753047590016
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.5865952456057086,
+      "median_mae_ratio": 0.9458915265151464,
+      "reference": "raw_knn_static",
+      "series": 14,
+      "series_lost": 5,
+      "series_tied": 0,
+      "series_won": 9,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.9419867836472566,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.8695439279883893,
+        "seed": 2026,
+        "upper": 0.9868986026985288
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.8300091079632475,
+        "seed": 2026,
+        "upper": 0.9769180202690493
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.9372229298646143,
+      "median_mae_ratio": 0.9627658692352068,
+      "reference": "seasonal_static",
+      "series": 14,
+      "series_lost": 3,
+      "series_tied": 0,
+      "series_won": 11,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 4.495017877549849,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.6002971939862077,
+        "seed": 2026,
+        "upper": 1.9761276650935113
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.48391941660738264,
+        "seed": 2026,
+        "upper": 1.5183955779227878
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 1.093771092372142,
+      "median_mae_ratio": 0.9579593709470144,
+      "reference": "kalman_static",
+      "series": 14,
+      "series_lost": 3,
+      "series_tied": 0,
+      "series_won": 11,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.7006309540627564,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.27744548379582445,
+        "seed": 2026,
+        "upper": 0.824855128948902
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.16841791725277433,
+        "seed": 2026,
+        "upper": 0.8132191108719026
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.566145139672612,
+      "median_mae_ratio": 0.7688599413466178,
+      "reference": "pca_static",
+      "series": 14,
+      "series_lost": 1,
+      "series_tied": 0,
+      "series_won": 13,
+      "supported_series": 14
+    },
+    {
+      "all_series_supported": true,
+      "arithmetic_mean_mae_ratio": 0.9639641446899958,
+      "bootstrap": {
+        "draws": 5000,
+        "groups": 8,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.9244751831953913,
+        "seed": 2026,
+        "upper": 0.9951925297336152
+      },
+      "candidate": "v1_static",
+      "collection_bootstrap_sensitivity": {
+        "draws": 5000,
+        "groups": 6,
+        "interpretation": "Exploratory 95% whole-group percentile interval; few groups, not IID masks/points",
+        "lower": 0.9509398260476488,
+        "seed": 2026,
+        "upper": 0.9848015012138495
+      },
+      "common_cases": 1008,
+      "geometric_mean_mae_ratio": 0.9622247019203214,
+      "median_mae_ratio": 0.9668245039725027,
+      "reference": "diverse_k12_static",
+      "series": 14,
+      "series_lost": 4,
+      "series_tied": 0,
+      "series_won": 10,
+      "supported_series": 14
+    }
+  ],
+  "performance": {
+    "cumulative_process_peak_rss_mb": 497.6640625,
+    "elapsed_seconds": 161.7406513749993,
+    "measurement_artifact_bytes": {
+      "calibration_scores.csv": 5889542,
+      "case_metrics.csv": 11182560,
+      "coverage_width.csv": 13402383,
+      "performance.csv": 561117,
+      "predictions.csv.gz": 5757624
+    },
+    "note": "Linux/cloud measurements; process peak RSS is cumulative, not isolated method RSS. Fit/cold/calibration/warm table separates cache construction.",
+    "processed_data_bytes": 1671412
+  },
+  "planned_cases_all_regimes": 2139,
+  "primary_cases": 1008,
+  "primary_regimes": [
+    "mcar_short",
+    "mcar_long",
+    "mar",
+    "mnar"
+  ],
+  "schema_version": 2,
+  "series": 14,
+  "source_group_membership": [
+    {
+      "dataset": "co2_mauna_loa",
+      "source_group": "mauna_loa_co2"
+    },
+    {
+      "dataset": "brent_weekly",
+      "source_group": "eia_brent"
+    },
+    {
+      "dataset": "ssa_births",
+      "source_group": "ssa_births"
+    },
+    {
+      "dataset": "seattle_temp_max",
+      "source_group": "noaa_seattle_weather"
+    },
+    {
+      "dataset": "jhu_deaths_germany",
+      "source_group": "jhu_covid_reporting"
+    },
+    {
+      "dataset": "jhu_deaths_japan",
+      "source_group": "jhu_covid_reporting"
+    },
+    {
+      "dataset": "jhu_deaths_us",
+      "source_group": "jhu_covid_reporting"
+    },
+    {
+      "dataset": "nab_tweets_aapl",
+      "source_group": "nab_twitter_mentions"
+    },
+    {
+      "dataset": "nab_tweets_ibm",
+      "source_group": "nab_twitter_mentions"
+    },
+    {
+      "dataset": "nab_ec2_cpu",
+      "source_group": "nab_aws_cloudwatch"
+    },
+    {
+      "dataset": "nab_ec2_network",
+      "source_group": "nab_aws_cloudwatch"
+    },
+    {
+      "dataset": "nab_elb_requests",
+      "source_group": "nab_aws_cloudwatch"
+    },
+    {
+      "dataset": "nab_ad_cpc_exchange3",
+      "source_group": "nab_adexchange"
+    },
+    {
+      "dataset": "nab_ad_cpc_exchange4",
+      "source_group": "nab_adexchange"
+    }
+  ],
+  "source_groups": 8
+}
