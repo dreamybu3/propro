@@ -82,7 +82,10 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
     if output_dir.exists() and not overwrite:
         raise ValueError(f"Output directory already exists: {output_dir}. Choose another path or use --overwrite.")
     for name in ("repaired.csv", "report.json", "report.html"):
-        if (output_dir / name).resolve() in {reference_path.resolve(), input_path.resolve()}:
+        target = output_dir / name
+        if target.exists() and not target.is_file():
+            raise ValueError(f"Output artifact must be a regular file or absent: {target}")
+        if target.resolve() in {reference_path.resolve(), input_path.resolve()}:
             raise ValueError("Output artifacts must not overwrite input or reference files")
     reference, query = read_series(reference_path), read_series(input_path)
     cadence = reference.timestamp.iloc[1] - reference.timestamp.iloc[0]
@@ -104,7 +107,10 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
     lengths = sorted({e - s for s, e in gaps if e - s <= config.max_gap})
     if len(lengths) > 32:
         raise ValueError("At most 32 distinct supported gap lengths per run are allowed; split the input")
-    model = _model(config, lengths).fit(train.value.to_numpy(), pd.DatetimeIndex(train.timestamp))
+    # A report with only unsupported gaps (or no gaps) needs no fitted model.
+    # In particular, sparse history must not hide an actionable boundary refusal
+    # behind an unrelated ExtraTrees training-window error.
+    model = None
     cal_values = calibration.value.to_numpy()
     cal_times = pd.DatetimeIndex(calibration.timestamp)
     query_times = pd.DatetimeIndex(query.timestamp)
@@ -138,6 +144,8 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
         elif not np.isfinite(np.r_[original[start-config.context:start], original[end:end+config.context]]).all():
             reason = "Context contains another gap; estimates are never reused as observations"
         if reason is None:
+            if model is None:
+                model = _model(config, lengths).fit(train.value.to_numpy(), pd.DatetimeIndex(train.timestamp))
             if length not in cache:
                 windows = sample_gaps(cal_values, length, config.context, config.calibration_gaps, config.seed + length)
                 scores = []
