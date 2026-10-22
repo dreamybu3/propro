@@ -1,0 +1,29 @@
+{
+  "baseline_commit": "ecf22de604d14e747bf6607d50b62b4870d24fcf",
+  "sha256": {
+    "results/benchmark/aggregate_summary.csv": "daadeb53358f1af5337048e0bc2ac0d048f42e81b697099caca85caf31a46abd",
+    "results/benchmark/case_metrics.csv": "cf5e4004a37c2fea4659eeba7085bca35e3c3422d1163bb285578790460552e6",
+    "results/benchmark/figures/coverage_width.png": "1b109a9e0b962a6f93a0ce546a47af1ee9509c1e5c9eef7514e693b8a1a7605b",
+    "results/benchmark/figures/coverage_width.svg": "df9bcf768a0109473c2214406c6fdd39e2512fd749c140ca848911520568d3df",
+    "results/benchmark/figures/manifest.json": "879c1c162bd9dc882ca7155cf8ec6e8c249829aca1bf7ecc60a828e7c9483e72",
+    "results/benchmark/figures/quality.png": "177c4c12dba0c3ddda33bc9e0680caef0719d1d5c939d6439e2d6c1bfa525f4c",
+    "results/benchmark/figures/quality.svg": "371a9e233983bc235fad14ae6813d3550c87a9ba11e860364cae179ea7501ba0",
+    "results/benchmark/figures/worst_gap.png": "53d96bc0aab607b24fd80bd32beec39f193a6bfb512e6cffdc080ac95fced76f",
+    "results/benchmark/figures/worst_gap.svg": "c30445e11c26f62b7439b591704fa968bb4f52126572b1e16d5953ab210a1130",
+    "results/benchmark/hypothesis.json": "2591a5778d1018162a9593cecf211094233adc707456f5928808f01201e85189",
+    "results/benchmark/predictions.csv": "f3797be6f3c604383d1847d9a361b3f674c1e0fde53aad95ef2dde246286dc86",
+    "results/benchmark/run.json": "a069d95638e3e6c04f4e0d4fc6d7cbdb8aab6bd9bed2495bda3af3712569d38f",
+    "results/benchmark/run.log": "23227a1e37f8d3e09007939b52105b2a937e26414b61d51b832de025ecfacefa",
+    "results/benchmark/series_summary.csv": "86cfec30bf48586e36ec94d7a63ec554d64d1f6a0001c39ae95873d404b132a3",
+    "results/benchmark/summary.csv": "7cf9201fb151ccee751f2782f94cfe9d318daad27ede3c25cee59f01b03d78c6",
+    "results/benchmark/tables.md": "71b8c3a7d119875a25c291cc37fd897d545fe402e8bcac7e3d47ce4075a5ffac",
+    "results/benchmark/tables_provenance.json": "ee42d0ac4c808bb76c8d31ea46fc37bb524e008babd2c01ce836901ac3b9187b",
+    "results/benchmark/worst_cases.csv": "fe6904f9cf0d40d678caca6d71efc5f1644ba5c24b89070a9a6731d5f052d731",
+    "results/demo/repaired.csv": "8c38c5153f92c54846649f1d71e1f0012c70be7b575e3920f5fbe4612b24df0c",
+    "results/demo/report.html": "cd4eff74b6f8e48fd4e26ff1a0dc6f8b6669c16cb16b0cd049f59aa1c32191a0",
+    "results/demo/report.json": "a4063741808e383f728ba47778c1a14d3ad5c8dbb2b2b5db3ed2c2b7cde1e580",
+    "data/processed/ambient_temperature.csv": "3c7d58de06c8cc26796c191cdb058d80fb20f7e65f25f41c45648c60670e0aaa",
+    "data/processed/cpu_utilization.csv": "bf4e283eadf8bc1329860f55cb3a9b4d084d3af2af897878afc363d1478ec1f2",
+    "data/processed/nyc_taxi.csv": "8800a4148a75c75e32fe8f8d87a0b3f4a1d08a7b7aca67c94762af0b30d020c2"
+  }
+}

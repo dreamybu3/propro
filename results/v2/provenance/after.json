@@ -1,0 +1,5 @@
+{
+  "exit_code": 2,
+  "stderr": "gaplens: Repair-export/provenance CSV is not supported as input or reference (reserved columns: gap_id, lower, original_value, status, upper). Use the original timestamp,value measurement CSV, retaining missing observations as empty cells. Do not remove provenance columns from a repaired export: reconstructed estimates must not become observations.\n",
+  "output_created": false
+}
