@@ -18,9 +18,20 @@
     "src/gaplens/core.py": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
     "src/gaplens/models_v2.py": "77caa4b52f70c461eaf7eca6b789f92459f2283dc1f16b2a27e6a26b66222e76",
     "src/gaplens/calibration.py": "b4e21a77ab0e00f039518feb6ffd865fffca86c41dffe623465ec5dc256595e0",
-    "src/gaplens/data.py": "c7a391232e67b5ef79e138155a9d2ad5cdb3af2aa5d2b233d4c2c22f32515992",
+    "src/gaplens/data.py": "5b492ab1a31ba924a0a2026f6bbb67a5e5991420a352f346cfad462857e16d62",
     "pyproject.toml": "5eb666c72426861317d77d59942ea4276255e226ccfdd100fb38a69ab231c466",
     "uv.lock": "ec8975e4ad80ebe630251eb97bfd4fe0f0cf3cebe571c55ae160cb721aa3b584",
     "requirements.lock": "eec27beef24ade1e453adcee628ffd8634e4332c9f5b5cc0a9e7fabbdd03690c"
-  }
+  },
+  "validation_amendments": [
+    {
+      "recorded_at": "2026-10-22T20:38:21.287984+00:00",
+      "path": "src/gaplens/data.py",
+      "old_sha256": "c7a391232e67b5ef79e138155a9d2ad5cdb3af2aa5d2b233d4c2c22f32515992",
+      "new_sha256": "5b492ab1a31ba924a0a2026f6bbb67a5e5991420a352f346cfad462857e16d62",
+      "reason": "Reject repair exports and duplicate headers even with blank CSV preamble; input validation only. No scientific choices changed.",
+      "record": "docs/v2/CORRECTIONS.md",
+      "first_holdout_already_inspected": true
+    }
+  ]
 }

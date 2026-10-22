@@ -16,7 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.mark.parametrize("role", ["input", "reference"])
 @pytest.mark.parametrize("new_gap", [False, True])
-def test_export_cannot_become_observed_query_or_calibration_truth(tmp_path, role, new_gap):
+@pytest.mark.parametrize("preamble", [b"", b"\n", b"  \n\r\n"])
+def test_export_cannot_become_observed_query_or_calibration_truth(tmp_path, role, new_gap, preamble):
     # Real saved export includes 42 estimates, with provenance and intervals.
     original = pd.read_csv(ROOT / "results/demo/repaired.csv", float_precision="round_trip")
     assert (original.status == "reconstructed").sum() == 42
@@ -24,6 +25,7 @@ def test_export_cannot_become_observed_query_or_calibration_truth(tmp_path, role
         original.loc[30:32, "value"] = np.nan
     exported = tmp_path / "export.csv"
     original.to_csv(exported, index=False)
+    exported.write_bytes(preamble + exported.read_bytes())
     before = exported.read_bytes()
     reference = exported if role == "reference" else ROOT / "examples/reference.csv"
     query = exported if role == "input" else ROOT / "examples/with_gaps.csv"
@@ -63,14 +65,15 @@ def test_cli_reimport_explains_measurement_contract(tmp_path):
 
 
 @pytest.mark.parametrize("column", ["value", "timestamp", "comment"])
-def test_duplicate_csv_headers_rejected_before_pandas_mangling(tmp_path, column):
+@pytest.mark.parametrize("preamble", ["", "\n \n"])
+def test_duplicate_csv_headers_rejected_before_pandas_mangling(tmp_path, column, preamble):
     path = tmp_path / "ambiguous.csv"
-    path.write_text(f"timestamp,value,{column},{column}\n2024-01-01,1,999,777\n2024-01-02,2,888,666\n")
+    path.write_text(preamble + f"timestamp,value,{column},{column}\n2024-01-01,1,999,777\n2024-01-02,2,888,666\n")
     with pytest.raises(ValueError, match="Duplicate CSV column"):
         read_series(path)
 
 
 def test_ordinary_metadata_columns_remain_supported(tmp_path):
     path = tmp_path / "measurement.csv"
-    path.write_text("timestamp,value,sensor\n2024-01-01,1,a\n2024-01-02,2,a\n")
+    path.write_text("\n \ntimestamp,value,sensor\n2024-01-01,1,a\n2024-01-02,2,a\n")
     assert read_series(path).value.tolist() == [1, 2]

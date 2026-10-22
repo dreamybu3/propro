@@ -35,7 +35,10 @@ def read_series(path: str | Path) -> pd.DataFrame:
     try:
         # Inspect the original header before pandas renames duplicate columns.
         with path.open(encoding="utf-8-sig", newline="") as handle:
-            header = next(csv.reader(handle), [])
+            # pandas skips blank preamble lines by default. Inspect that same
+            # effective header so a blank line cannot conceal provenance.
+            header = next((row for row in csv.reader(handle)
+                           if row and not (len(row) == 1 and not row[0].strip())), [])
         if len(header) != len(set(header)):
             raise ValueError("Duplicate CSV column names are not allowed")
         reserved = PROVENANCE_COLUMNS.intersection(header)
