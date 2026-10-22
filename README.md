@@ -2,17 +2,27 @@
 
 **Auditable offline reconstruction of missing monitoring data.**
 
-[Source branch](https://github.com/dreamybu3/propro/tree/gaplens-v2) · [Download source ZIP](https://github.com/dreamybu3/propro/archive/refs/heads/gaplens-v2.zip) · [Draft PR](https://github.com/dreamybu3/propro/pull/2)
+[Source code](https://github.com/dreamybu3/propro/tree/gaplens-v2) · [Download ZIP](https://github.com/dreamybu3/propro/archive/refs/heads/gaplens-v2.zip) · [Русская инструкция](docs/QUICKSTART_RU.md)
 
 Give GapLens an earlier history CSV and a later CSV containing gaps. It retrieves similar historical trajectories, aligns them to the observed gap boundaries, and exports estimated values, empirical uncertainty bands and an explanation of their provenance. Original measurements remain unchanged; unsupported gaps remain explicitly unresolved.
 
 ![GapLens interactive repair report](docs/v2/assets/report.png)
 
-This is a complete CPU-only Python product and an executed, reproducible research study. No API key, paid service, GPU or background server is needed. Open `results/v2/demo/report.html` for the already generated demonstration, or create your own below.
+GapLens runs locally on CPU, with no API key, paid service or background server. It includes a command-line tool, an interactive report and reproducible research results.
+
+## Features
+
+- Reconstruct interior gaps using historical analogs and observed context on both sides.
+- Inspect empirical whole-gap uncertainty bands and the historical windows behind each estimate.
+- Preserve measured values and distinguish them from reconstructed values in every export.
+- Report explicit reasons when a gap cannot be reconstructed with sufficient support.
+- Export CSV, JSON and a self-contained HTML report that works offline.
+
+Open `results/v2/demo/report.html` for the included demonstration, or create a new report below.
 
 ## Run the included demo
 
-Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; actual local execution was verified on Linux x86-64 with Python 3.12.14. The v2 [GitHub Actions checks](https://github.com/dreamybu3/propro/actions/runs/39852421927) passed on **Ubuntu and Windows** with Python 3.12, including tests, saved-result verification and both product demos. The owner also independently verified the v1 CI jobs. This does not establish performance on the owner's laptop. The commands below use portable dependencies and require no CUDA.
+Use **Python 3.12**. Python 3.11–3.13 is declared supported by the package; local execution was verified on Linux x86-64 with Python 3.12.14. The v2 [GitHub Actions checks](https://github.com/dreamybu3/propro/actions/runs/39853118660) passed on **Ubuntu and Windows** with Python 3.12, including tests, saved-result verification and both product demos. Runtime and memory measurements come from the cloud environment described in the [validation record](docs/v2/VALIDATION.md).
 
 With [uv](https://docs.astral.sh/uv/), from the repository root:
 
@@ -71,7 +81,7 @@ Boundary gaps, gaps longer than the configured limit, missing surrounding contex
 
 Hard limits are 200,000 rows per file, 32 MiB per file, 200 gaps and 32 supported distinct gap lengths per run. The default maximum gap is 48 samples. Very large non-default settings can cost much more than the included experiment. See [architecture and limits](docs/ARCHITECTURE.md).
 
-## V2: corrected provenance and a larger, negative-result study
+## Research results
 
 Version 0.2 fixes repair-export reimport (including blank CSV preambles),
 duplicate headers, predictable export conflicts, unsupported-model reporting,
@@ -137,7 +147,7 @@ The main Linux run took **99.86 seconds** and **259.18 MiB** cumulative peak pro
 
 Read the [full research report](docs/RESEARCH_REPORT.md), [fixed protocol](docs/PROTOCOL.md), [generated measurement tables](results/benchmark/tables.md), [raw results](results/benchmark) and [related work](docs/RELATED_WORK.md).
 
-## Reproduce and test
+## Tests and v1 reproduction
 
 ```sh
 uv run python -m pytest -q
@@ -150,18 +160,20 @@ Use a fresh results directory. The saved original run remains available for comp
 
 `uv run python scripts/fetch_data.py` downloads immutable, checksum-verified upstream CSVs and reproduces the bundled processed data. `uv run python scripts/make_demo.py --output another-demo` creates the deterministic demo in a new directory. Avoid regenerating over edited files; `--overwrite` is explicit.
 
-Meaningful tests cover hidden-value leakage invariants, endpoint corrections, finite scales, calibration ranks, data errors, missing-context abstention, output preservation, HTML escaping, both baselines and independent reconciliation of all saved experimental predictions. Browser checks and exact validation evidence are in [VALIDATION.md](docs/VALIDATION.md). The owner independently verified that baseline GitHub Actions passed on Windows and Ubuntu; v2 validation is recorded separately in `docs/v2/VALIDATION.md`.
+Tests cover hidden-value leakage invariants, endpoint corrections, finite scales, calibration ranks, data errors, missing-context abstention, output preservation, HTML escaping, both baselines and independent reconciliation of saved experimental predictions. Installation, browser, CI and numerical reproduction evidence are recorded in [v2 validation](docs/v2/VALIDATION.md); [v1 validation](docs/VALIDATION.md) preserves the original execution record.
 
 ## Project map
 
 - [`src/gaplens/`](src/gaplens): numerical core, calibration, validation, repair pipeline and reporting.
 - [`configs/`](configs) and [`scripts/`](scripts): fixed experiments, data preparation and generated figures/tables.
 - [`data/`](data) and [`examples/`](examples): attributed real data, checksums and runnable inputs.
-- [`docs/DECISION.md`](docs/DECISION.md): comparison of exactly three project candidates.
-- [`docs/SOURCES.md`](docs/SOURCES.md): ten verified primary research/software sources.
+- [`docs/v2/RESEARCH_REPORT.md`](docs/v2/RESEARCH_REPORT.md): technical report with methods, results and limitations.
+- [`docs/v2/SOURCES.md`](docs/v2/SOURCES.md): research and software references with source-access records.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): equations and component responsibilities.
 - [`docs/LEARNING_GUIDE.md`](docs/LEARNING_GUIDE.md): explanations, interview questions and demo script.
 - [`docs/PORTFOLIO.md`](docs/PORTFOLIO.md): evidence-based CV wording and paper roadmap.
-- [`docs/v2/STATUS.md`](docs/v2/STATUS.md): completed v2 work and continuation notes; [`docs/STATUS.md`](docs/STATUS.md) preserves the v1 record.
+- [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md): development and attribution record.
 
-Code is MIT-licensed; preserve the separate [NAB notice](data/LICENSE-NAB.txt) and [third-party attributions](docs/THIRD_PARTY.md). This project was built with AI assistance. The repository owner should reproduce the study and understand the implementation before presenting it as their own work. V2 is delivered through `gaplens-v2` and [draft PR #2](https://github.com/dreamybu3/propro/pull/2), while `gaplens-delivery` preserves v1. This does not constitute a merge, deployment, publication of a research paper, or activation of the cloud environment snapshot.
+## License and attribution
+
+GapLens code is distributed under the [MIT license](LICENSE). Bundled data retain their source licenses and attribution requirements, including the [NAB notice](data/LICENSE-NAB.txt) and the [v2 data ledger](data/v2/README.md). See [third-party attributions](docs/THIRD_PARTY.md) for dependencies, datasets and related research.

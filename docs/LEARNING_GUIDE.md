@@ -1,14 +1,8 @@
-# Learning, demonstration, and research development
+# GapLens: algorithm guide, demonstration, and research roadmap
 
-This repository was developed with AI assistance. Treat it as material to
-understand, reproduce, critique, and extend. Do not describe all implementation
-or experiments as your own independent work if you did not perform them. A
-defensible portfolio statement explains what this version implements and then
-identifies the reproduction, modifications, or additional analysis you personally
-completed. No publication, adoption, or production deployment is implied.
-The owner reported independently reproducing v1, including its numerical results
-and CI checks. That record does not imply that the owner personally implemented
-or independently reproduced the AI-assisted v2 work.
+This guide traces the reconstruction algorithm, provides runnable demonstration
+scripts, and explains the main design decisions and experimental limitations.
+It also outlines the evidence needed for a further research study.
 
 ## A practical route through the code
 
@@ -209,7 +203,7 @@ ExtraTrees learns nonlinear residual corrections to interpolation from artificia
 training gaps, using the same type of observed contexts and calendar information.
 It checks whether the historical-analog design adds value beyond a reasonable
 generic CPU learner. It is neither a pretrained model nor a remote API. The
-underlying forest is scikit-learn's implementation, and this project authors the
+underlying forest is scikit-learn's implementation; GapLens supplies the
 gap-specific training features, target construction, and evaluation wrapper.
 V2 adds seasonal profiles, local-linear Kalman/RTS smoothing and conditional
 trajectory PCA using the same context information. The latter tests whether a
@@ -296,15 +290,13 @@ presenting them as future work:
 5. **Mechanism and resource analysis:** measure neighbor quality, calendar
    sensitivity, candidate-cap effects, endpoint correction, scale calibration,
    and failure under mismatch. Measure memory in isolated processes and benchmark
-   CPU latency on the intended Windows laptop.
+   CPU latency on a representative Windows laptop.
 6. **A claim matched to the evidence:** articulate whether the contribution is
    better accuracy, a coverage/width/resource tradeoff, an auditable workflow, or
    a documented limitation of analog repair. Update related-work analysis before
-   claiming novelty. Release a reproducibility package only after explicit
-   review of source attribution. The owner already authorized publishing this
-   v2 branch and draft PR; that authorization does not cover submitting a paper.
+   claiming novelty. Include source attribution, data licenses and reproduction
+   instructions in the study's release package.
 
-For your own progression, keep a research log of commands you reproduced,
-explanations you verified by hand, changes you designed, and new results you
-obtained. Those records support accurate CV statements and a stronger technical
-interview than memorizing a claim of superiority.
+A research log can record reproduced commands, worked numerical examples,
+design decisions and new results. It provides a useful reference for further
+experiments and technical discussion.

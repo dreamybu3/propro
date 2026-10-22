@@ -306,6 +306,6 @@ Important unresolved risks are regime changes, nonrandom outages, dense adjacent
 gaps, timezones with ambiguous source provenance, unseen physical constraints,
 and extrapolation beyond the evaluated domains. The expanded v2 benchmark does
 not establish accuracy on genuine outages with unknown truth, general neural
-imputation superiority, or performance on the user's 16 GB laptop. Review the
+imputation superiority, or performance on untested hardware configurations. Review the
 actual [v2 report](v2/RESEARCH_REPORT.md) before deciding whether analog reconstruction is
 preferable to the simpler interpolation baseline for a particular domain.

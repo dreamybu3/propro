@@ -1,25 +1,25 @@
-# Portfolio evidence and a path toward a paper
+# GapLens: portfolio summary and research roadmap
 
-## Accurate positioning
+## Project scope
 
-GapLens is an AI-assisted research software project with an implemented numerical method, a complete CSV-to-report workflow, fixed evaluation protocols and reproducible measurements. It is not a publication, production deployment, invention of conformal prediction, or evidence that the owner personally conducted all development. The owner reported independently reproducing v1, including its 58 tests, 54,432 saved prediction rows, and Ubuntu/Windows CI checks. Do not transfer that attribution to the agent-developed v2 implementation or evaluation. Record the commands and extensions you personally complete before describing them as independent contributions.
+GapLens is research software for retrospective reconstruction of missing time-series blocks. It combines an inspectable numerical method, a complete CSV-to-report workflow, fixed evaluation protocols and reproducible measurements. The current research output is a technical report; production deployment and user studies remain outside the evaluated scope. The [development record](DEVELOPMENT.md) documents contributions to the project.
 
-The artifact provides concrete material to learn: avoiding hidden-target leakage, preventing exported estimates from becoming measurements, matching uncertainty to an entire missing block, separating empirical results from guarantees, and preserving failed hypotheses. No algorithmic novelty is established by using a new name or by implementing known ideas independently.
+Its engineering contribution includes protection against hidden-target leakage, explicit separation of estimates and measurements, whole-block uncertainty estimates, and reproducible evaluation that retains failed hypotheses. The method combines established ideas; algorithmic novelty has not been established.
 
 ## CV wording for the v2 repository
 
-The following wording describes the repository. Use first-person achievement language only after personally reproducing and being able to defend the relevant work; disclose AI assistance when asked or required.
+The following project summaries describe implemented capabilities and recorded evidence.
 
-- **GapLens — AI-assisted research software:** CPU-only Python tool for retrospective gap reconstruction, with historical-analog endpoint conditioning, whole-gap calibration, explicit provenance validation, and auditable CSV/JSON/HTML exports.
+- **GapLens — time-series reconstruction and evaluation:** CPU-only Python tool with historical-analog endpoint conditioning, whole-gap calibration, explicit provenance validation, and auditable CSV/JSON/HTML exports.
 - Expanded reproducibility package with **14 real streams in eight provider/domain groups**, several chronological evaluation origins, shared frozen masks, development-only model selection, and seasonal, Kalman/RTS, trajectory-PCA and retrieval comparisons. Correlated channels are grouped rather than presented as independent systems.
 - Preserves point errors, coverage, interval widths and refusal rates together; retains the original analog default after the diverse candidate failed its development selection rule. Held-out conclusions and failed hypotheses are reported in the [v2 technical report](v2/RESEARCH_REPORT.md), with [machine-generated tables](../results/v2/final/tables.md) and [verification evidence](v2/VALIDATION.md).
 
-These lines describe the repository rather than assigning personal authorship.
-They claim neither users nor accepted papers. If a shorter CV uses a numerical
-v2 effect, copy it from the final report with its comparison, dataset scope,
-service denominator and uncertainty limits; do not replace a failed hypothesis
-with a favorable isolated metric. A negative result is compatible with a strong
-software/reproducibility project.
+Numerical comparisons need their dataset scope, metric and service denominator.
+On the 14 new series, the selected diverse candidate had a **1.0453 geometric
+MAE ratio to v1**, with four series wins and ten losses. V1 remains the default;
+the study does not establish universal superiority over interpolation. Recent
+calibration met its frozen aggregate criterion, but its apparent width benefit
+was dominated by one extreme network calibration episode.
 
 ## Preserved v1 evidence, now development data
 
@@ -43,7 +43,7 @@ new-series comparison. See [selection.json](../results/v2/development/tuning/sel
 - Preserved v1 artifacts and a separate v2 protocol, development selections, frozen masks, calibration boundaries and ablations.
 - An explicit rejection contract for unsupported repair-export reimports, duplicate-header validation, observation-preservation tests and saved refusal reasons.
 - Case-level predictions, calibration scores, summary/figure generation and an independent reconciliation script; [v2 validation](v2/VALIDATION.md) records what actually ran.
-- V1 Ubuntu/Windows CI independently reported verified by the owner. V2 CI must be assessed from its own recorded commit/check links; neither is a measurement on the owner's laptop.
+- [V2 Ubuntu/Windows CI](https://github.com/dreamybu3/propro/actions/runs/39853118660): tests, data hashes, independent saved-result verification and both product demos passed with Python 3.12. Resource measurements were made separately on a cloud Linux machine.
 
 ## A defensible research direction
 
@@ -59,13 +59,11 @@ version must improve accuracy.
 3. **Compare external reference implementations where compatible.** V2 implements seasonal/Kalman/PCA controls, but is not a reproduction of all author packages or a neural-imputation benchmark. Add such comparisons only with compatible information and compute budgets.
 4. **Investigate the measured failure mechanism.** Choose a further calibration or retrieval change from the retained diagnostics, then test it on new data. Existing rolling/static and fixed-neighbor-count ablations should not be rewritten after observing outcomes.
 5. **Study genuine outages and decision benefit.** Controlled MCAR/MAR/MNAR masks, damaged contexts and synthetic shifts do not establish accuracy on unknown outage truth. A redundant sensor or other independent reference would support that stronger claim.
-6. **Measure practical usability.** Test the actual 16 GB Windows laptop, separate cold-start latency and memory from warm inference, and evaluate an analyst workflow if appropriate. Cloud measurements and CI results are different evidence.
+6. **Measure practical usability.** Test a representative 16 GB Windows laptop, separate cold-start latency and memory from warm inference, and evaluate an analyst workflow if appropriate. Cloud measurements and CI results are different evidence.
 
-The appropriate current label is a transparent technical report and portfolio
-artifact. A submission decision requires a claim supported by the final results,
-verified references and personal understanding of the work. No venue fit,
-acceptance or publication is guaranteed; publishing this branch/draft PR is not
-the same action as submitting a paper.
+The current deliverables support a technical report and a reproducible portfolio
+project. A future paper needs a clearly scoped contribution supported by new
+evidence, verified references and external review.
 
 ## Demonstration and interview preparation
 

@@ -296,7 +296,7 @@ Finite calibration, temporal change and partial interval service constrain opera
 
 A stronger future paper would need genuinely new held-out sources after this exposure, a stronger independent competitor implementation audit, sensitivity to context/seasonal specifications, better sampling of independent systems, and an application-specific evaluation of abstention and interval utility. Any adaptation based on these final results must be evaluated on new data or explicitly labeled exploratory. Acceptance or scientific priority is not implied by the current artifacts.
 
-## 9. Reproducibility, resources and AI disclosure
+## 9. Reproducibility and resources
 
 Dependencies are pinned in `pyproject.toml` and `uv.lock` for Python 3.11–3.13. Core computation requires no GPU or paid service. The runner checks the committed freeze, protected source hashes, input hashes and saved masks. Replaying the guarded benchmark requires a Git checkout; a source ZIP supports installation, product use, saved-result inspection and summary generation but lacks the history required by the freeze guard.
 
@@ -322,9 +322,9 @@ uv run python scripts/verify_v2.py --input results/v2/benchmark
 
 The raw artifacts include all case-method outcomes/refusals, compressed point predictions, calibration scores/IDs, alpha-curve measurements, phase timings, configuration and hashes. The verifier independently reconciles truth positions, point errors, bands, coverage, widths, quantile ranks, service denominators and preserved v1 files; optional comparison requires exact parsed predictions/scores/curves and case results apart from prediction timing. A clean isolated checkout reproduced all **162,126 point predictions**, **42,890 calibration-score rows** and **70,587 coverage–width rows** byte for byte; all **23,529 case-method rows** matched apart from timing. Its 14 scientific CSV tables, generated Markdown tables and eight figures also matched byte for byte. See the [clean numerical replay](../../results/v2/validation/reproduction.json), [clean summary replay](../../results/v2/validation/clean_summary_reproduction.json) and [final validation record](VALIDATION.md). The clean corrected checkout passed 174 tests without skips; two subsequently added sensitivity-analysis tests bring the final working-tree check to 176. Cross-platform floating-point identity is not assumed merely from successful CI; the validation record states the separate CI scope.
 
-Cloud runtime and cumulative process peak RSS are observations of this execution environment, not measurements of the owner's laptop or isolated per-method peak memory. Lazy candidate/PCA construction is included in cold prediction or calibration, not hidden in an unrealistically cheap fit label. Resources and phase timings are reported with the completed run above.
+Cloud runtime and cumulative process peak RSS describe the recorded execution environment. They do not measure performance on other hardware or isolated per-method peak memory. Lazy candidate/PCA construction is included in cold prediction or calibration. Resources and phase timings are reported with the completed run above.
 
-AI agents wrote and reviewed code, investigated sources, prepared the protocol and executed analyses under the user's authorization. Independent agent reviews are additional checks, not independent human replication or proof of correctness. No claim is made that the repository owner personally performed those agent actions. The owner should study and reproduce the work before making first-person research claims. This report, the provenance ledger and the saved artifacts are intended to make that review possible.
+**Development disclosure.** AI assistance was used for implementation, source review, protocol preparation, analysis and internal review. Contributions and verification roles are recorded in [Development and attribution](../DEVELOPMENT.md).
 
 ## References
 
