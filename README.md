@@ -85,7 +85,7 @@ Hard limits are 200,000 rows per file, 32 MiB per file, 200 gaps and 32 supporte
 
 Version 0.2 fixes repair-export reimport (including blank CSV preambles),
 duplicate headers, predictable export conflicts, unsupported-model reporting,
-failed-refit validation and seasonal timestamp resolution. The original v1
+failed-refit validation, atomic ExtraTrees refits and seasonal timestamp resolution. The original v1
 branch, data and measurements remain preserved. Read the [change and correction
 record](docs/v2/CORRECTIONS.md): a parser-only fix followed the first holdout
 run; its original results remain available and no model tuning followed exposure.

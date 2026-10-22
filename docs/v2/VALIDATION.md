@@ -50,10 +50,33 @@ Dependencies were installed from `requirements.lock` with hash verification,
 then the project installed editable without dependency resolution. `pip check`
 and all 14 bundled data-hash checks passed. The corrected checkout `ed799ef`
 passed **174 tests** in that environment; the two later sensitivity tests are
-additional analysis checks. The complete final local suite passed **176 tests**,
+additional analysis checks. The original v2 delivery suite passed **176 tests**,
 with no failures/skips and 14 third-party deprecation warnings. Results are in
 [final_tests.log](../../results/v2/validation/final_tests.log) and
 [JUnit XML](../../results/v2/validation/final_tests.xml).
+
+The subsequent [atomic ExtraTrees refit correction](CORRECTIONS.md#atomic-extratrees-refit--2026-10-22)
+adds four regressions for failed initial fits/refits and twelve checks for
+explicit historical source-hash amendments. The current suite passed **192 tests**
+with no failures or skips; the same 14 third-party deprecation warnings remain.
+Its [test log](../../results/v2/validation/atomic_refit/tests.log) and
+[JUnit XML](../../results/v2/validation/atomic_refit/tests.xml) are separate from
+the historical delivery records. The
+[preservation check](../../results/v2/validation/atomic_refit/preservation.json)
+confirms 205 historical data/result/protocol files are byte-identical to the
+preceding delivery checkpoint. The
+[saved-result verification](../../results/v2/validation/atomic_refit/saved_results.json)
+reports the registered source correction explicitly; artifact and numerical
+checks remain enforced.
+
+The [atomic-refit full replay](../../results/v2/validation/atomic_refit/reproduction.json)
+checks the corrected source hashes and exactly reproduces all 162,126 point rows,
+42,890 calibration-score rows, 70,587 coverage-curve rows and 23,529 case-method
+rows (prediction timing excluded). The
+[regenerated analysis](../../results/v2/validation/atomic_refit/summary_reproduction.json)
+also matches all 14 scientific CSV tables, Markdown tables and eight figures
+byte for byte. Run metadata and timing measurements are retained separately in
+the [new run record](../../results/v2/validation/atomic_refit/replay_run.json).
 
 The same isolated environment was retained across the parser-only correction;
 dependency lock hashes were unchanged. This is explicitly recorded in

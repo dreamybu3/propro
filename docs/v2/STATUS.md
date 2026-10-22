@@ -9,7 +9,7 @@ Working/delivery branch: `gaplens-v2`; no merge or paid deployment authorized.
 - Fourteen licensed/pinned streams across six collections/eight conservative groups; three old NAB series used only for development.
 - Protocol, masks, tuning and analysis frozen at `dc43d472f5a9e22bb510963eedeebdf4077e7234` before final scoring. Validation-only CSV correction at `ed799ef058432615d6c2bae4c0b3118729b77b06`, explicitly recorded after first exposure; no performance choices changed.
 - Full study: 2,139 targets, 23,529 method cases, 162,126 point rows; first and corrected outputs preserved separately.
-- Clean isolated install and replay: 174 tests at the corrected numerical checkpoint; final local suite 176 tests including two later sensitivity tests. No failed/skipped tests. Numerical outputs, scientific tables and all figures match exactly (timings excluded).
+- Clean isolated install and replay: 174 tests at the corrected numerical checkpoint; original delivery suite 176 tests including two later sensitivity tests. The atomic ExtraTrees refit correction brings the current suite to 192 tests. No failed/skipped tests. Numerical outputs, scientific tables and all figures match exactly (timings excluded).
 - Independent product/model/methodology/result/delivery reviews; actual Chromium report checks; English technical-report draft, Russian guide, architecture, demo/interview/CV materials updated.
 
 ## Scientific conclusion

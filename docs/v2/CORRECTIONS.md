@@ -78,3 +78,30 @@ Validation records are stored in
 Replay outputs use a new directory; historical experiment directories are never
 overwritten. The replay compares all predictions, scales, intervals, calibration
 scores, coverage curves and case metrics, excluding runtime measurements.
+
+To repeat the corrected run from a Git checkout, choose a new output directory:
+
+```sh
+uv run python scripts/run_experiments_v2.py --output results/atomic-refit-replay
+uv run python scripts/verify_v2.py --input results/v2/benchmark
+uv run python scripts/verify_v2.py --input results/atomic-refit-replay --compare results/v2/benchmark
+```
+
+The corrected code was committed as `3545d5865ec859c4c5dd9eaeb0240490631f26d1`
+before replay. All **192 tests passed**. Both saved full runs passed independent
+verification, with their applicable source amendments disclosed. The
+[full replay comparison](../../results/v2/validation/atomic_refit/reproduction.json)
+confirmed byte-identical **162,126 point rows**, **42,890 calibration-score rows**
+and **70,587 coverage-curve rows**. All **23,529 case-method rows** matched exactly
+apart from prediction timing. The new run's current source hashes were checked
+directly, in addition to comparing its outputs with the saved benchmark.
+
+Regenerated analysis matched all **14 scientific CSV tables**, Markdown tables
+and **eight PNG/SVG figures** byte for byte; scientific summary fields matched
+exactly after excluding measured performance. See the
+[summary comparison](../../results/v2/validation/atomic_refit/summary_reproduction.json).
+The [preservation receipt](../../results/v2/validation/atomic_refit/preservation.json)
+also confirms all 205 checked historical files remain unchanged. New logs and
+validation receipts are stored alongside these records; original outputs are
+preserved in place. Runtime, memory and provenance metadata of the new execution
+are recorded separately and are not presented as unchanged measurements.
