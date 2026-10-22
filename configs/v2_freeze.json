@@ -15,7 +15,7 @@
     "scripts/summarize_v2.py": "d42f824edcf383a8c1fee4dca5d855dc2a720b6754859ea9987b26cbe2930526",
     "scripts/fetch_data_v2.py": "f795f2def25772b7ea9a6e6f4915aee38f7d9a03b665a47fa02322a712a66351",
     "src/gaplens/_core_v1.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
-    "src/gaplens/core.py": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+    "src/gaplens/core.py": "cd74fc391e9d733333923ec283c913c5c7f72b820a59e01da3aecf337dbbd6ea",
     "src/gaplens/models_v2.py": "77caa4b52f70c461eaf7eca6b789f92459f2283dc1f16b2a27e6a26b66222e76",
     "src/gaplens/calibration.py": "b4e21a77ab0e00f039518feb6ffd865fffca86c41dffe623465ec5dc256595e0",
     "src/gaplens/data.py": "5b492ab1a31ba924a0a2026f6bbb67a5e5991420a352f346cfad462857e16d62",
@@ -30,6 +30,15 @@
       "old_sha256": "c7a391232e67b5ef79e138155a9d2ad5cdb3af2aa5d2b233d4c2c22f32515992",
       "new_sha256": "5b492ab1a31ba924a0a2026f6bbb67a5e5991420a352f346cfad462857e16d62",
       "reason": "Reject repair exports and duplicate headers even with blank CSV preamble; input validation only. No scientific choices changed.",
+      "record": "docs/v2/CORRECTIONS.md",
+      "first_holdout_already_inspected": true
+    },
+    {
+      "recorded_at": "2026-10-22T21:14:36.092934+00:00",
+      "path": "src/gaplens/core.py",
+      "old_sha256": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+      "new_sha256": "cd74fc391e9d733333923ec283c913c5c7f72b820a59e01da3aecf337dbbd6ea",
+      "reason": "Make ExtraTreesBridge.fit transactional: prepare reference statistics, windows and a new forest privately; publish fitted state only after successful training. No changes to features, window selection, random seed, hyperparameters or evaluation protocol.",
       "record": "docs/v2/CORRECTIONS.md",
       "first_holdout_already_inspected": true
     }

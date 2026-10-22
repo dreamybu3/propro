@@ -251,34 +251,40 @@ class ExtraTreesBridge(_ReferenceMethod):
     def fit(self, values, timestamps=None):
         from sklearn.ensemble import ExtraTreesRegressor
 
-        super().fit(values, timestamps)
+        # Keep the working model intact until reference preparation and tree
+        # training both succeed, including failures after estimator creation.
+        reference_state = _ReferenceMethod(self.context).fit(values, timestamps)
         rng = np.random.default_rng(self.seed)
         x_parts, y_parts = [], []
-        self.training_examples_ = 0
+        training_examples = 0
         per_length, remainder = divmod(self.training_gaps, len(self.lengths))
         for length_index, length in enumerate(self.lengths):
             each = per_length + int(length_index < remainder)
             if each == 0:
                 continue
-            starts = _complete_starts(self.reference_, length, self.context)
+            starts = _complete_starts(reference_state.reference_, length, self.context)
             if not len(starts):
                 continue
             selected = rng.choice(starts, size=min(each, len(starts)), replace=False)
             for start in selected:
                 end = int(start + length)
-                context = np.concatenate((self.reference_[start - self.context:start],
-                                          self.reference_[end:end + self.context]))
-                features, chord = self._features(context, start, end, self.timestamps_)
+                context = np.concatenate((reference_state.reference_[start - self.context:start],
+                                          reference_state.reference_[end:end + self.context]))
+                features, chord = self._features(context, start, end, reference_state.timestamps_)
                 x_parts.append(features)
-                y_parts.append(self.reference_[start:end] - chord)
-                self.training_examples_ += 1
+                y_parts.append(reference_state.reference_[start:end] - chord)
+                training_examples += 1
         if not x_parts:
             raise ValueError("Reference has no complete training windows for requested lengths.")
-        self.model_ = ExtraTreesRegressor(
+        model = ExtraTreesRegressor(
             n_estimators=self.n_estimators, min_samples_leaf=3,
             max_features=1.0, random_state=self.seed, n_jobs=1,
         )
-        self.model_.fit(np.concatenate(x_parts), np.concatenate(y_parts))
+        model.fit(np.concatenate(x_parts), np.concatenate(y_parts))
+        self.__dict__ = {
+            **self.__dict__, **reference_state.__dict__,
+            "training_examples_": training_examples, "model_": model,
+        }
         return self
 
     def predict(self, values, start, end, timestamps=None):

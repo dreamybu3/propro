@@ -16,7 +16,7 @@ data, model, hyperparameter, mask, metric, uncertainty rule or analysis script.
 
 The original freeze is commit `dc43d472` (full hash in freeze_receipt.json).
 Its manifest is preserved as `configs/v2_freeze_initial.json`. The amended
-freeze changes only the protected SHA-256 for `src/gaplens/data.py` and adds
+freeze at that checkpoint changed only the protected SHA-256 for `src/gaplens/data.py` and added
 this explanation; the protocol, configuration and mask hashes remain identical.
 The correction commit is recorded in `results/v2/correction_receipt.json`.
 
@@ -30,3 +30,51 @@ The first holdout outcomes were already seen. The corrected replay is explicitly
 a corrected analysis of the same evaluation, **not another unseen holdout**.
 No performance tuning followed exposure. Numerical identity is a verification
 requirement; timings, source hashes and environment metadata may differ.
+
+## Atomic ExtraTrees refit — 2026-10-22
+
+The delivered checkpoint `6e9a53d2413dad15a8546d6bb354da2fcf315d18` still
+published reference values, timestamps, scales and the training-window count
+before `ExtraTreesBridge.fit` finished. After a successful fit, a reference with
+enough finite observations but no complete training windows raised an exception
+while leaving the old forest paired with new reference statistics. A failure
+inside the tree backend could also replace the working forest with an incomplete
+one. The earlier timestamp-validation fix did not cover these later failures.
+
+The corrected method prepares reference state, training windows, the window
+count and a new forest privately. It replaces the fitted instance state only
+after all training steps succeed. Failed initial fits remain unfitted; failed
+refits preserve the complete previous working model. A subsequent successful
+refit still replaces the model normally. Features, window order and selection,
+random seeds, hyperparameters and successful-fit calculations are unchanged.
+
+Four regression cases cover missing complete windows and a partially failed
+tree backend, both on a previously fitted model and on a fresh instance.
+They failed before the correction. The refit cases require exactly unchanged
+predictions and scales, reference/timestamps, forest identity and training count;
+they also compare a later successful refit with a freshly trained model.
+
+Only the protected hash for `src/gaplens/core.py` changes in the active freeze:
+
+- Previous: `16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a`
+- Corrected: `cd74fc391e9d733333923ec283c913c5c7f72b820a59e01da3aecf337dbbd6ea`
+
+The `validation_amendments` entry records this transition after holdout exposure.
+The original freeze, saved run metadata, predictions, metrics and figures retain
+their historical hashes. The protocol, masks, data, selected parameters and
+immutable `_core_v1.py` are unchanged. The amendment is a correctness repair,
+not a new prospective evaluation or a change to the study's conclusions.
+
+`scripts/verify_v2.py` reports registered source amendments separately from
+numerical checks. A changed source must match the active protected hash and be
+reachable from the run's recorded hash through a unique, connected amendment
+chain for that exact file. Unregistered changes, wrong endpoints, broken chains,
+cycles and ambiguous transitions are rejected. This permits verification of
+historical artifacts without rewriting their `run.json`; the chain alone does
+not establish numerical equivalence.
+
+Validation records are stored in
+[`results/v2/validation/atomic_refit`](../../results/v2/validation/atomic_refit).
+Replay outputs use a new directory; historical experiment directories are never
+overwritten. The replay compares all predictions, scales, intervals, calibration
+scores, coverage curves and case metrics, excluding runtime measurements.

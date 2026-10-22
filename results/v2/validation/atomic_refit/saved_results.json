@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "case_method_rows": 23529,
+  "prediction_rows": 162126,
+  "planned_gaps": 2139,
+  "scored_case_method_rows": 18006,
+  "calibration_quantile_checks": 18006,
+  "preserved_v1_files_verified": 24,
+  "source_amendments": [
+    {
+      "recorded_at": "2026-10-22T21:14:36.092934+00:00",
+      "path": "src/gaplens/core.py",
+      "old_sha256": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+      "new_sha256": "cd74fc391e9d733333923ec283c913c5c7f72b820a59e01da3aecf337dbbd6ea",
+      "reason": "Make ExtraTreesBridge.fit transactional: prepare reference statistics, windows and a new forest privately; publish fitted state only after successful training. No changes to features, window selection, random seed, hyperparameters or evaluation protocol.",
+      "record": "docs/v2/CORRECTIONS.md",
+      "first_holdout_already_inspected": true
+    }
+  ],
+  "reproduction": null
+}

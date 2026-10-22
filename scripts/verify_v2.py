@@ -28,14 +28,51 @@ def close(actual, expected, label):
         raise ValueError(f"Numerical reconciliation failed: {label}")
 
 
+def verify_source_hashes(recorded):
+    """Check exact sources or disclose a registered chain of correctness changes.
+
+    Historical run metadata remains immutable. A changed source must reach the
+    current protected hash through explicit amendments for that exact path.
+    This checks source provenance; numerical equivalence requires a separate
+    replay comparison. No Git history is needed to verify a downloaded ZIP.
+    """
+    frozen = None
+    applied = []
+    for name, expected in recorded.items():
+        actual = digest(ROOT / name)
+        if actual == expected:
+            continue
+        if frozen is None:
+            path = ROOT / "configs/v2_freeze.json"
+            check(path.is_file(), f"Numerical source differs without an amendment manifest: {name}")
+            frozen = json.loads(path.read_text())
+        check(frozen.get("protected_sha256", {}).get(name) == actual,
+              f"Numerical source differs from current protected hash: {name}")
+        cursor = expected
+        visited = set()
+        while cursor != actual:
+            check(cursor not in visited, f"Cyclic numerical source amendment: {name}")
+            visited.add(cursor)
+            matches = [entry for entry in frozen.get("validation_amendments", [])
+                       if entry.get("path") == name and entry.get("old_sha256") == cursor]
+            check(len(matches) == 1,
+                  f"Numerical source differs without an unambiguous amendment chain: {name}")
+            entry = matches[0]
+            following = entry.get("new_sha256")
+            check(isinstance(following, str) and following != cursor,
+                  f"Invalid numerical source amendment: {name}")
+            applied.append(dict(entry))
+            cursor = following
+    return applied
+
+
 def verify(directory, comparison=None):
     directory = Path(directory)
     run = json.loads((directory / "run.json").read_text())
     check(run["status"] == "complete" and not run["is_smoke_run"], "Need a completed full run")
     for name, expected in run["artifact_sha256"].items():
         check(digest(directory / name) == expected, f"Run artifact hash differs: {name}")
-    for name, expected in run["code_sha256"].items():
-        check(digest(ROOT / name) == expected, f"Numerical source differs: {name}")
+    source_amendments = verify_source_hashes(run["code_sha256"])
     baseline = json.loads((ROOT / "docs/v2/baseline_hashes.json").read_text())
     for name, expected in baseline["sha256"].items():
         check(digest(ROOT / name) == expected, f"Preserved v1 artifact differs: {name}")
@@ -124,7 +161,8 @@ def verify(directory, comparison=None):
     return {"status": "passed", "case_method_rows": len(cases), "prediction_rows": len(points),
             "planned_gaps": len(planned), "scored_case_method_rows": scored,
             "calibration_quantile_checks": quantile_checks,
-            "preserved_v1_files_verified": len(baseline["sha256"]), "reproduction": reproduced}
+            "preserved_v1_files_verified": len(baseline["sha256"]),
+            "source_amendments": source_amendments, "reproduction": reproduced}
 
 
 def main():

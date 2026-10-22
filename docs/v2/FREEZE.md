@@ -14,7 +14,7 @@ ratio to v1 was 1.0399390708282688. The predeclared rule therefore retains v1
 as the product default. ExtraTrees is the development-selected non-retrieval
 comparator. All trials, masks and choices are preserved under development/tuning.
 
-An independent review found timestamp-resolution and failed-refit validation
+An independent review found timestamp-resolution and failed-refit timestamp-validation
 bugs before freeze. Both were corrected. Repeating development afterwards
 reproduced all five numerical/selection artifacts byte-for-byte. The immutable
 `_core_v1.py` exactly matches the baseline source; corrected `core.py` is used
@@ -38,3 +38,9 @@ checkout to replay the experiment. ZIP downloads support installation, the CLI,
 saved artifacts and analysis; the guarded scoring command requires Git history
 to verify the freeze commit. Subsequent correctness corrections must be recorded
 explicitly; final outcomes cannot be used for silent tuning.
+
+Post-evaluation corrections are listed in [CORRECTIONS.md](CORRECTIONS.md).
+The active manifest includes explicit source-hash amendments for CSV preamble
+validation and atomic ExtraTrees refitting. Saved runs retain their original
+manifests and source hashes; reproduction of the corrected code is checked
+separately against those historical numerical outputs.
