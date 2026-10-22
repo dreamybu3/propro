@@ -15,6 +15,7 @@ import numpy as np
 
 from .core import (
     AnalogBridge, Prediction, _ReferenceMethod, _calendar, _complete_starts,
+    _series, _timestamps,
 )
 
 
@@ -160,12 +161,21 @@ class SeasonalBridge(_ReferenceMethod):
         self.period = int(period)
 
     def fit(self, values, timestamps=None):
-        super().fit(values, timestamps)
-        if self.timestamps_ is None:
+        # DatetimeIndex.asi8 uses the index's own resolution (s/ms/us/ns).
+        # Normalize before subtracting fitted/query times, and reject invalid
+        # seasonal grids before the base class publishes any new fitted state.
+        reference = _series(values)
+        times = _timestamps(timestamps, len(reference))
+        if times is None:
             raise ValueError("SeasonalBridge requires timestamps to align seasonal phases.")
-        differences = np.diff(self.timestamps_.asi8)
+        try:
+            times = times.as_unit("ns")
+        except (ValueError, OverflowError) as exc:
+            raise ValueError("Seasonal timestamps must be representable at nanosecond resolution.") from exc
+        differences = np.diff(times.asi8)
         if not len(differences) or differences[0] <= 0 or not np.all(differences == differences[0]):
             raise ValueError("SeasonalBridge requires a regular increasing timestamp grid.")
+        super().fit(reference, times)
         self.origin_ = int(self.timestamps_.asi8[0])
         self.step_ = int(differences[0])
         phase = np.arange(len(self.reference_)) % self.period
@@ -183,6 +193,10 @@ class SeasonalBridge(_ReferenceMethod):
         _, context, times = self._query(values, start, end, timestamps)
         if times is None:
             raise ValueError("SeasonalBridge requires timestamps to align seasonal phases.")
+        try:
+            times = times.as_unit("ns")
+        except (ValueError, OverflowError) as exc:
+            raise ValueError("Seasonal timestamps must be representable at nanosecond resolution.") from exc
         offsets = times.asi8 - self.origin_
         if np.any(offsets % self.step_):
             raise ValueError("Query timestamps must lie on the fitted seasonal grid.")

@@ -79,11 +79,13 @@ class _ReferenceMethod:
         finite = reference[np.isfinite(reference)]
         if len(finite) < 2 * self.context + 1:
             raise ValueError("Reference has too few finite observations for the context.")
-        self.reference_ = reference.copy()
-        self.timestamps_ = _timestamps(timestamps, len(reference))
+        # Validate and compute before publishing fitted state. A failed refit
+        # must not combine a new reference with an old model/window cache.
+        fitted_reference = reference.copy()
+        fitted_timestamps = _timestamps(timestamps, len(reference))
         center = np.median(finite)
         robust = 1.4826 * np.median(np.abs(finite - center))
-        self.global_scale_ = float(max(robust, np.std(finite), 1e-8))
+        global_scale = float(max(robust, np.std(finite), 1e-8))
         diffs = np.diff(reference)
         diffs = diffs[np.isfinite(diffs)]
         if len(diffs):
@@ -91,7 +93,13 @@ class _ReferenceMethod:
         else:
             noise = 0.0
         # Positive even for constant or perfectly linear reference signals.
-        self.noise_floor_ = float(max(noise, 0.01 * self.global_scale_, 1e-8))
+        noise_floor = float(max(noise, 0.01 * global_scale, 1e-8))
+        if not np.isfinite(global_scale) or not np.isfinite(noise_floor):
+            raise ValueError("Nonfinite reference scale: input magnitude is unsupported.")
+        self.reference_ = fitted_reference
+        self.timestamps_ = fitted_timestamps
+        self.global_scale_ = global_scale
+        self.noise_floor_ = noise_floor
         return self
 
     def _query(self, values, start, end, timestamps):
