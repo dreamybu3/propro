@@ -24,8 +24,13 @@ sequence. Unrelated files are never selected for replacement.
 
 Lazy fitting does not relax CSV, chronology, cadence, grid, or minimum reference
 split validation. For an eligible gap, fitting and calibration still need to
-succeed under the existing rules. The training/calibration row counts describe
-the reserved history split, including when no gap requires an estimator.
+succeed under the existing rules. In the subsequent integration step, an
+estimator's `ValueError` during fitting was made an explicit support refusal for
+eligible gaps, retaining separate boundary/context refusal reasons. The CLI
+exports these unresolved results and honors `--require-complete` with exit code
+3. Invalid files, chronology, grids, and configuration remain fatal input
+errors. The training/calibration row counts describe the reserved history split,
+including when no gap requires an estimator.
 
 ## Executed verification
 
@@ -56,3 +61,23 @@ exercise successful reconstruction with each supported estimator, calibration
 insufficiency, historical-neighbor boundaries and JSON round-tripping, output protection,
 CLI errors, and HTML escaping. This local audit does not establish performance
 on the user's laptop or replace remote Windows/Linux CI evidence.
+
+## Optional diverse retrieval integration
+
+`--method diverse` uses `DiverseAnalogBridge` with the existing context and
+neighbor options. `analog` remains the CLI and Python configuration default.
+The report names the selected method and explains that the established rule of
+selecting complete historical windows without overlap can return fewer than
+the requested neighbors and does not establish statistical independence.
+
+The additional CLI regression uses a synthetic oscillatory reference and a
+later query with eight hidden samples. It checks the selected method, separated
+historical windows, measured-value preservation, reconstructed statuses,
+calibrated intervals, and all three artifacts. A separate case checks that
+unusable ExtraTrees training history produces saved refusals for eligible gaps
+without obscuring a boundary refusal. After this integration, the following
+command passed **24 tests**:
+
+```bash
+python -m pytest -q tests/test_pipeline_audit.py tests/test_pipeline.py tests/test_entrypoint.py
+```

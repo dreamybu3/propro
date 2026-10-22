@@ -32,8 +32,8 @@ class RepairConfig:
     seed: int = 17
 
     def validate(self):
-        if self.method not in {"analog", "linear", "extra-trees"}:
-            raise ValueError("method must be analog, linear or extra-trees")
+        if self.method not in {"analog", "diverse", "linear", "extra-trees"}:
+            raise ValueError("method must be analog, diverse, linear or extra-trees")
         for name in ("context", "neighbors", "max_gap", "calibration_gaps"):
             value = getattr(self, name)
             if not isinstance(value, int) or isinstance(value, bool) or value < 1:
@@ -60,6 +60,10 @@ def _time(value):
 def _model(config, lengths):
     if config.method == "analog":
         return AnalogBridge(context=config.context, k=config.neighbors)
+    if config.method == "diverse":
+        from .models_v2 import DiverseAnalogBridge
+
+        return DiverseAnalogBridge(context=config.context, k=config.neighbors)
     if config.method == "linear":
         return LinearBridge(context=config.context)
     return ExtraTreesBridge(context=config.context, seed=config.seed, lengths=tuple(lengths) or (6, 12, 24))
@@ -111,6 +115,7 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
     # In particular, sparse history must not hide an actionable boundary refusal
     # behind an unrelated ExtraTrees training-window error.
     model = None
+    fit_error = None
     cal_values = calibration.value.to_numpy()
     cal_times = pd.DatetimeIndex(calibration.timestamp)
     query_times = pd.DatetimeIndex(query.timestamp)
@@ -126,6 +131,10 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
         "Bands target simultaneous coverage of an entire gap. Dependence and distribution shift mean nominal coverage is not guaranteed.",
         "Reconstructed values are estimates, not observations. Review them before downstream decisions; no physical bounds are imposed.",
     ]
+    if config.method == "diverse":
+        warnings.append(
+            "Diverse retrieval selects complete historical windows without overlap, using an established retrieval rule. It may return fewer than the requested neighbors; separation does not establish statistical independence."
+        )
     for gap_id, (start, end) in enumerate(gaps, start=1):
         length = end - start
         gap_ids[start:end] = gap_id
@@ -144,8 +153,14 @@ def repair(reference_path, input_path, output_dir, config=None, overwrite=False)
         elif not np.isfinite(np.r_[original[start-config.context:start], original[end:end+config.context]]).all():
             reason = "Context contains another gap; estimates are never reused as observations"
         if reason is None:
-            if model is None:
-                model = _model(config, lengths).fit(train.value.to_numpy(), pd.DatetimeIndex(train.timestamp))
+            if model is None and fit_error is None:
+                try:
+                    model = _model(config, lengths).fit(train.value.to_numpy(), pd.DatetimeIndex(train.timestamp))
+                except ValueError as exc:
+                    fit_error = "Insufficient usable training/reference support: " + str(exc)
+            if fit_error is not None:
+                reason = fit_error
+        if reason is None:
             if length not in cache:
                 windows = sample_gaps(cal_values, length, config.context, config.calibration_gaps, config.seed + length)
                 scores = []
