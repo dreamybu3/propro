@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "case_method_rows": 23529,
+  "prediction_rows": 162126,
+  "planned_gaps": 2139,
+  "scored_case_method_rows": 18006,
+  "calibration_quantile_checks": 18006,
+  "preserved_v1_files_verified": 24,
+  "source_amendments": [],
+  "reproduction": {
+    "predictions.csv.gz": {
+      "rows": 162126,
+      "exact_parsed_match": true,
+      "byte_identical": true
+    },
+    "calibration_scores.csv": {
+      "rows": 42890,
+      "exact_parsed_match": true,
+      "byte_identical": true
+    },
+    "coverage_width.csv": {
+      "rows": 70587,
+      "exact_parsed_match": true,
+      "byte_identical": true
+    },
+    "case_metrics.csv": {
+      "rows": 23529,
+      "exact_except_prediction_seconds": true
+    }
+  }
+}

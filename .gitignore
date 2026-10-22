@@ -14,3 +14,5 @@ demo-output/
 venv/
 node_modules/
 ci-demo/
+
+diverse-demo-output/

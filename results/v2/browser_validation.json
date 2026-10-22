@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-22T20:25:54.828562+00:00",
+  "browser": "Chromium",
+  "browser_version": "154.0.8037.57",
+  "transport": "Temporary loopback HTTP; no browser policy was altered",
+  "remote_resource_requests": [],
+  "report": "results/v2/demo/report.html",
+  "report_sha256": "b3bd22e401f342b5c24aa42430aea3129cd949ca2eb44d2dbc3881515a984338",
+  "checks": [
+    "Local report loads through temporary loopback HTTP and gap count matches audit JSON",
+    "Gap selection and historical neighbor provenance render",
+    "Single-sample uncertainty renders a visible interval with two caps",
+    "Overview control changes the chart",
+    "Both gap-status filters match measured results",
+    "CSV download preserves the actual exported bytes",
+    "Desktop 1440px and mobile 390px layouts have no horizontal overflow",
+    "No JavaScript exceptions",
+    "No remote resource requests"
+  ],
+  "javascript_errors": [],
+  "requested_urls": [
+    "http://127.0.0.1:39519/report.html"
+  ],
+  "screenshots": [
+    "docs/v2/assets/report.png",
+    "docs/v2/assets/report-mobile.png"
+  ]
+}

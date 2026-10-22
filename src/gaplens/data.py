@@ -7,12 +7,14 @@ inputs are never silently sorted, deduplicated, resampled, or interpolated.
 from __future__ import annotations
 
 from pathlib import Path
+import csv
 
 import numpy as np
 import pandas as pd
 
 MAX_ROWS = 200_000
 MAX_FILE_BYTES = 32 * 1024 * 1024
+PROVENANCE_COLUMNS = frozenset({"original_value", "status", "lower", "upper", "gap_id"})
 
 
 def read_series(path: str | Path) -> pd.DataFrame:
@@ -21,8 +23,9 @@ def read_series(path: str | Path) -> pd.DataFrame:
     Missing numeric values are allowed. Timestamps must be valid ISO-8601,
     unique, increasing, and equally spaced. Offset-aware times are converted
     to UTC; naive times are interpreted as UTC, without changing clock values.
-    Additional columns are ignored so an exported result can be inspected
-    alongside its original values. The original file is never modified.
+    Repair exports are deliberately rejected: their estimates are not new
+    observations. This contract applies equally to query and reference input.
+    Other additional columns are ignored. The original file is never modified.
     """
     path = Path(path)
     if not path.is_file():
@@ -30,11 +33,28 @@ def read_series(path: str | Path) -> pd.DataFrame:
     if path.stat().st_size > MAX_FILE_BYTES:
         raise ValueError(f"Input CSV exceeds {MAX_FILE_BYTES // (1024 * 1024)} MiB")
     try:
+        # Inspect the original header before pandas renames duplicate columns.
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            # pandas skips blank preamble lines by default. Inspect that same
+            # effective header so a blank line cannot conceal provenance.
+            header = next((row for row in csv.reader(handle)
+                           if row and not (len(row) == 1 and not row[0].strip())), [])
+        if len(header) != len(set(header)):
+            raise ValueError("Duplicate CSV column names are not allowed")
+        reserved = PROVENANCE_COLUMNS.intersection(header)
+        if reserved:
+            raise ValueError(
+                "Repair-export/provenance CSV is not supported as input or reference "
+                f"(reserved columns: {', '.join(sorted(reserved))}). "
+                "Use the original timestamp,value measurement CSV, retaining missing "
+                "observations as empty cells. Do not remove provenance columns from "
+                "a repaired export: reconstructed estimates must not become observations."
+            )
         frame = pd.read_csv(
             path, nrows=MAX_ROWS + 1, dtype={"timestamp": "string"},
             float_precision="round_trip",
         )
-    except (pd.errors.ParserError, pd.errors.EmptyDataError, UnicodeDecodeError) as exc:
+    except (pd.errors.ParserError, pd.errors.EmptyDataError, UnicodeDecodeError, csv.Error) as exc:
         raise ValueError(f"Cannot parse input CSV: {exc}") from exc
     if not {"timestamp", "value"}.issubset(frame.columns):
         raise ValueError("CSV must contain timestamp and value columns")

@@ -1,0 +1,15 @@
+{
+  "baseline_commit": "ecf22de604d14e747bf6607d50b62b4870d24fcf",
+  "command": "gaplens repair --reference examples/reference.csv --input results/demo/repaired.csv --output NEW_DIR",
+  "input_original_observations": 2022,
+  "input_estimates": 42,
+  "incorrect_output_summary": {
+    "gaps": 0,
+    "reconstructed_gaps": 0,
+    "unresolved_gaps": 0,
+    "missing_samples": 0,
+    "reconstructed_samples": 0,
+    "unchanged_observations": 2064
+  },
+  "bug": "All 42 estimates silently promoted to observed; all uncertainty discarded."
+}

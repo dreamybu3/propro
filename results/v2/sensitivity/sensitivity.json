@@ -1,0 +1,49 @@
+{
+  "changes_frozen_hypotheses_or_decisions": false,
+  "effects": [
+    {
+      "frozen_macro_normalized_width_ratio": 0.40704251295127636,
+      "geometric_mean_series_width_ratio": 0.9746486018802113,
+      "largest_static_normalized_width_share": 0.9867571640323818,
+      "largest_static_width_contributor": "nab_ec2_network",
+      "mean_series_absolute_coverage_error_rolling": 0.046626984126984135,
+      "mean_series_absolute_coverage_error_static": 0.04480021893814996,
+      "median_series_width_ratio": 0.9407258756674902,
+      "model": "diverse",
+      "series_coverage_closer": 4,
+      "series_coverage_equal": 2,
+      "series_coverage_farther": 8,
+      "series_narrower": 8,
+      "series_same_width": 0,
+      "series_wider": 6,
+      "supported_series": 14
+    },
+    {
+      "frozen_macro_normalized_width_ratio": 0.3412450051056837,
+      "geometric_mean_series_width_ratio": 0.9778097850833175,
+      "largest_static_normalized_width_share": 0.993971429636279,
+      "largest_static_width_contributor": "nab_ec2_network",
+      "mean_series_absolute_coverage_error_rolling": 0.04480021893814997,
+      "mean_series_absolute_coverage_error_static": 0.04579228243021346,
+      "median_series_width_ratio": 0.9225863108213024,
+      "model": "v1",
+      "series_coverage_closer": 6,
+      "series_coverage_equal": 7,
+      "series_coverage_farther": 1,
+      "series_narrower": 8,
+      "series_same_width": 0,
+      "series_wider": 6,
+      "supported_series": 14
+    }
+  ],
+  "interpretation": "LOO and median/geometric ratios are post-result diagnostics, not replacement thresholds or independent confirmation. Coverage means, coverage deviations and width tradeoffs can disagree across series.",
+  "reason": "First final inspection identified extreme normalized widths; disclose sensitivity instead of treating the frozen macro criterion as uniform improvement.",
+  "source_sha256": {
+    "case_metrics.csv": "34a320a8d82fab355dcc4a222b90e4e495cc05f644e6a04b66e11cc38b546096",
+    "plan.json": "f794e5409f694ea8a4736c9dbecf5b597a3641755844c07cf93a412404f6b7b2",
+    "run.json": "861518938365215571a70f3a6251636b2a6ae63680f5d612bb7c67af2646edaf",
+    "script": "26bbcbea6609a2af39601f38e8a62c2fdcb43f118ddfc93aceabda24a045546a",
+    "uncertainty_pairs.csv": "b52b486c7cb9be2ad3ecb847e71bef9db1227a2a6e5a9e7a5c6946d8e6282f26"
+  },
+  "status": "post-result descriptive sensitivity"
+}

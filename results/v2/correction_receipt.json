@@ -1,0 +1,8 @@
+{
+  "correction_commit": "ed799ef058432615d6c2bae4c0b3118729b77b06",
+  "initial_freeze_commit": "dc43d472f5a9e22bb510963eedeebdf4077e7234",
+  "recorded_at": "2026-10-22T20:39:03.923690+00:00",
+  "initial_results_preserved": "results/v2/initial_benchmark",
+  "scientific_choices_unchanged": true,
+  "targeted_regression_tests_passed": 45
+}

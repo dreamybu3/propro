@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "scope": "Development-only repeat after pre-freeze validation fixes and literal-v1 source pinning; no final evaluation data scored.",
+  "artifacts": {
+    "trials.csv": {
+      "byte_identical": true,
+      "sha256": "f3b55ce0e29be767c1fda99b9c8eb0e7f7777e3af53015a68fc8ed033b748855"
+    },
+    "masks.json": {
+      "byte_identical": true,
+      "sha256": "0abfef09b9a316061afb4674906414d89441e32eb84b848778a6479bc232ce40"
+    },
+    "series_trials.csv": {
+      "byte_identical": true,
+      "sha256": "cb2a024850fde64b505153849dc348f2519bee4e58f68ee539106fe971d383b4"
+    },
+    "objectives.json": {
+      "byte_identical": true,
+      "sha256": "299ad7dfc3528e8858f851c8ded38d3a52d1a3f1b8e34b39dcfd60d039f12174"
+    },
+    "selection.json": {
+      "byte_identical": true,
+      "sha256": "abaf8075a2bf24eecb2b17b1eab706016f1d1c9d7e7067cd0a583514090d970e"
+    }
+  },
+  "first_run_code_sha256": {
+    "scripts/tune_v2.py": "4df7414596762a2f46e7d10a5df403d1cbef1de2b2d7bf34b959be76c36bbbe9",
+    "scripts/run_experiments_v2.py": "2634123fcb493740a8bdc469bf2d987687eb92cedb7ce114f5a45222239543b4",
+    "src/gaplens/core.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+    "src/gaplens/models_v2.py": "1b3c99398e5c1b5ebf65178142e74b3bebe2c6a4512b64fafb4cf4335cb64e17"
+  },
+  "replay_code_sha256": {
+    "scripts/tune_v2.py": "c25ac502e64e339dba812e68d52008c8a4286f2aefadc1b3e8b7e8c1118a2086",
+    "scripts/run_experiments_v2.py": "db5a50ee2f029055ed76a89839a5120670169fc0773420e87f06c0493ad8e4f0",
+    "src/gaplens/core.py": "16dc7108f0078d790fe3ccb3d0266572990638dff36e22a8b8ef2fc3fe9aa49a",
+    "src/gaplens/_core_v1.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+    "src/gaplens/models_v2.py": "77caa4b52f70c461eaf7eca6b789f92459f2283dc1f16b2a27e6a26b66222e76"
+  },
+  "note": "Runtime measurements differ and are not numerical reproducibility targets. Original first-run artifacts are preserved."
+}

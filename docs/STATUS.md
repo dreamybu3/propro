@@ -1,5 +1,7 @@
 # GapLens handoff and continuation record
 
+**V2 is completed and validated on `gaplens-v2`; see its delivery checkpoint.** Use [v2/STATUS.md](v2/STATUS.md) for the active checkpoint. The following is the preserved v1 handoff; its initial future-work list is being addressed by v2. The owner independently verified all baseline tests, numerical predictions, and Ubuntu/Windows CI.
+
 ## Selected workflow completed
 
 The repository contains the complete GapLens product, original AnalogBridge implementation, real attributed data, runnable examples, executed benchmarks, tests, interactive reports and English/Russian documentation. After initial local development, the owner explicitly authorized delivery of source, documentation and experimental results through the separate `gaplens-delivery` branch of `dreamybu3/propro`. No deployment, paid action or research-paper publication is implied.

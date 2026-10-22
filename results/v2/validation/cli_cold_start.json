@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "command": "gaplens repair --reference examples/reference.csv --input examples/with_gaps.csv --output NEW_DIRECTORY --require-complete",
+  "fresh_process_wall_seconds": 1.3320593959997495,
+  "child_peak_rss_mib": 76.39453125,
+  "reported_pipeline_seconds": 0.2828582649999589,
+  "summary": {
+    "gaps": 3,
+    "reconstructed_gaps": 3,
+    "unresolved_gaps": 0,
+    "missing_samples": 42,
+    "reconstructed_samples": 42,
+    "unchanged_observations": 2022
+  },
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "scope": "One fresh CLI process, including interpreter/package startup, fitting/calibration/repair/export. Its child peak is isolated because this measurement launcher starts only one child. Linux cloud machine; not user laptop. Warm model-call timings are separately in benchmark/performance.csv and final/performance_summary.csv."
+}

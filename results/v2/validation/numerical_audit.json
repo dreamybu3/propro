@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "case_method_rows": 23529,
+  "prediction_rows": 162126,
+  "planned_gaps": 2139,
+  "scored_case_method_rows": 18006,
+  "calibration_quantile_checks": 18006,
+  "preserved_v1_files_verified": 24,
+  "reproduction": null
+}

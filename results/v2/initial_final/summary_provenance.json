@@ -1,0 +1,32 @@
+{
+  "bootstrap_draws": 5000,
+  "bootstrap_seed": 2026,
+  "generated_table_sha256": {
+    "calibration_support.csv": "d866ea741344e23c021a0a47c8a35a483905055723be805b2e0b1db7d56b027a",
+    "context_diagnostics.csv": "83af0e8d8ca53778f37d97f15423ea7aa9d1a011e8d3dd1bef75ed34e7d91958",
+    "curves_common_service.csv": "0cf1afd432b05405ec63095e8b9fbd4d2a063889c9d18a8528d40bc3f09b0e7c",
+    "curves_own_service.csv": "0b3fa22e889a537e67c845728a9f925391b99d5470f4ae9a11a6a30640d3b7c7",
+    "leave_one_series_out.csv": "82ead85500e2cbc5808eca25091f0b7d576659462f499d1f9675bcc9db50acb4",
+    "lengths.csv": "f5dc4049754f8bc4a6c52689f3dadd46c13b57464cc709e1a24e51614a4d1c27",
+    "origins.csv": "46b2c1e074379d34521b85c55a8d345ab4230052460f83a2f84d2c30acd13756",
+    "paired_series.csv": "47f2b8f44b31498f8f39a4f63c0fa730c69bedf68f2644bd3a5dd51363d0b7e8",
+    "performance_summary.csv": "f3b79f1be645f66996afde63ff40430d7e9ef159dac739c982b3013aad68a9dc",
+    "ranks.csv": "8a44b8a8a6471ae5a7ebc213fe3393a448bd023724dc86c7170630c4d4527749",
+    "refusals.csv": "5b737a0ea068f2eefe71db0e1bdb18275f3742975804a59be91facbc1bc0d1a4",
+    "regimes.csv": "c857bc2f14e2c4a69c7ad1d0c75e5fe60873e269938954b8ce83f1a91cc14ddc",
+    "series_all_regimes.csv": "c6dc007c0e3f40194ba17669b3dac8ef166061ae37a70b1c68ed939bcb4eb8cf",
+    "series_primary.csv": "64554df29b0c428bf38c612632345595f6a2354a7e762f9a1f8fb3751584e91c",
+    "uncertainty_pairs.csv": "b52b486c7cb9be2ad3ecb847e71bef9db1227a2a6e5a9e7a5c6946d8e6282f26"
+  },
+  "input_sha256": {
+    "calibration_scores.csv": "e57d83b8bf04ec6364eb4eeffb1c2e96e9918a1cbdcc035b2a82d3db76d11e19",
+    "case_metrics.csv": "502e1caaf8b3c224fa0ffd5fd7056eb40bb3d1a0fd6a79ea4c47aecbbc7f47d0",
+    "coverage_width.csv": "a8c9b2a6ec56f0f76d97a94ea1c194d9c1c34f2a0f9e83ec9b2dc89442e86102",
+    "performance.csv": "82d30828d7142be655a337121550f6be62d0573a78226688d5a6a4fef0a65396",
+    "predictions.csv.gz": "a00742c9f9c0fd0e577f503ba2357915c7debb4a0e2066b6adaa16a8ceb038a3",
+    "run.json": "28cf79fee623dc295c302c597982b602da0f7789a57fe22c636bcbbf7b829b9d"
+  },
+  "script_sha256": "d42f824edcf383a8c1fee4dca5d855dc2a720b6754859ea9987b26cbe2930526",
+  "selection_sha256": "abaf8075a2bf24eecb2b17b1eab706016f1d1c9d7e7067cd0a583514090d970e",
+  "summary_sha256": "b09f9ea1a15dca25cf1ab3af1e58042255a3d212bfdfd74253f6aded2066fffb"
+}

@@ -1,0 +1,134 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_extra_trees_failed_refit_preserves_complete_model[no_windows] ______
+
+failure = 'no_windows'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f49bf9d7dd0>
+
+    @pytest.mark.parametrize("failure", ["no_windows", "estimator_failure"])
+    def test_extra_trees_failed_refit_preserves_complete_model(failure, monkeypatch):
+        reference = 5 + np.sin(np.arange(200) / 5)
+        times = pd.date_range("2020-01-01", periods=250, freq="h")
+        query = 7 + np.sin(np.arange(50) / 5)
+        query[20:27] = np.nan
+        options = dict(context=3, seed=17, n_estimators=4, training_gaps=12, lengths=(7,))
+        model = ExtraTreesBridge(**options).fit(reference, times[:200])
+        before = model.predict(query, 20, 27, times[200:])
+        scales = (model.global_scale_, model.noise_floor_)
+        forest, training_examples = model.model_, model.training_examples_
+        replacement = 1000 + 50 * np.arange(200, dtype=float)
+        replacement_times = times[:200] + pd.Timedelta(days=365)
+    
+        _reject_tree_fit(model, replacement, replacement_times, failure, monkeypatch)
+    
+        after = model.predict(query, 20, 27, times[200:])
+        np.testing.assert_array_equal(after.mean, before.mean)
+>       np.testing.assert_array_equal(after.scale, before.scale)
+E       AssertionError: 
+E       Arrays are not equal
+E       
+E       Mismatched elements: 7 / 7 (100%)
+E       Max absolute difference among violations: 36.5488663
+E       Max relative difference among violations: 251.22282613
+E        ACTUAL: array([36.69435 , 36.694362, 36.694362, 36.694362, 36.694362, 36.694362,
+E              36.694354])
+E        DESIRED: array([0.145484, 0.148389, 0.148448, 0.148448, 0.148448, 0.148389,
+E              0.146399])
+
+tests/test_model_refit.py:91: AssertionError
+__ test_extra_trees_failed_refit_preserves_complete_model[estimator_failure] ___
+
+failure = 'estimator_failure'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f49ad3af230>
+
+    @pytest.mark.parametrize("failure", ["no_windows", "estimator_failure"])
+    def test_extra_trees_failed_refit_preserves_complete_model(failure, monkeypatch):
+        reference = 5 + np.sin(np.arange(200) / 5)
+        times = pd.date_range("2020-01-01", periods=250, freq="h")
+        query = 7 + np.sin(np.arange(50) / 5)
+        query[20:27] = np.nan
+        options = dict(context=3, seed=17, n_estimators=4, training_gaps=12, lengths=(7,))
+        model = ExtraTreesBridge(**options).fit(reference, times[:200])
+        before = model.predict(query, 20, 27, times[200:])
+        scales = (model.global_scale_, model.noise_floor_)
+        forest, training_examples = model.model_, model.training_examples_
+        replacement = 1000 + 50 * np.arange(200, dtype=float)
+        replacement_times = times[:200] + pd.Timedelta(days=365)
+    
+        _reject_tree_fit(model, replacement, replacement_times, failure, monkeypatch)
+    
+        after = model.predict(query, 20, 27, times[200:])
+>       np.testing.assert_array_equal(after.mean, before.mean)
+E       AssertionError: 
+E       Arrays are not equal
+E       
+E       nan location mismatch:
+E        ACTUAL: array([nan, nan, nan, nan, nan, nan, nan])
+E        DESIRED: array([6.480652, 6.534098, 6.512919, 6.492806, 6.472692, 6.453645,
+E              6.351133])
+
+tests/test_model_refit.py:90: AssertionError
+__ test_extra_trees_failed_initial_training_leaves_model_unfitted[no_windows] __
+
+failure = 'no_windows'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f49ac55e450>
+
+    @pytest.mark.parametrize("failure", ["no_windows", "estimator_failure"])
+    def test_extra_trees_failed_initial_training_leaves_model_unfitted(failure, monkeypatch):
+        model = ExtraTreesBridge(context=3, n_estimators=4, training_gaps=12, lengths=(7,))
+        reference = 1000 + 50 * np.arange(200, dtype=float)
+        times = pd.date_range("2021-01-01", periods=200, freq="h")
+        _reject_tree_fit(model, reference, times, failure, monkeypatch)
+        for attribute in ("reference_", "timestamps_", "global_scale_", "noise_floor_",
+                          "training_examples_", "model_"):
+>           assert not hasattr(model, attribute)
+E           AssertionError: assert not True
+E            +  where True = hasattr(<gaplens.core.ExtraTreesBridge object at 0x7f49ac55e480>, 'reference_')
+
+tests/test_model_refit.py:120: AssertionError
+_ test_extra_trees_failed_initial_training_leaves_model_unfitted[estimator_failure] _
+
+failure = 'estimator_failure'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f49ac55ecf0>
+
+    @pytest.mark.parametrize("failure", ["no_windows", "estimator_failure"])
+    def test_extra_trees_failed_initial_training_leaves_model_unfitted(failure, monkeypatch):
+        model = ExtraTreesBridge(context=3, n_estimators=4, training_gaps=12, lengths=(7,))
+        reference = 1000 + 50 * np.arange(200, dtype=float)
+        times = pd.date_range("2021-01-01", periods=200, freq="h")
+        _reject_tree_fit(model, reference, times, failure, monkeypatch)
+        for attribute in ("reference_", "timestamps_", "global_scale_", "noise_floor_",
+                          "training_examples_", "model_"):
+>           assert not hasattr(model, attribute)
+E           AssertionError: assert not True
+E            +  where True = hasattr(<gaplens.core.ExtraTreesBridge object at 0x7f49ac55ec60>, 'reference_')
+
+tests/test_model_refit.py:120: AssertionError
+=============================== warnings summary ===============================
+tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+  /workspace/propro/src/gaplens/core.py:290: RuntimeWarning: Mean of empty slice.
+    mean = chord + trees.mean(axis=0)
+
+tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+  /workspace/propro/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:145: RuntimeWarning: invalid value encountered in scalar divide
+    ret = ret.dtype.type(ret / rcount)
+
+tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+  /workspace/propro/src/gaplens/core.py:291: RuntimeWarning: Degrees of freedom <= 0 for slice
+    scale = np.sqrt(trees.var(axis=0) + self.noise_floor_ ** 2)
+
+tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+  /workspace/propro/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:181: RuntimeWarning: invalid value encountered in divide
+    arrmean = um.true_divide(arrmean, div, out=arrmean,
+
+tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+  /workspace/propro/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:215: RuntimeWarning: invalid value encountered in scalar divide
+    ret = ret.dtype.type(ret / rcount)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[no_windows]
+FAILED tests/test_model_refit.py::test_extra_trees_failed_refit_preserves_complete_model[estimator_failure]
+FAILED tests/test_model_refit.py::test_extra_trees_failed_initial_training_leaves_model_unfitted[no_windows]
+FAILED tests/test_model_refit.py::test_extra_trees_failed_initial_training_leaves_model_unfitted[estimator_failure]
+4 failed, 32 deselected, 5 warnings in 2.03s

@@ -1,0 +1,475 @@
+{
+  "status": "metadata-only plan; no fitted models or scores",
+  "generated_targets": 2139,
+  "requested_targets": 2142,
+  "unavailable_targets": 3,
+  "calibration_strata": 756,
+  "calibration_strata_at_least_9": 595,
+  "mask_file_sha256": "f794e5409f694ea8a4736c9dbecf5b597a3641755844c07cf93a412404f6b7b2",
+  "plan_sha256": "c2885cb2c303bb145967b2bb6af1db802454d45128e0858268a101dfb28aa08d",
+  "settings": {
+    "co2_mauna_loa": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 2284,
+      "fit_end": 913,
+      "scarce_fit_end": 228,
+      "initial_calibration_end": 1370,
+      "normalization_scale": 8.5,
+      "training_median": 322.2,
+      "training_variance": 26.678419686316932,
+      "source_group": "mauna_loa_co2",
+      "system_group": "mauna_loa_observatory",
+      "period": 52,
+      "cadence_seconds": 604800.0,
+      "length_duration_seconds": {
+        "6": 3628800.0,
+        "24": 14515200.0,
+        "48": 29030400.0
+      },
+      "path": "data/v2/processed/co2_mauna_loa.csv",
+      "sha256": "1e8650244055e78e5fa17d316c23c481f2d380fc567781f1edd113c6e55bede0",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "brent_weekly": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 2058,
+      "fit_end": 823,
+      "scarce_fit_end": 205,
+      "initial_calibration_end": 1234,
+      "normalization_scale": 5.467499999999998,
+      "training_median": 18.65,
+      "training_variance": 25.97070000059488,
+      "source_group": "eia_brent",
+      "system_group": "brent_spot_market",
+      "period": 52,
+      "cadence_seconds": 604800.0,
+      "length_duration_seconds": {
+        "6": 3628800.0,
+        "24": 14515200.0,
+        "48": 29030400.0
+      },
+      "path": "data/v2/processed/brent_weekly.csv",
+      "sha256": "d7325e80da160a6cb4fb147aca0705572ae8d36c2ee699a7a90e7fe099c246fb",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "ssa_births": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 5479,
+      "fit_end": 2191,
+      "scarce_fit_end": 547,
+      "initial_calibration_end": 3287,
+      "normalization_scale": 4112.5,
+      "training_median": 12394.0,
+      "training_variance": 4814284.0163221145,
+      "source_group": "ssa_births",
+      "system_group": "us_birth_population",
+      "period": 7,
+      "cadence_seconds": 86400.0,
+      "length_duration_seconds": {
+        "6": 518400.0,
+        "24": 2073600.0,
+        "48": 4147200.0
+      },
+      "path": "data/v2/processed/ssa_births.csv",
+      "sha256": "d416893dfc65ac5a7a6d2e5949567cf519fb51f9abe6f9d4356016232512cbb5",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "seattle_temp_max": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1461,
+      "fit_end": 584,
+      "scarce_fit_end": 146,
+      "initial_calibration_end": 876,
+      "normalization_scale": 11.85,
+      "training_median": 15.0,
+      "training_variance": 53.354777514543066,
+      "source_group": "noaa_seattle_weather",
+      "system_group": "seattle_weather_station",
+      "period": 365,
+      "cadence_seconds": 86400.0,
+      "length_duration_seconds": {
+        "3": 259200.0,
+        "7": 604800.0,
+        "21": 1814400.0
+      },
+      "path": "data/v2/processed/seattle_temp_max.csv",
+      "sha256": "5346a1640dea3267e49bb09a75e71a5f9cf6cca95c60fa5583961d95656ed49e",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    },
+    "jhu_deaths_germany": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1142,
+      "fit_end": 456,
+      "scarce_fit_end": 114,
+      "initial_calibration_end": 685,
+      "normalization_scale": 241.25,
+      "training_median": 47.0,
+      "training_variance": 71493.77885022314,
+      "source_group": "jhu_covid_reporting",
+      "system_group": "germany_covid_reporting",
+      "period": 7,
+      "cadence_seconds": 86400.0,
+      "length_duration_seconds": {
+        "3": 259200.0,
+        "7": 604800.0,
+        "21": 1814400.0
+      },
+      "path": "data/v2/processed/jhu_deaths_germany.csv",
+      "sha256": "c0f364cec14c82bebd324704d6f3ef8e2ab554e0b736736611873cc80ad35721",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    },
+    "jhu_deaths_japan": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1142,
+      "fit_end": 456,
+      "scarce_fit_end": 114,
+      "initial_calibration_end": 685,
+      "normalization_scale": 28.5,
+      "training_median": 10.0,
+      "training_variance": 700.8940443213296,
+      "source_group": "jhu_covid_reporting",
+      "system_group": "japan_covid_reporting",
+      "period": 7,
+      "cadence_seconds": 86400.0,
+      "length_duration_seconds": {
+        "3": 259200.0,
+        "7": 604800.0,
+        "21": 1814400.0
+      },
+      "path": "data/v2/processed/jhu_deaths_japan.csv",
+      "sha256": "612edf51db3185840dd2d40dc9ba7fae8f373c6993b3de53615d19b37de073b7",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    },
+    "jhu_deaths_us": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1142,
+      "fit_end": 456,
+      "scarce_fit_end": 114,
+      "initial_calibration_end": 685,
+      "normalization_scale": 1157.5,
+      "training_median": 1009.0,
+      "training_variance": 991127.6949013158,
+      "source_group": "jhu_covid_reporting",
+      "system_group": "us_covid_reporting",
+      "period": 7,
+      "cadence_seconds": 86400.0,
+      "length_duration_seconds": {
+        "3": 259200.0,
+        "7": 604800.0,
+        "21": 1814400.0
+      },
+      "path": "data/v2/processed/jhu_deaths_us.csv",
+      "sha256": "da1db6b1931cae8e020467ba156156cf98bf2444cc59d99a040314169e869433",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    },
+    "nab_tweets_aapl": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 15902,
+      "fit_end": 6360,
+      "scarce_fit_end": 1590,
+      "initial_calibration_end": 9541,
+      "normalization_scale": 45.0,
+      "training_median": 44.0,
+      "training_variance": 42921.235150681336,
+      "source_group": "nab_twitter_mentions",
+      "system_group": "twitter_aapl_attention",
+      "period": 288,
+      "cadence_seconds": 300.0,
+      "length_duration_seconds": {
+        "6": 1800.0,
+        "24": 7200.0,
+        "48": 14400.0
+      },
+      "path": "data/v2/processed/nab_tweets_aapl.csv",
+      "sha256": "1fe78ceb88ae9a4f64994f6f02b0070c4388e84ac834d3e438eea26ee784c063",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "nab_tweets_ibm": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 15893,
+      "fit_end": 6357,
+      "scarce_fit_end": 1589,
+      "initial_calibration_end": 9535,
+      "normalization_scale": 5.0,
+      "training_median": 3.0,
+      "training_variance": 16.13079724015835,
+      "source_group": "nab_twitter_mentions",
+      "system_group": "twitter_ibm_attention",
+      "period": 288,
+      "cadence_seconds": 300.0,
+      "length_duration_seconds": {
+        "6": 1800.0,
+        "24": 7200.0,
+        "48": 14400.0
+      },
+      "path": "data/v2/processed/nab_tweets_ibm.csv",
+      "sha256": "19c09333a6bd4cfc27d4ea60b16601b0c66cddb61432a6ac665056078457e039",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "nab_ec2_cpu": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 4032,
+      "fit_end": 1612,
+      "scarce_fit_end": 403,
+      "initial_calibration_end": 2419,
+      "normalization_scale": 0.0020000000000000018,
+      "training_median": 0.134,
+      "training_variance": 0.0080207232049948,
+      "source_group": "nab_aws_cloudwatch",
+      "system_group": "aws_asset_linkage_unknown",
+      "period": 288,
+      "cadence_seconds": 300.0,
+      "length_duration_seconds": {
+        "6": 1800.0,
+        "24": 7200.0,
+        "48": 14400.0
+      },
+      "path": "data/v2/processed/nab_ec2_cpu.csv",
+      "sha256": "57d54c91608fa9f8bd6b16a66460d85e905cfde0e2b70e37536810a874e5a674",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "nab_ec2_network": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 4034,
+      "fit_end": 1613,
+      "scarce_fit_end": 403,
+      "initial_calibration_end": 2420,
+      "normalization_scale": 25676.5,
+      "training_median": 251011.0,
+      "training_variance": 1271626775768.4597,
+      "source_group": "nab_aws_cloudwatch",
+      "system_group": "aws_asset_linkage_unknown",
+      "period": 288,
+      "cadence_seconds": 300.0,
+      "length_duration_seconds": {
+        "6": 1800.0,
+        "24": 7200.0,
+        "48": 14400.0
+      },
+      "path": "data/v2/processed/nab_ec2_network.csv",
+      "sha256": "641566e974ae1470e641b0570cdd534e280f91e516a4b78c26d959523d1276e5",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "nab_elb_requests": {
+      "context": 6,
+      "lengths": [
+        6,
+        24
+      ],
+      "stress_length": 48,
+      "rows": 4040,
+      "fit_end": 1616,
+      "scarce_fit_end": 404,
+      "initial_calibration_end": 2424,
+      "normalization_scale": 72.0,
+      "training_median": 49.0,
+      "training_variance": 3203.810023103511,
+      "source_group": "nab_aws_cloudwatch",
+      "system_group": "aws_asset_linkage_unknown",
+      "period": 288,
+      "cadence_seconds": 300.0,
+      "length_duration_seconds": {
+        "6": 1800.0,
+        "24": 7200.0,
+        "48": 14400.0
+      },
+      "path": "data/v2/processed/nab_elb_requests.csv",
+      "sha256": "8fc73b506c7cad2e190c9ed3e5291f698cd12dfcca2119ed354960dfa2c6d04c",
+      "all_lengths": [
+        6,
+        24,
+        48
+      ]
+    },
+    "nab_ad_cpc_exchange3": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1647,
+      "fit_end": 658,
+      "scarce_fit_end": 164,
+      "initial_calibration_end": 988,
+      "normalization_scale": 0.0597425845756,
+      "training_median": 0.121064162754,
+      "training_variance": 0.008540766294841462,
+      "source_group": "nab_adexchange",
+      "system_group": "ad_exchange_3",
+      "period": 24,
+      "cadence_seconds": 3600.0,
+      "length_duration_seconds": {
+        "3": 10800.0,
+        "7": 25200.0,
+        "21": 75600.0
+      },
+      "path": "data/v2/processed/nab_ad_cpc_exchange3.csv",
+      "sha256": "50cc098fb80bd1452b805f8141393a8f2e0eb7b7b4687ec6850cdaeff13735fd",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    },
+    "nab_ad_cpc_exchange4": {
+      "context": 3,
+      "lengths": [
+        3,
+        7
+      ],
+      "stress_length": 21,
+      "rows": 1647,
+      "fit_end": 658,
+      "scarce_fit_end": 164,
+      "initial_calibration_end": 988,
+      "normalization_scale": 0.026696012744399998,
+      "training_median": 0.059336400581250004,
+      "training_variance": 0.014866628843672581,
+      "source_group": "nab_adexchange",
+      "system_group": "ad_exchange_4",
+      "period": 24,
+      "cadence_seconds": 3600.0,
+      "length_duration_seconds": {
+        "3": 10800.0,
+        "7": 25200.0,
+        "21": 75600.0
+      },
+      "path": "data/v2/processed/nab_ad_cpc_exchange4.csv",
+      "sha256": "90e84576260fa0d6ad08e88bd1b705c174f2f8b857d111c8872d3e882735237e",
+      "all_lengths": [
+        3,
+        7,
+        21
+      ]
+    }
+  },
+  "unavailable_regimes": [
+    {
+      "dataset": "nab_ad_cpc_exchange3",
+      "seed": 17,
+      "origin_index": 2,
+      "regime": "boundary",
+      "requested": 1,
+      "available": 0,
+      "reason": "Boundary target has native missing ground truth"
+    },
+    {
+      "dataset": "nab_ad_cpc_exchange3",
+      "seed": 29,
+      "origin_index": 2,
+      "regime": "boundary",
+      "requested": 1,
+      "available": 0,
+      "reason": "Boundary target has native missing ground truth"
+    },
+    {
+      "dataset": "nab_ad_cpc_exchange3",
+      "seed": 43,
+      "origin_index": 2,
+      "regime": "boundary",
+      "requested": 1,
+      "available": 0,
+      "reason": "Boundary target has native missing ground truth"
+    }
+  ]
+}

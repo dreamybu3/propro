@@ -79,11 +79,13 @@ class _ReferenceMethod:
         finite = reference[np.isfinite(reference)]
         if len(finite) < 2 * self.context + 1:
             raise ValueError("Reference has too few finite observations for the context.")
-        self.reference_ = reference.copy()
-        self.timestamps_ = _timestamps(timestamps, len(reference))
+        # Validate and compute before publishing fitted state. A failed refit
+        # must not combine a new reference with an old model/window cache.
+        fitted_reference = reference.copy()
+        fitted_timestamps = _timestamps(timestamps, len(reference))
         center = np.median(finite)
         robust = 1.4826 * np.median(np.abs(finite - center))
-        self.global_scale_ = float(max(robust, np.std(finite), 1e-8))
+        global_scale = float(max(robust, np.std(finite), 1e-8))
         diffs = np.diff(reference)
         diffs = diffs[np.isfinite(diffs)]
         if len(diffs):
@@ -91,7 +93,13 @@ class _ReferenceMethod:
         else:
             noise = 0.0
         # Positive even for constant or perfectly linear reference signals.
-        self.noise_floor_ = float(max(noise, 0.01 * self.global_scale_, 1e-8))
+        noise_floor = float(max(noise, 0.01 * global_scale, 1e-8))
+        if not np.isfinite(global_scale) or not np.isfinite(noise_floor):
+            raise ValueError("Nonfinite reference scale: input magnitude is unsupported.")
+        self.reference_ = fitted_reference
+        self.timestamps_ = fitted_timestamps
+        self.global_scale_ = global_scale
+        self.noise_floor_ = noise_floor
         return self
 
     def _query(self, values, start, end, timestamps):
@@ -243,34 +251,40 @@ class ExtraTreesBridge(_ReferenceMethod):
     def fit(self, values, timestamps=None):
         from sklearn.ensemble import ExtraTreesRegressor
 
-        super().fit(values, timestamps)
+        # Keep the working model intact until reference preparation and tree
+        # training both succeed, including failures after estimator creation.
+        reference_state = _ReferenceMethod(self.context).fit(values, timestamps)
         rng = np.random.default_rng(self.seed)
         x_parts, y_parts = [], []
-        self.training_examples_ = 0
+        training_examples = 0
         per_length, remainder = divmod(self.training_gaps, len(self.lengths))
         for length_index, length in enumerate(self.lengths):
             each = per_length + int(length_index < remainder)
             if each == 0:
                 continue
-            starts = _complete_starts(self.reference_, length, self.context)
+            starts = _complete_starts(reference_state.reference_, length, self.context)
             if not len(starts):
                 continue
             selected = rng.choice(starts, size=min(each, len(starts)), replace=False)
             for start in selected:
                 end = int(start + length)
-                context = np.concatenate((self.reference_[start - self.context:start],
-                                          self.reference_[end:end + self.context]))
-                features, chord = self._features(context, start, end, self.timestamps_)
+                context = np.concatenate((reference_state.reference_[start - self.context:start],
+                                          reference_state.reference_[end:end + self.context]))
+                features, chord = self._features(context, start, end, reference_state.timestamps_)
                 x_parts.append(features)
-                y_parts.append(self.reference_[start:end] - chord)
-                self.training_examples_ += 1
+                y_parts.append(reference_state.reference_[start:end] - chord)
+                training_examples += 1
         if not x_parts:
             raise ValueError("Reference has no complete training windows for requested lengths.")
-        self.model_ = ExtraTreesRegressor(
+        model = ExtraTreesRegressor(
             n_estimators=self.n_estimators, min_samples_leaf=3,
             max_features=1.0, random_state=self.seed, n_jobs=1,
         )
-        self.model_.fit(np.concatenate(x_parts), np.concatenate(y_parts))
+        model.fit(np.concatenate(x_parts), np.concatenate(y_parts))
+        self.__dict__ = {
+            **self.__dict__, **reference_state.__dict__,
+            "training_examples_": training_examples, "model_": model,
+        }
         return self
 
     def predict(self, values, start, end, timestamps=None):

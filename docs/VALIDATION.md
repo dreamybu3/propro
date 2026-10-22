@@ -1,5 +1,7 @@
 # Executed validation
 
+> Historical v1 execution record. The owner subsequently independently reproduced all 58 tests and all 54,432 prediction rows, and verified passing GitHub Actions jobs on Ubuntu and Windows at `ecf22de604d14e747bf6607d50b62b4870d24fcf`. Earlier untested-platform statements below describe the initial local handoff, not current CI status. See [v2 validation](v2/VALIDATION.md) for the second stage.
+
 These checks actually ran on Linux x86-64, Python 3.12.14. The machine had more than 16 GB RAM; the measured process peak is the evidence for modest resource use. Windows, the user's laptop, other Python versions, hosted CI and production operation are not claimed.
 
 ## Installation and data

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "development_only": [
+    "nyc_taxi",
+    "cpu_utilization",
+    "ambient_temperature"
+  ],
+  "parameters": {
+    "linear": {},
+    "v1": {},
+    "raw_knn": {},
+    "seasonal": {},
+    "diverse": {
+      "k": 4
+    },
+    "extra_trees": {
+      "n_estimators": 32,
+      "training_gaps": 300
+    },
+    "kalman": {
+      "process_ratio": 0.01
+    },
+    "pca": {
+      "rank": 4,
+      "ridge": 0.1
+    }
+  },
+  "selected_objectives": {
+    "linear": 1.0,
+    "v1": 0.5499013072475128,
+    "raw_knn": 0.6432785898561203,
+    "seasonal": 0.7607439515588112,
+    "diverse": 0.5718638545062288,
+    "extra_trees": 0.6899317459795866,
+    "kalman": 1.208805256350429,
+    "pca": 1.0785267174737543
+  },
+  "diverse_mae_ratio_to_v1": 1.0399390708282688,
+  "product_model": "v1",
+  "candidate_model": "diverse",
+  "best_non_retrieval_competitor": "extra_trees",
+  "product_calibration": "static",
+  "product_rule": "Use diverse only if its development objective is at most 95% of v1's; otherwise keep v1. Rolling calibration is a separately evaluated uncertainty ablation, never selected on final data.",
+  "selection_status": "Frozen before final evaluation; no final-series outcomes inspected",
+  "trials_sha256": "f3b55ce0e29be767c1fda99b9c8eb0e7f7777e3af53015a68fc8ed033b748855",
+  "masks_sha256": "0abfef09b9a316061afb4674906414d89441e32eb84b848778a6479bc232ce40"
+}

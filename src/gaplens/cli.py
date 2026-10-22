@@ -14,7 +14,8 @@ def parser():
     r.add_argument("--reference", required=True, help="Earlier regular timestamp,value CSV; suffix reserved for calibration")
     r.add_argument("--input", required=True, help="Later regular timestamp,value CSV; missing values are empty cells")
     r.add_argument("--output", required=True, help="Directory for repaired.csv, report.json and report.html")
-    r.add_argument("--method", choices=("analog", "linear", "extra-trees"), default="analog")
+    r.add_argument("--method", choices=("analog", "diverse", "linear", "extra-trees"), default="analog",
+                   help="analog (default), diverse with non-overlapping historical windows, linear, or extra-trees")
     r.add_argument("--context", type=int, default=6, help="Observed samples required on each side (default: 6)")
     r.add_argument("--neighbors", type=int, default=12, help="Historical analog count (default: 12)")
     r.add_argument("--alpha", type=float, default=.1, help="Target gap miscoverage, not a guarantee (default: .1)")

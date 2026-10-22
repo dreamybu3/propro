@@ -1,0 +1,140 @@
+{
+  "status": "passed",
+  "scope": "Independent saved-artifact audit; no fitting or new holdout scoring",
+  "case_method_rows": 23529,
+  "planned_gaps": 2139,
+  "primary_gaps": 1008,
+  "primary_point_service_complete": true,
+  "paired_effects_and_bootstraps_checked": [
+    {
+      "candidate": "diverse_static",
+      "reference": "v1_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.0453165962359818
+    },
+    {
+      "candidate": "diverse_k12_static",
+      "reference": "v1_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.039258291752737
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "linear_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.2066183714254903
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "extra_trees_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.9868217365676838
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "raw_knn_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.6131777455047692
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "seasonal_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.9796946829603931
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "kalman_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.1433370753397591
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "pca_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.5918009103781194
+    },
+    {
+      "candidate": "diverse_static",
+      "reference": "diverse_k12_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.0058294502255327
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "linear_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.1543090158238474
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "extra_trees_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.944041011231498
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "raw_knn_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.5865952456057086
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "seasonal_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.9372229298646143
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "kalman_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 1.0937710923721418
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "pca_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.566145139672612
+    },
+    {
+      "candidate": "v1_static",
+      "reference": "diverse_k12_static",
+      "common_cases": 1008,
+      "geometric_mae_ratio": 0.9622247019203214
+    }
+  ],
+  "primary_ranks_match": true,
+  "uncertainty_estimands_checked": [
+    {
+      "model": "v1",
+      "common_interval_cases": 982,
+      "static_coverage": 0.9263478379857691,
+      "rolling_coverage": 0.9094827586206896,
+      "width_ratio": 0.3412450051056837
+    },
+    {
+      "model": "diverse",
+      "common_interval_cases": 982,
+      "static_coverage": 0.9094827586206897,
+      "rolling_coverage": 0.9025793650793651,
+      "width_ratio": 0.4070425129512763
+    }
+  ],
+  "calibration_strata": 756,
+  "calibration_windows_checked": 13369,
+  "prior_outage_and_query_context_checks_passed": true,
+  "accepted_covered_denominators_match": true,
+  "input_sha256": {
+    "results/v2/benchmark/case_metrics.csv": "34a320a8d82fab355dcc4a222b90e4e495cc05f644e6a04b66e11cc38b546096",
+    "results/v2/benchmark/run.json": "861518938365215571a70f3a6251636b2a6ae63680f5d612bb7c67af2646edaf",
+    "results/v2/masks.json": "f794e5409f694ea8a4736c9dbecf5b597a3641755844c07cf93a412404f6b7b2",
+    "data/v2/manifest.json": "d771d01b361b310a06bb05ca524de297b0a1c2ade26fc33bed8aa00c69d76652",
+    "results/v2/final/summary.json": "46b50d34788c7339c7991ffcbacc0fc27ed5963cc6a39f6b3eb0cd4135b4a904",
+    "results/v2/final/ranks.csv": "8a44b8a8a6471ae5a7ebc213fe3393a448bd023724dc86c7170630c4d4527749",
+    "results/v2/final/series_primary.csv": "64554df29b0c428bf38c612632345595f6a2354a7e762f9a1f8fb3751584e91c",
+    "results/v2/final/regimes.csv": "c857bc2f14e2c4a69c7ad1d0c75e5fe60873e269938954b8ce83f1a91cc14ddc",
+    "results/v2/final/lengths.csv": "f5dc4049754f8bc4a6c52689f3dadd46c13b57464cc709e1a24e51614a4d1c27",
+    "results/v2/final/origins.csv": "46b2c1e074379d34521b85c55a8d345ab4230052460f83a2f84d2c30acd13756"
+  },
+  "script_sha256": "04e40ad7cb1fb01a5c35cc6d0d122fcc4f907168ff1fcce6d834dd71a03602b7"
+}
