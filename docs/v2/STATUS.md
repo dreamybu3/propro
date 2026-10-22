@@ -7,14 +7,19 @@ draft PR targeting `gaplens-delivery`. No merge, paid compute or deployment.
 Completed: baseline provenance bug reproduced and fixed through explicit
 repair-export rejection; regression coverage added; original artifacts hashed.
 
-In progress: product audit fixes, primary-source review, licensed 14-series
-dataset, comparator implementations, development tuning and executable
-protocol. No v2 final holdout scores have been inspected or generated yet.
+Completed before final scoring: product fixes, primary-source review, licensed
+14-series dataset, comparator implementations, development tuning (diverse
+3.994% worse than v1; keep analog default), independent code and methodology
+reviews, original-value/uncertainty browser checks, 2,139 saved target masks.
+The full suite passed 152 tests before adding 11 passing synthetic summary tests.
+No v2 final holdout scores have been inspected or generated at this checkpoint.
 
-Next gate: finish development tuning on the original three series, save all
-trials and chosen parameters; freeze protocol/config/masks in a commit before
-running final new-series evaluation. Then independent review, clean reproduction,
-documentation, publication and GitHub verification.
+Next gate: commit configs/v2_freeze.json with protected source/config/protocol
+hashes, write freeze receipt, run scripts/run_experiments_v2.py to
+results/v2/benchmark, generate summaries in results/v2/final. Then independent
+result review, clean reproduction with scripts/verify_v2.py, final documentation,
+publication and GitHub verification. Root owns README, RESEARCH_REPORT and
+VALIDATION; product audit agent updates four existing user/architecture guides.
 
 Infrastructure: native Git HTTPS works. GitHub API requests currently receive
 a proxy CONNECT 403 (api.github.com is absent from the configured allowlist).

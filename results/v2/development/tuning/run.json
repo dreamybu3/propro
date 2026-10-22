@@ -1,0 +1,130 @@
+{
+  "status": "complete",
+  "started_at": "2026-10-22T20:20:40.443755+00:00",
+  "datasets": {
+    "nyc_taxi": {
+      "sha256": "8800a4148a75c75e32fe8f8d87a0b3f4a1d08a7b7aca67c94762af0b30d020c2",
+      "rows": 10320,
+      "fit_end": 4128,
+      "normalization_scale": 8605.5,
+      "seasonal_period": 48
+    },
+    "cpu_utilization": {
+      "sha256": "bf4e283eadf8bc1329860f55cb3a9b4d084d3af2af897878afc363d1478ec1f2",
+      "rows": 18050,
+      "fit_end": 7220,
+      "normalization_scale": 3.1107499999999924,
+      "seasonal_period": 288
+    },
+    "ambient_temperature": {
+      "sha256": "3c7d58de06c8cc26796c191cdb058d80fb20f7e65f25f41c45648c60670e0aaa",
+      "rows": 7888,
+      "fit_end": 3155,
+      "normalization_scale": 4.806987759999998,
+      "seasonal_period": 24
+    }
+  },
+  "development_only": [
+    "nyc_taxi",
+    "cpu_utilization",
+    "ambient_temperature"
+  ],
+  "context": 6,
+  "lengths": [
+    6,
+    24
+  ],
+  "fit_fraction": 0.4,
+  "validation_ranges": [
+    [
+      0.6,
+      0.8
+    ],
+    [
+      0.8,
+      1.0
+    ]
+  ],
+  "mask_seed": 17,
+  "validation_cases_per_length_per_origin": 8,
+  "grid": {
+    "diverse": [
+      {
+        "k": 4
+      },
+      {
+        "k": 8
+      },
+      {
+        "k": 12
+      }
+    ],
+    "extra_trees": [
+      {
+        "n_estimators": 32,
+        "training_gaps": 300
+      },
+      {
+        "n_estimators": 64,
+        "training_gaps": 300
+      },
+      {
+        "n_estimators": 96,
+        "training_gaps": 300
+      }
+    ],
+    "kalman": [
+      {
+        "process_ratio": 0.01
+      },
+      {
+        "process_ratio": 0.1
+      },
+      {
+        "process_ratio": 1.0
+      }
+    ],
+    "pca": [
+      {
+        "rank": 2,
+        "ridge": 0.01
+      },
+      {
+        "rank": 4,
+        "ridge": 0.1
+      },
+      {
+        "rank": 8,
+        "ridge": 1.0
+      }
+    ]
+  },
+  "controls": {
+    "linear": [
+      {}
+    ],
+    "v1": [
+      {}
+    ],
+    "raw_knn": [
+      {}
+    ],
+    "seasonal": [
+      {}
+    ]
+  },
+  "objective": "Geometric mean across three series of mean case MAE / linear mean case MAE; ties choose first grid entry; any missing prediction makes a candidate ineligible.",
+  "product_selection": "Use diverse only if its development objective is at most 95% of v1's; otherwise keep v1. Rolling calibration is a separately evaluated uncertainty ablation, never selected on final data.",
+  "code_sha256": {
+    "scripts/tune_v2.py": "4df7414596762a2f46e7d10a5df403d1cbef1de2b2d7bf34b959be76c36bbbe9",
+    "scripts/run_experiments_v2.py": "2634123fcb493740a8bdc469bf2d987687eb92cedb7ce114f5a45222239543b4",
+    "src/gaplens/core.py": "b656f9ba2ef3cd2f36ac2b802a0beedd23ead0601aaa5f59a8f9b47ef433c295",
+    "src/gaplens/models_v2.py": "1b3c99398e5c1b5ebf65178142e74b3bebe2c6a4512b64fafb4cf4335cb64e17"
+  },
+  "selection_status": "No final evaluation series used",
+  "completed_at": "2026-10-22T20:21:00.863610+00:00",
+  "elapsed_seconds": 20.419874031999825,
+  "trial_rows": 1536,
+  "case_count": 96,
+  "selection_sha256": "abaf8075a2bf24eecb2b17b1eab706016f1d1c9d7e7067cd0a583514090d970e"
+}

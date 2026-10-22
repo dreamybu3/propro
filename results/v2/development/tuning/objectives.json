@@ -1,0 +1,98 @@
+[
+  {
+    "model": "diverse",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.5718638545062288
+  },
+  {
+    "model": "diverse",
+    "candidate": 1,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.573877518389627
+  },
+  {
+    "model": "diverse",
+    "candidate": 2,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.5841029759223435
+  },
+  {
+    "model": "extra_trees",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.6899317459795866
+  },
+  {
+    "model": "extra_trees",
+    "candidate": 1,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.6905377248642441
+  },
+  {
+    "model": "extra_trees",
+    "candidate": 2,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.6900828720613706
+  },
+  {
+    "model": "kalman",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.208805256350429
+  },
+  {
+    "model": "kalman",
+    "candidate": 1,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.2442103604899837
+  },
+  {
+    "model": "kalman",
+    "candidate": 2,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.3493335481228628
+  },
+  {
+    "model": "linear",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.0
+  },
+  {
+    "model": "pca",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.2425388797191863
+  },
+  {
+    "model": "pca",
+    "candidate": 1,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.0785267174737543
+  },
+  {
+    "model": "pca",
+    "candidate": 2,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 1.5767018741449934
+  },
+  {
+    "model": "raw_knn",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.6432785898561203
+  },
+  {
+    "model": "seasonal",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.7607439515588112
+  },
+  {
+    "model": "v1",
+    "candidate": 0,
+    "eligible": true,
+    "geometric_mean_mae_ratio_to_linear": 0.5499013072475128
+  }
+]
